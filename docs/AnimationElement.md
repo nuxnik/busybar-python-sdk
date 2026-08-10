@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.animation_element import AnimationElement
+from busybar-python-sdk.models.animation_element import AnimationElement
 
 # TODO update the JSON string below
 json = "{}"

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.timestamp_info import TimestampInfo
+from busybar-python-sdk.models.timestamp_info import TimestampInfo
 
 # TODO update the JSON string below
 json = "{}"

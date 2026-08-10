@@ -1,4 +1,4 @@
-# openapi_client.SettingsApi
+# busybar-python-sdk.SettingsApi
 
 All URIs are relative to *http://localhost*
 
@@ -27,14 +27,14 @@ Get current device name
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.name_info import NameInfo
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.name_info import NameInfo
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -50,9 +50,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SettingsApi(api_client)
+    api_instance = busybar-python-sdk.SettingsApi(api_client)
 
     try:
         # Get current device name
@@ -101,15 +101,15 @@ Set new device name
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.name_info import NameInfo
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.name_info import NameInfo
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -125,10 +125,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SettingsApi(api_client)
-    name_info = openapi_client.NameInfo() # NameInfo | 
+    api_instance = busybar-python-sdk.SettingsApi(api_client)
+    name_info = busybar-python-sdk.NameInfo() # NameInfo | 
 
     try:
         # Set new device name
@@ -181,14 +181,14 @@ Get audio volume value
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.audio_volume_info import AudioVolumeInfo
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.audio_volume_info import AudioVolumeInfo
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -204,9 +204,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SettingsApi(api_client)
+    api_instance = busybar-python-sdk.SettingsApi(api_client)
 
     try:
         # Get audio volume
@@ -255,14 +255,14 @@ Get brightness value for displays
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.display_brightness_info import DisplayBrightnessInfo
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.display_brightness_info import DisplayBrightnessInfo
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -278,9 +278,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SettingsApi(api_client)
+    api_instance = busybar-python-sdk.SettingsApi(api_client)
 
     try:
         # Get display brightness
@@ -329,14 +329,14 @@ Get HTTP API access over Wi-Fi configuration
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.http_access_info import HttpAccessInfo
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.http_access_info import HttpAccessInfo
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -352,9 +352,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SettingsApi(api_client)
+    api_instance = busybar-python-sdk.SettingsApi(api_client)
 
     try:
         # Get HTTP API access over Wi-Fi configuration
@@ -403,14 +403,14 @@ Set audio volume value
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -426,9 +426,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SettingsApi(api_client)
+    api_instance = busybar-python-sdk.SettingsApi(api_client)
     volume = 50 # float | Audio volume (0-100)
     silent = 1 # int | Set volume silently (0 - play volume change sound(default), 1 - do not play sound) (optional)
 
@@ -485,14 +485,14 @@ Set brightness for one or both displays
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -508,9 +508,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SettingsApi(api_client)
+    api_instance = busybar-python-sdk.SettingsApi(api_client)
     value = '50' # str | Displays brightness (0-100/auto)
 
     try:
@@ -564,14 +564,14 @@ Set HTTP API access over Wi-Fi configuration
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -587,9 +587,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SettingsApi(api_client)
+    api_instance = busybar-python-sdk.SettingsApi(api_client)
     mode = 'key' # str | Access mode
     key = '12345678' # str | Access key (4-10 digits length). Required when mode is \"key\". (optional)
 

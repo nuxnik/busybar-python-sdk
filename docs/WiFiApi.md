@@ -1,4 +1,4 @@
-# openapi_client.WiFiApi
+# busybar-python-sdk.WiFiApi
 
 All URIs are relative to *http://localhost*
 
@@ -23,15 +23,15 @@ Attempts to connect to Wi-Fi using config
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.connect_request_config import ConnectRequestConfig
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.connect_request_config import ConnectRequestConfig
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -47,10 +47,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.WiFiApi(api_client)
-    connect_request_config = openapi_client.ConnectRequestConfig() # ConnectRequestConfig | 
+    api_instance = busybar-python-sdk.WiFiApi(api_client)
+    connect_request_config = busybar-python-sdk.ConnectRequestConfig() # ConnectRequestConfig | 
 
     try:
         api_response = api_instance.api_wifi_connect_post(connect_request_config)
@@ -103,14 +103,14 @@ Disconnects from Wi-Fi
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -126,9 +126,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.WiFiApi(api_client)
+    api_instance = busybar-python-sdk.WiFiApi(api_client)
 
     try:
         api_response = api_instance.api_wifi_disconnect_post()
@@ -178,14 +178,14 @@ Returns current Wi-Fi status
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.status_response import StatusResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.status_response import StatusResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -201,9 +201,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.WiFiApi(api_client)
+    api_instance = busybar-python-sdk.WiFiApi(api_client)
 
     try:
         api_response = api_instance.api_wifi_status_get()
@@ -252,14 +252,14 @@ Scans environment for available Wi-Fi networks
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.network_response import NetworkResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.network_response import NetworkResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -275,9 +275,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.WiFiApi(api_client)
+    api_instance = busybar-python-sdk.WiFiApi(api_client)
 
     try:
         api_response = api_instance.get_wifi_networks()

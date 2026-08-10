@@ -20,8 +20,8 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "openapi-client"
-VERSION = "1.0.0"
+NAME = "busybar-python-sdk"
+VERSION = "0.0.1"
 PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
     "urllib3 >= 1.26.0, < 3.0.0",
@@ -36,7 +36,7 @@ setup(
     description="BUSY Bar HTTP API",
     author="tbd",
     author_email="team@openapitools.org",
-    url="",
+    url="https://github.com/nuxnik/busybar-python-sdk",
     keywords=["OpenAPI", "OpenAPI-Generator", "BUSY Bar HTTP API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
@@ -45,5 +45,5 @@ setup(
     long_description="""\
     HTTP API for BUSY Bar web server
     """,  # noqa: E501
-    package_data={"openapi_client": ["py.typed"]},
+    package_data={"busybar-python-sdk": ["py.typed"]},
 )

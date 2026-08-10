@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.busy_timer_interval_settings import BusyTimerIntervalSettings
+from busybar-python-sdk.models.busy_timer_interval_settings import BusyTimerIntervalSettings
 
 # TODO update the JSON string below
 json = "{}"

@@ -1,4 +1,4 @@
-# openapi_client.SystemApi
+# busybar-python-sdk.SystemApi
 
 All URIs are relative to *http://localhost*
 
@@ -27,14 +27,14 @@ Snapshot the in-memory log buffer to a file (defaults to /ext/log.txt)
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.dump_log200_response import DumpLog200Response
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.dump_log200_response import DumpLog200Response
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -50,9 +50,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SystemApi(api_client)
+    api_instance = busybar-python-sdk.SystemApi(api_client)
     filename = 'log' # str | Destination file name (without extension) (optional)
 
     try:
@@ -107,14 +107,14 @@ Get device status
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.status import Status
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.status import Status
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -130,9 +130,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SystemApi(api_client)
+    api_instance = busybar-python-sdk.SystemApi(api_client)
 
     try:
         # Get device status
@@ -182,14 +182,14 @@ Get device info
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.status_device import StatusDevice
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.status_device import StatusDevice
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -205,9 +205,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SystemApi(api_client)
+    api_instance = busybar-python-sdk.SystemApi(api_client)
 
     try:
         # Get device info
@@ -257,14 +257,14 @@ Get firmware info
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.status_firmware import StatusFirmware
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.status_firmware import StatusFirmware
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -280,9 +280,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SystemApi(api_client)
+    api_instance = busybar-python-sdk.SystemApi(api_client)
 
     try:
         # Get firmware info
@@ -332,14 +332,14 @@ Get power status
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.status_power import StatusPower
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.status_power import StatusPower
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -355,9 +355,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SystemApi(api_client)
+    api_instance = busybar-python-sdk.SystemApi(api_client)
 
     try:
         # Get power status
@@ -407,14 +407,14 @@ Get system status
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.status_system import StatusSystem
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.status_system import StatusSystem
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -430,9 +430,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SystemApi(api_client)
+    api_instance = busybar-python-sdk.SystemApi(api_client)
 
     try:
         # Get system status
@@ -482,14 +482,14 @@ Retrieves device transport type (usb/wifi)
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.network_interface_info import NetworkInterfaceInfo
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.network_interface_info import NetworkInterfaceInfo
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -505,9 +505,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SystemApi(api_client)
+    api_instance = busybar-python-sdk.SystemApi(api_client)
 
     try:
         # Get device network connection info
@@ -556,14 +556,14 @@ Retrieves API version
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.version_info import VersionInfo
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.version_info import VersionInfo
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -579,9 +579,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SystemApi(api_client)
+    api_instance = busybar-python-sdk.SystemApi(api_client)
 
     try:
         # Get API version information

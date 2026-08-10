@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.autoupdate_settings import AutoupdateSettings
+from busybar-python-sdk.models.autoupdate_settings import AutoupdateSettings
 
 # TODO update the JSON string below
 json = "{}"

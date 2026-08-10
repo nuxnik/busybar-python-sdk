@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.name_info import NameInfo
+from busybar-python-sdk.models.name_info import NameInfo
 
 # TODO update the JSON string below
 json = "{}"

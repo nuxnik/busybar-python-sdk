@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.connect_request_config import ConnectRequestConfig
+from busybar-python-sdk.models.connect_request_config import ConnectRequestConfig
 
 # TODO update the JSON string below
 json = "{}"

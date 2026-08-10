@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.busy_snapshot_snapshot import BusySnapshotSnapshot
+from busybar-python-sdk.models.busy_snapshot_snapshot import BusySnapshotSnapshot
 
 # TODO update the JSON string below
 json = "{}"

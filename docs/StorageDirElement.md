@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.storage_dir_element import StorageDirElement
+from busybar-python-sdk.models.storage_dir_element import StorageDirElement
 
 # TODO update the JSON string below
 json = "{}"

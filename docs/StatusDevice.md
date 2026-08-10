@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.status_device import StatusDevice
+from busybar-python-sdk.models.status_device import StatusDevice
 
 # TODO update the JSON string below
 json = "{}"

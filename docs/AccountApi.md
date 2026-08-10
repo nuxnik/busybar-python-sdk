@@ -1,4 +1,4 @@
-# openapi_client.AccountApi
+# busybar-python-sdk.AccountApi
 
 All URIs are relative to *http://localhost*
 
@@ -25,14 +25,14 @@ Retrieves MQTT backend configuration
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.account_backend import AccountBackend
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.account_backend import AccountBackend
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -48,9 +48,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
+    api_instance = busybar-python-sdk.AccountApi(api_client)
 
     try:
         # Get MQTT configuration
@@ -100,14 +100,14 @@ Retrieves linked account data
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.account_info import AccountInfo
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.account_info import AccountInfo
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -123,9 +123,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
+    api_instance = busybar-python-sdk.AccountApi(api_client)
 
     try:
         # Get linked account info
@@ -174,14 +174,14 @@ Retrieves MQTT status
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.account_status import AccountStatus
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.account_status import AccountStatus
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -197,9 +197,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
+    api_instance = busybar-python-sdk.AccountApi(api_client)
 
     try:
         # Get MQTT status info
@@ -248,14 +248,14 @@ Requests account link PIN. Works only if device is connected to MQTT and is not 
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.account_link import AccountLink
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.account_link import AccountLink
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -271,9 +271,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
+    api_instance = busybar-python-sdk.AccountApi(api_client)
 
     try:
         # Link device to account
@@ -324,15 +324,15 @@ Sets MQTT backend configuration
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.account_backend import AccountBackend
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.account_backend import AccountBackend
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -348,10 +348,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
-    account_backend = openapi_client.AccountBackend() # AccountBackend | 
+    api_instance = busybar-python-sdk.AccountApi(api_client)
+    account_backend = busybar-python-sdk.AccountBackend() # AccountBackend | 
 
     try:
         # Set MQTT configuration
@@ -404,14 +404,14 @@ Removes account linking data
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -427,9 +427,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AccountApi(api_client)
+    api_instance = busybar-python-sdk.AccountApi(api_client)
 
     try:
         # Unlink device from account

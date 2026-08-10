@@ -1,4 +1,4 @@
-# openapi_client.SmartHomeApi
+# busybar-python-sdk.SmartHomeApi
 
 All URIs are relative to *http://localhost*
 
@@ -24,14 +24,14 @@ Erase all smart home links
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -47,9 +47,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SmartHomeApi(api_client)
+    api_instance = busybar-python-sdk.SmartHomeApi(api_client)
 
     try:
         # Erase all smart home links
@@ -99,14 +99,14 @@ Get state of emulated smart home switch
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.smart_home_switch_state import SmartHomeSwitchState
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.smart_home_switch_state import SmartHomeSwitchState
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -122,9 +122,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SmartHomeApi(api_client)
+    api_instance = busybar-python-sdk.SmartHomeApi(api_client)
 
     try:
         # Get state of emulated smart home switch
@@ -174,15 +174,15 @@ Set state of emulated smart home switch
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.smart_home_switch_state import SmartHomeSwitchState
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.smart_home_switch_state import SmartHomeSwitchState
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -198,10 +198,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SmartHomeApi(api_client)
-    smart_home_switch_state = openapi_client.SmartHomeSwitchState() # SmartHomeSwitchState | 
+    api_instance = busybar-python-sdk.SmartHomeApi(api_client)
+    smart_home_switch_state = busybar-python-sdk.SmartHomeSwitchState() # SmartHomeSwitchState | 
 
     try:
         # Set state of emulated smart home switch
@@ -254,14 +254,14 @@ Smart home commissioning status
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.smart_home_pairing_info import SmartHomePairingInfo
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.smart_home_pairing_info import SmartHomePairingInfo
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -277,9 +277,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SmartHomeApi(api_client)
+    api_instance = busybar-python-sdk.SmartHomeApi(api_client)
 
     try:
         # Smart home commissioning status
@@ -328,14 +328,14 @@ Link device to a smart home
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.smart_home_pairing_payload import SmartHomePairingPayload
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.smart_home_pairing_payload import SmartHomePairingPayload
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -351,9 +351,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.SmartHomeApi(api_client)
+    api_instance = busybar-python-sdk.SmartHomeApi(api_client)
 
     try:
         # Link device to a smart home

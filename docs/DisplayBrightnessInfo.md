@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.display_brightness_info import DisplayBrightnessInfo
+from busybar-python-sdk.models.display_brightness_info import DisplayBrightnessInfo
 
 # TODO update the JSON string below
 json = "{}"

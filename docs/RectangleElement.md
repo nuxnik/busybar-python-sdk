@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.rectangle_element import RectangleElement
+from busybar-python-sdk.models.rectangle_element import RectangleElement
 
 # TODO update the JSON string below
 json = "{}"

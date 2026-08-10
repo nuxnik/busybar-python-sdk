@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.timezone_info import TimezoneInfo
+from busybar-python-sdk.models.timezone_info import TimezoneInfo
 
 # TODO update the JSON string below
 json = "{}"

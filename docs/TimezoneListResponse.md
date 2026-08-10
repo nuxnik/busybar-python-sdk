@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.timezone_list_response import TimezoneListResponse
+from busybar-python-sdk.models.timezone_list_response import TimezoneListResponse
 
 # TODO update the JSON string below
 json = "{}"

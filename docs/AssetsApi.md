@@ -1,4 +1,4 @@
-# openapi_client.AssetsApi
+# busybar-python-sdk.AssetsApi
 
 All URIs are relative to *http://localhost*
 
@@ -25,14 +25,14 @@ Deletes display elements drawn by the Canvas application. If application_name is
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -48,9 +48,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AssetsApi(api_client)
+    api_instance = busybar-python-sdk.AssetsApi(api_client)
     application_name = 'my_app' # str | Application identifier (optional)
 
     try:
@@ -103,14 +103,14 @@ Deletes all assets for a specific app ID
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -126,9 +126,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AssetsApi(api_client)
+    api_instance = busybar-python-sdk.AssetsApi(api_client)
     application_name = 'my_app' # str | Application ID whose assets should be deleted
 
     try:
@@ -185,15 +185,15 @@ Supports JSON-defined display elements.
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.display_elements import DisplayElements
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.display_elements import DisplayElements
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -209,10 +209,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AssetsApi(api_client)
-    display_elements = openapi_client.DisplayElements() # DisplayElements | 
+    api_instance = busybar-python-sdk.AssetsApi(api_client)
+    display_elements = busybar-python-sdk.DisplayElements() # DisplayElements | 
 
     try:
         # Draw on display
@@ -268,15 +268,15 @@ Supported formats include .snd files.
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.play_audio import PlayAudio
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.play_audio import PlayAudio
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -292,10 +292,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AssetsApi(api_client)
-    play_audio = openapi_client.PlayAudio() # PlayAudio | 
+    api_instance = busybar-python-sdk.AssetsApi(api_client)
+    play_audio = busybar-python-sdk.PlayAudio() # PlayAudio | 
 
     try:
         # Play audio file
@@ -349,14 +349,14 @@ Stops any currently playing audio
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -372,9 +372,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AssetsApi(api_client)
+    api_instance = busybar-python-sdk.AssetsApi(api_client)
 
     try:
         # Stop audio playback
@@ -425,14 +425,14 @@ Uploads a file to a specific app's assets directory
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -448,9 +448,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AssetsApi(api_client)
+    api_instance = busybar-python-sdk.AssetsApi(api_client)
     application_name = 'my_app' # str | Application ID for organizing assets
     file = 'data.png' # str | Filename for the uploaded asset
     body = None # bytearray | 

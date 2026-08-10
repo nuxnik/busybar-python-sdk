@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.http_access_info import HttpAccessInfo
+from busybar-python-sdk.models.http_access_info import HttpAccessInfo
 
 # TODO update the JSON string below
 json = "{}"

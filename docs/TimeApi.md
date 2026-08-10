@@ -1,4 +1,4 @@
-# openapi_client.TimeApi
+# busybar-python-sdk.TimeApi
 
 All URIs are relative to *http://localhost*
 
@@ -24,14 +24,14 @@ Retrieves the current timestamp from RTC with timezone in ISO 8601 format
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.timestamp_info import TimestampInfo
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.timestamp_info import TimestampInfo
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -47,9 +47,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.TimeApi(api_client)
+    api_instance = busybar-python-sdk.TimeApi(api_client)
 
     try:
         # Get current timestamp with timezone
@@ -98,14 +98,14 @@ Get current timezone name
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.timezone_info import TimezoneInfo
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.timezone_info import TimezoneInfo
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -121,9 +121,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.TimeApi(api_client)
+    api_instance = busybar-python-sdk.TimeApi(api_client)
 
     try:
         # Get timezone
@@ -173,14 +173,14 @@ Retrieves the list of time zones accepted by /api/time/timezone
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.timezone_list_response import TimezoneListResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.timezone_list_response import TimezoneListResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -196,9 +196,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.TimeApi(api_client)
+    api_instance = busybar-python-sdk.TimeApi(api_client)
 
     try:
         # Get list of supported time zones
@@ -249,14 +249,14 @@ Sets the RTC timestamp in ISO 8601 format. Time zone qualifier (e.g. Z of UTC or
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -272,9 +272,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.TimeApi(api_client)
+    api_instance = busybar-python-sdk.TimeApi(api_client)
     timestamp = '2025-10-02T14:30:45+0100' # datetime | ISO 8601 timestamp (e.g., 2025-10-02T14:30:45+02:00 for local time or 2025-10-02T14:30:45Z for UTC)
 
     try:
@@ -328,14 +328,14 @@ Sets the timezone name. Use /api/time/tzlist to get available names list.
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.success_response import SuccessResponse
-from openapi_client.rest import ApiException
+import busybar-python-sdk
+from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar-python-sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = busybar-python-sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -351,9 +351,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with busybar-python-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.TimeApi(api_client)
+    api_instance = busybar-python-sdk.TimeApi(api_client)
     timezone = 'Berlin' # str | Timezone name (use /api/time/tzlist to get available names)
 
     try:

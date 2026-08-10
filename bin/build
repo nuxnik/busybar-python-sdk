@@ -7,5 +7,7 @@ docker run --rm \
     -v $PWD:/build openapitools/openapi-generator-cli generate \
     -i /build/openapi.yaml \
     -g python-pydantic-v1 \
-    -o /build
+    -o /build \
+    --additional-properties=packageVersion=0.0.1 \
+    --additional-properties=packageName=busybar_python_sdk,packageName=busybar-python-sdk,projectName=busybar-python-sdk,packageVersion=0.0.1,packageUrl=https://github.com/nuxnik/busybar-python-sdk
 

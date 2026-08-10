@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.network_interface_info import NetworkInterfaceInfo
+from busybar-python-sdk.models.network_interface_info import NetworkInterfaceInfo
 
 # TODO update the JSON string below
 json = "{}"

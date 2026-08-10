@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.audio_volume_info import AudioVolumeInfo
+from busybar-python-sdk.models.audio_volume_info import AudioVolumeInfo
 
 # TODO update the JSON string below
 json = "{}"

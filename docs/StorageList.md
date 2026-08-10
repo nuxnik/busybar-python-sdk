@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.storage_list import StorageList
+from busybar-python-sdk.models.storage_list import StorageList
 
 # TODO update the JSON string below
 json = "{}"

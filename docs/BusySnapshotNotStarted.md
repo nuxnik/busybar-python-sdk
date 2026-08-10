@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.busy_snapshot_not_started import BusySnapshotNotStarted
+from busybar-python-sdk.models.busy_snapshot_not_started import BusySnapshotNotStarted
 
 # TODO update the JSON string below
 json = "{}"

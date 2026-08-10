@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.smart_home_pairing_info import SmartHomePairingInfo
+from busybar-python-sdk.models.smart_home_pairing_info import SmartHomePairingInfo
 
 # TODO update the JSON string below
 json = "{}"

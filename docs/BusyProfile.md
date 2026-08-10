@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.busy_profile import BusyProfile
+from busybar-python-sdk.models.busy_profile import BusyProfile
 
 # TODO update the JSON string below
 json = "{}"
