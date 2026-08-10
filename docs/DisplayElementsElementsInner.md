@@ -38,7 +38,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.display_elements_elements_inner import DisplayElementsElementsInner
+from busybar_python_sdk.models.display_elements_elements_inner import DisplayElementsElementsInner
 
 # TODO update the JSON string below
 json = "{}"

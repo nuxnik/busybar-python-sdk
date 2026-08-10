@@ -9,5 +9,5 @@ docker run --rm \
     -g python-pydantic-v1 \
     -o /build \
     --additional-properties=packageVersion=0.0.1 \
-    --additional-properties=packageName=busybar_python_sdk,packageName=busybar-python-sdk,projectName=busybar-python-sdk,packageVersion=0.0.1,packageUrl=https://github.com/nuxnik/busybar-python-sdk
+    --additional-properties=packageName=busybar_python_sdk,projectName=busybar-python-sdk,packageVersion=0.0.1,packageUrl=https://github.com/nuxnik/busybar-python-sdk
 

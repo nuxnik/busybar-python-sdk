@@ -1,4 +1,4 @@
-# busybar-python-sdk.BusyApi
+# busybar_python_sdk.BusyApi
 
 All URIs are relative to *http://localhost*
 
@@ -23,15 +23,15 @@ Gets the BUSY timer profile under specified slot
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.busy_profile import BusyProfile
-from busybar-python-sdk.models.busy_profile_slot import BusyProfileSlot
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.busy_profile import BusyProfile
+from busybar_python_sdk.models.busy_profile_slot import BusyProfileSlot
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -47,10 +47,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.BusyApi(api_client)
-    slot = busybar-python-sdk.BusyProfileSlot() # BusyProfileSlot | 
+    api_instance = busybar_python_sdk.BusyApi(api_client)
+    slot = busybar_python_sdk.BusyProfileSlot() # BusyProfileSlot | 
 
     try:
         # Get BUSY timer profile
@@ -103,14 +103,14 @@ Gets the current state of the BUSY timer in snapshot form
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.busy_snapshot import BusySnapshot
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.busy_snapshot import BusySnapshot
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -126,9 +126,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.BusyApi(api_client)
+    api_instance = busybar_python_sdk.BusyApi(api_client)
 
     try:
         # Get BUSY timer snapshot
@@ -178,16 +178,16 @@ Sets the BUSY timer profile under specified slot
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.busy_profile import BusyProfile
-from busybar-python-sdk.models.busy_profile_slot import BusyProfileSlot
-from busybar-python-sdk.models.success_response import SuccessResponse
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.busy_profile import BusyProfile
+from busybar_python_sdk.models.busy_profile_slot import BusyProfileSlot
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -203,11 +203,11 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.BusyApi(api_client)
-    slot = busybar-python-sdk.BusyProfileSlot() # BusyProfileSlot | 
-    busy_profile = busybar-python-sdk.BusyProfile() # BusyProfile | 
+    api_instance = busybar_python_sdk.BusyApi(api_client)
+    slot = busybar_python_sdk.BusyProfileSlot() # BusyProfileSlot | 
+    busy_profile = busybar_python_sdk.BusyProfile() # BusyProfile | 
 
     try:
         # Set BUSY timer profile
@@ -261,15 +261,15 @@ Run the timer starting from the given snapshot
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.busy_snapshot import BusySnapshot
-from busybar-python-sdk.models.success_response import SuccessResponse
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.busy_snapshot import BusySnapshot
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -285,10 +285,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.BusyApi(api_client)
-    busy_snapshot = busybar-python-sdk.BusySnapshot() # BusySnapshot | 
+    api_instance = busybar_python_sdk.BusyApi(api_client)
+    busy_snapshot = busybar_python_sdk.BusySnapshot() # BusySnapshot | 
 
     try:
         # Set BUSY timer snapshot

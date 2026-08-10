@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.smart_home_switch_state import SmartHomeSwitchState
+from busybar_python_sdk.models.smart_home_switch_state import SmartHomeSwitchState
 
 # TODO update the JSON string below
 json = "{}"

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.ble_status_response import BleStatusResponse
+from busybar_python_sdk.models.ble_status_response import BleStatusResponse
 
 # TODO update the JSON string below
 json = "{}"

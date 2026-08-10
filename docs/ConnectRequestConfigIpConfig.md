@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.connect_request_config_ip_config import ConnectRequestConfigIpConfig
+from busybar_python_sdk.models.connect_request_config_ip_config import ConnectRequestConfigIpConfig
 
 # TODO update the JSON string below
 json = "{}"

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.smart_home_pairing_payload import SmartHomePairingPayload
+from busybar_python_sdk.models.smart_home_pairing_payload import SmartHomePairingPayload
 
 # TODO update the JSON string below
 json = "{}"

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.error import Error
+from busybar_python_sdk.models.error import Error
 
 # TODO update the JSON string below
 json = "{}"

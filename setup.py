@@ -45,5 +45,5 @@ setup(
     long_description="""\
     HTTP API for BUSY Bar web server
     """,  # noqa: E501
-    package_data={"busybar-python-sdk": ["py.typed"]},
+    package_data={"busybar_python_sdk": ["py.typed"]},
 )

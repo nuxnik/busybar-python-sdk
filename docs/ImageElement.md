@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.image_element import ImageElement
+from busybar_python_sdk.models.image_element import ImageElement
 
 # TODO update the JSON string below
 json = "{}"

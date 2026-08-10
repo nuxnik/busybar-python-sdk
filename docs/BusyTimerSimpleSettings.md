@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.busy_timer_simple_settings import BusyTimerSimpleSettings
+from busybar_python_sdk.models.busy_timer_simple_settings import BusyTimerSimpleSettings
 
 # TODO update the JSON string below
 json = "{}"

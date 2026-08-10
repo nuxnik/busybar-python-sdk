@@ -24,7 +24,7 @@ pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 
 Then import the package:
 ```python
-import busybar-python-sdk
+import busybar_python_sdk
 ```
 
 ### Setuptools
@@ -38,7 +38,7 @@ python setup.py install --user
 
 Then import the package:
 ```python
-import busybar-python-sdk
+import busybar_python_sdk
 ```
 
 ### Tests
@@ -52,13 +52,13 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```python
 
 import time
-import busybar-python-sdk
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -75,9 +75,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.AccountApi(api_client)
+    api_instance = busybar_python_sdk.AccountApi(api_client)
 
     try:
         # Get MQTT configuration

@@ -1,4 +1,4 @@
-# busybar-python-sdk.UpdaterApi
+# busybar_python_sdk.UpdaterApi
 
 All URIs are relative to *http://localhost*
 
@@ -27,14 +27,14 @@ Signals the updater to abort an ongoing download operation.
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.success_response import SuccessResponse
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -50,9 +50,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.UpdaterApi(api_client)
+    api_instance = busybar_python_sdk.UpdaterApi(api_client)
 
     try:
         # Abort ongoing firmware download
@@ -101,14 +101,14 @@ Initiates an asynchronous check for available firmware updates.
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.success_response import SuccessResponse
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -124,9 +124,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.UpdaterApi(api_client)
+    api_instance = busybar_python_sdk.UpdaterApi(api_client)
 
     try:
         # Start firmware update check
@@ -177,14 +177,14 @@ Returns current autoupdate configuration
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.autoupdate_settings import AutoupdateSettings
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.autoupdate_settings import AutoupdateSettings
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -200,9 +200,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.UpdaterApi(api_client)
+    api_instance = busybar_python_sdk.UpdaterApi(api_client)
 
     try:
         # Get autoupdate settings
@@ -251,14 +251,14 @@ Returns current update and check status including progress information.
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.update_status import UpdateStatus
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.update_status import UpdateStatus
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -274,9 +274,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.UpdaterApi(api_client)
+    api_instance = busybar_python_sdk.UpdaterApi(api_client)
 
     try:
         # Get firmware update status
@@ -325,14 +325,14 @@ Returns the changelog for a specific firmware version.
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.get_update_changelog200_response import GetUpdateChangelog200Response
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.get_update_changelog200_response import GetUpdateChangelog200Response
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -348,9 +348,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.UpdaterApi(api_client)
+    api_instance = busybar_python_sdk.UpdaterApi(api_client)
     version = '1.2.3' # str | Firmware version to get changelog for
 
     try:
@@ -407,14 +407,14 @@ Use /api/update/status to monitor progress.
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.success_response import SuccessResponse
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -430,9 +430,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.UpdaterApi(api_client)
+    api_instance = busybar_python_sdk.UpdaterApi(api_client)
     version = '1.2.3' # str | Firmware version to install
 
     try:
@@ -488,15 +488,15 @@ Updates autoupdate configuration. All fields are optional - only provided fields
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.autoupdate_settings import AutoupdateSettings
-from busybar-python-sdk.models.success_response import SuccessResponse
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.autoupdate_settings import AutoupdateSettings
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -512,10 +512,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.UpdaterApi(api_client)
-    autoupdate_settings = busybar-python-sdk.AutoupdateSettings() # AutoupdateSettings | 
+    api_instance = busybar_python_sdk.UpdaterApi(api_client)
+    autoupdate_settings = busybar_python_sdk.AutoupdateSettings() # AutoupdateSettings | 
 
     try:
         # Set autoupdate settings
@@ -569,14 +569,14 @@ Uploads a firmware update package (TAR file) and initiates the update process.
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.success_response import SuccessResponse
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -592,9 +592,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.UpdaterApi(api_client)
+    api_instance = busybar_python_sdk.UpdaterApi(api_client)
     body = None # bytearray | 
 
     try:

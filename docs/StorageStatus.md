@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.storage_status import StorageStatus
+from busybar_python_sdk.models.storage_status import StorageStatus
 
 # TODO update the JSON string below
 json = "{}"

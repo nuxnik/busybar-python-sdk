@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.busy_profile_timer_settings import BusyProfileTimerSettings
+from busybar_python_sdk.models.busy_profile_timer_settings import BusyProfileTimerSettings
 
 # TODO update the JSON string below
 json = "{}"

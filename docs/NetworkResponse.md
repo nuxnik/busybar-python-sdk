@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.network_response import NetworkResponse
+from busybar_python_sdk.models.network_response import NetworkResponse
 
 # TODO update the JSON string below
 json = "{}"

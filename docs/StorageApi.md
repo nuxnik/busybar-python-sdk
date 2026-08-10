@@ -1,4 +1,4 @@
-# busybar-python-sdk.StorageApi
+# busybar_python_sdk.StorageApi
 
 All URIs are relative to *http://localhost*
 
@@ -26,14 +26,14 @@ Creates a new directory with a specified path
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.success_response import SuccessResponse
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -49,9 +49,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.StorageApi(api_client)
+    api_instance = busybar_python_sdk.StorageApi(api_client)
     path = '/ext/newdir' # str | Path to a new directory
 
     try:
@@ -105,14 +105,14 @@ Show storage usage
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.storage_status import StorageStatus
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.storage_status import StorageStatus
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -128,9 +128,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.StorageApi(api_client)
+    api_instance = busybar_python_sdk.StorageApi(api_client)
 
     try:
         # Show storage usage
@@ -180,14 +180,14 @@ List files on internal storage
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.storage_list import StorageList
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.storage_list import StorageList
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -203,9 +203,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.StorageApi(api_client)
+    api_instance = busybar_python_sdk.StorageApi(api_client)
     path = '/ext' # str | Path to the file
 
     try:
@@ -259,13 +259,13 @@ Downloads a file from a specified path
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -281,9 +281,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.StorageApi(api_client)
+    api_instance = busybar_python_sdk.StorageApi(api_client)
     path = '/ext/test.png' # str | Path to the file
 
     try:
@@ -337,14 +337,14 @@ Removes a file with a specified path
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.success_response import SuccessResponse
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -360,9 +360,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.StorageApi(api_client)
+    api_instance = busybar_python_sdk.StorageApi(api_client)
     path = '/ext/test.png' # str | Path of a file to remove
 
     try:
@@ -416,14 +416,14 @@ Moves a file to a new location
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.success_response import SuccessResponse
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -439,9 +439,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.StorageApi(api_client)
+    api_instance = busybar_python_sdk.StorageApi(api_client)
     path = '/ext/old_name.txt' # str | Old location path
     new_path = '/ext/new_name.txt' # str | New location path
 
@@ -497,14 +497,14 @@ Uploads a file to a specified path
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.success_response import SuccessResponse
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -520,9 +520,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.StorageApi(api_client)
+    api_instance = busybar_python_sdk.StorageApi(api_client)
     path = '/ext/test.png' # str | Path for the uploaded file
     body = None # bytearray | 
 

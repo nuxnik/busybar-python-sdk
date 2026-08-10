@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.account_backend import AccountBackend
+from busybar_python_sdk.models.account_backend import AccountBackend
 
 # TODO update the JSON string below
 json = "{}"

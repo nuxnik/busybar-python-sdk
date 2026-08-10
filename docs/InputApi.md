@@ -1,4 +1,4 @@
-# busybar-python-sdk.InputApi
+# busybar_python_sdk.InputApi
 
 All URIs are relative to *http://localhost*
 
@@ -20,14 +20,14 @@ Send single key press event
 ```python
 import time
 import os
-import busybar-python-sdk
-from busybar-python-sdk.models.success_response import SuccessResponse
-from busybar-python-sdk.rest import ApiException
+import busybar_python_sdk
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = busybar-python-sdk.Configuration(
+configuration = busybar_python_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -43,9 +43,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-with busybar-python-sdk.ApiClient(configuration) as api_client:
+with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = busybar-python-sdk.InputApi(api_client)
+    api_instance = busybar_python_sdk.InputApi(api_client)
     key = 'ok' # str | Key name
 
     try:

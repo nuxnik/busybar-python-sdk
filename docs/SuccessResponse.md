@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.models.success_response import SuccessResponse
 
 # TODO update the JSON string below
 json = "{}"

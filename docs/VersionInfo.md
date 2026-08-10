@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.version_info import VersionInfo
+from busybar_python_sdk.models.version_info import VersionInfo
 
 # TODO update the JSON string below
 json = "{}"

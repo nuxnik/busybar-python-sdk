@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.busy_snapshot_infinite import BusySnapshotInfinite
+from busybar_python_sdk.models.busy_snapshot_infinite import BusySnapshotInfinite
 
 # TODO update the JSON string below
 json = "{}"

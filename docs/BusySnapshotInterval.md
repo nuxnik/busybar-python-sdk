@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.busy_snapshot_interval import BusySnapshotInterval
+from busybar_python_sdk.models.busy_snapshot_interval import BusySnapshotInterval
 
 # TODO update the JSON string below
 json = "{}"

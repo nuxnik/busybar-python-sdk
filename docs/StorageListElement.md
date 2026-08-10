@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.storage_list_element import StorageListElement
+from busybar_python_sdk.models.storage_list_element import StorageListElement
 
 # TODO update the JSON string below
 json = "{}"

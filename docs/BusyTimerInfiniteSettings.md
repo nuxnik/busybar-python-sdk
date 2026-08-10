@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.busy_timer_infinite_settings import BusyTimerInfiniteSettings
+from busybar_python_sdk.models.busy_timer_infinite_settings import BusyTimerInfiniteSettings
 
 # TODO update the JSON string below
 json = "{}"

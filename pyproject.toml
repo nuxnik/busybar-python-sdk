@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "busybar-python-sdk"
+name = "busybar_python_sdk"
 version = "0.0.1"
 description = "BUSY Bar HTTP API"
 authors = ["nuxnik"]
 readme = "README.md"
 repository = "https://github.com/nuxnik/busybar-python-sdk"
 keywords = ["OpenAPI", "OpenAPI-Generator", "BUSY Bar HTTP API"]
-include = ["busybar-python-sdk/py.typed"]
+include = ["busybar_python_sdk/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.8"

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.audio_volume_info import AudioVolumeInfo
+from busybar_python_sdk.models.audio_volume_info import AudioVolumeInfo
 
 # TODO update the JSON string below
 json = "{}"

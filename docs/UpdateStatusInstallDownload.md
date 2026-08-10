@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.update_status_install_download import UpdateStatusInstallDownload
+from busybar_python_sdk.models.update_status_install_download import UpdateStatusInstallDownload
 
 # TODO update the JSON string below
 json = "{}"

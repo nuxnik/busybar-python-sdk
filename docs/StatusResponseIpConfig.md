@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.status_response_ip_config import StatusResponseIpConfig
+from busybar_python_sdk.models.status_response_ip_config import StatusResponseIpConfig
 
 # TODO update the JSON string below
 json = "{}"

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.busy_snapshot import BusySnapshot
+from busybar_python_sdk.models.busy_snapshot import BusySnapshot
 
 # TODO update the JSON string below
 json = "{}"

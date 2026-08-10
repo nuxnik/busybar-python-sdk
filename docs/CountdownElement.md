@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from busybar-python-sdk.models.countdown_element import CountdownElement
+from busybar_python_sdk.models.countdown_element import CountdownElement
 
 # TODO update the JSON string below
 json = "{}"
