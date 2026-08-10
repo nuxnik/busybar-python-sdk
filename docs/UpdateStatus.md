@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **install** | [**UpdateStatusInstall**](UpdateStatusInstall.md) |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of UpdateStatus from a JSON string
 update_status_instance = UpdateStatus.from_json(json)
 # print the JSON string representation of the object
-print UpdateStatus.to_json()
+print(UpdateStatus.to_json())
 
 # convert the object into a dict
 update_status_dict = update_status_instance.to_dict()

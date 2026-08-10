@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | **str** | Latest state of smart home pairing (Matter \&quot;commissioning\&quot;) process. Note: \&quot;never_started\&quot; only refers to the current power cycle of the device; this status is not recorded across reboots. | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of SmartHomePairingInfoLatestPairingStatus from a JSON string
 smart_home_pairing_info_latest_pairing_status_instance = SmartHomePairingInfoLatestPairingStatus.from_json(json)
 # print the JSON string representation of the object
-print SmartHomePairingInfoLatestPairingStatus.to_json()
+print(SmartHomePairingInfoLatestPairingStatus.to_json())
 
 # convert the object into a dict
 smart_home_pairing_info_latest_pairing_status_dict = smart_home_pairing_info_latest_pairing_status_instance.to_dict()

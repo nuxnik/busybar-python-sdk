@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **theme** | **str** |  | 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of BusyBarSettings from a JSON string
 busy_bar_settings_instance = BusyBarSettings.from_json(json)
 # print the JSON string representation of the object
-print BusyBarSettings.to_json()
+print(BusyBarSettings.to_json())
 
 # convert the object into a dict
 busy_bar_settings_dict = busy_bar_settings_instance.to_dict()

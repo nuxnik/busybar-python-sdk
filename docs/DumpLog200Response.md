@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **result** | **str** |  | 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of DumpLog200Response from a JSON string
 dump_log200_response_instance = DumpLog200Response.from_json(json)
 # print the JSON string representation of the object
-print DumpLog200Response.to_json()
+print(DumpLog200Response.to_json())
 
 # convert the object into a dict
 dump_log200_response_dict = dump_log200_response_instance.to_dict()

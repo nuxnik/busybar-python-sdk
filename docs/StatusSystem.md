@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **api_semver** | **str** | API SemVer | 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of StatusSystem from a JSON string
 status_system_instance = StatusSystem.from_json(json)
 # print the JSON string representation of the object
-print StatusSystem.to_json()
+print(StatusSystem.to_json())
 
 # convert the object into a dict
 status_system_dict = status_system_instance.to_dict()

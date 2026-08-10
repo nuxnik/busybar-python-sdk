@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **str** |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of AccountStatus from a JSON string
 account_status_instance = AccountStatus.from_json(json)
 # print the JSON string representation of the object
-print AccountStatus.to_json()
+print(AccountStatus.to_json())
 
 # convert the object into a dict
 account_status_dict = account_status_instance.to_dict()

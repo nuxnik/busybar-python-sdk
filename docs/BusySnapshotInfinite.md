@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
-**card_id** | **str** |  | 
+**card_id** | **UUID** |  | 
 **is_paused** | **bool** |  | 
 
 ## Example
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of BusySnapshotInfinite from a JSON string
 busy_snapshot_infinite_instance = BusySnapshotInfinite.from_json(json)
 # print the JSON string representation of the object
-print BusySnapshotInfinite.to_json()
+print(BusySnapshotInfinite.to_json())
 
 # convert the object into a dict
 busy_snapshot_infinite_dict = busy_snapshot_infinite_instance.to_dict()

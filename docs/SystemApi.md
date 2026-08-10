@@ -24,9 +24,8 @@ Snapshot the in-memory log buffer to a file (defaults to /ext/log.txt)
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.dump_log200_response import DumpLog200Response
 from busybar_python_sdk.rest import ApiException
@@ -68,6 +67,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filename** | **str**| Destination file name (without extension) | [optional] 
@@ -86,6 +86,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Log dumped successfully |  -  |
@@ -104,9 +105,8 @@ Get device status
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.status import Status
 from busybar_python_sdk.rest import ApiException
@@ -146,6 +146,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -162,6 +163,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Information retrieved successfully |  -  |
@@ -179,9 +181,8 @@ Get device info
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.status_device import StatusDevice
 from busybar_python_sdk.rest import ApiException
@@ -221,6 +222,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -237,6 +239,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Information retrieved successfully |  -  |
@@ -254,9 +257,8 @@ Get firmware info
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.status_firmware import StatusFirmware
 from busybar_python_sdk.rest import ApiException
@@ -296,6 +298,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -312,6 +315,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Information retrieved successfully |  -  |
@@ -329,9 +333,8 @@ Get power status
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.status_power import StatusPower
 from busybar_python_sdk.rest import ApiException
@@ -371,6 +374,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -387,6 +391,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Information retrieved successfully |  -  |
@@ -404,9 +409,8 @@ Get system status
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.status_system import StatusSystem
 from busybar_python_sdk.rest import ApiException
@@ -446,6 +450,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -462,6 +467,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Information retrieved successfully |  -  |
@@ -479,9 +485,8 @@ Retrieves device transport type (usb/wifi)
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.network_interface_info import NetworkInterfaceInfo
 from busybar_python_sdk.rest import ApiException
@@ -521,6 +526,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -537,6 +543,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Information retrieved successfully |  -  |
@@ -553,9 +560,8 @@ Retrieves API version
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.version_info import VersionInfo
 from busybar_python_sdk.rest import ApiException
@@ -595,6 +601,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -611,6 +618,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Version information retrieved successfully |  -  |

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of BusyTimerInfiniteSettings from a JSON string
 busy_timer_infinite_settings_instance = BusyTimerInfiniteSettings.from_json(json)
 # print the JSON string representation of the object
-print BusyTimerInfiniteSettings.to_json()
+print(BusyTimerInfiniteSettings.to_json())
 
 # convert the object into a dict
 busy_timer_infinite_settings_dict = busy_timer_infinite_settings_instance.to_dict()

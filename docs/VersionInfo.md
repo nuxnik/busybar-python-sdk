@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **api_semver** | **str** | API SemVer | 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of VersionInfo from a JSON string
 version_info_instance = VersionInfo.from_json(json)
 # print the JSON string representation of the object
-print VersionInfo.to_json()
+print(VersionInfo.to_json())
 
 # convert the object into a dict
 version_info_dict = version_info_instance.to_dict()

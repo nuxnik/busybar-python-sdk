@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **speed_bytes_per_sec** | **int** | Current download speed in bytes per second | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of UpdateStatusInstallDownload from a JSON string
 update_status_install_download_instance = UpdateStatusInstallDownload.from_json(json)
 # print the JSON string representation of the object
-print UpdateStatusInstallDownload.to_json()
+print(UpdateStatusInstallDownload.to_json())
 
 # convert the object into a dict
 update_status_install_download_dict = update_status_install_download_instance.to_dict()

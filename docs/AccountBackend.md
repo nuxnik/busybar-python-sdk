@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **server_url** | **str** | MQTT server url to connect to | 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of AccountBackend from a JSON string
 account_backend_instance = AccountBackend.from_json(json)
 # print the JSON string representation of the object
-print AccountBackend.to_json()
+print(AccountBackend.to_json())
 
 # convert the object into a dict
 account_backend_dict = account_backend_instance.to_dict()

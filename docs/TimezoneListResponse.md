@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **list** | [**List[TimezoneInfo]**](TimezoneInfo.md) |  | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of TimezoneListResponse from a JSON string
 timezone_list_response_instance = TimezoneListResponse.from_json(json)
 # print the JSON string representation of the object
-print TimezoneListResponse.to_json()
+print(TimezoneListResponse.to_json())
 
 # convert the object into a dict
 timezone_list_response_dict = timezone_list_response_instance.to_dict()

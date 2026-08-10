@@ -17,84 +17,102 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional
-from pydantic import Field, StrictStr, conint, constr, validator
+from pydantic import ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from busybar_python_sdk.models.display_element import DisplayElement
+from typing import Optional, Set
+from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class TextElement(DisplayElement):
     """
     TextElement
-    """
-    text: constr(strict=True, min_length=1) = Field(default=..., description="Text content to display (printable ASCII only; fonts are bitmap ASCII)")
-    font: StrictStr = Field(default=..., description="One of the available fonts to display the text in")
-    color: Optional[constr(strict=True)] = Field(default='#FFFFFFFF', description="Color to display the text in, in #RRGGBBAA format")
-    width: Optional[conint(strict=True, ge=1)] = Field(default=None, description="Width of the label")
-    scroll_rate: Optional[conint(strict=True, ge=0)] = Field(default=None, description="Scroll rate in pixels per minute")
-    scroll_start_delay: Optional[conint(strict=True, ge=0)] = Field(default=None, description="Delay in milliseconds before the scroll animation begins")
-    scroll_repeat_delay: Optional[conint(strict=True, ge=0)] = Field(default=None, description="Pause duration in milliseconds between successive scroll cycles")
-    __properties = ["id", "timeout", "display_until", "type", "x", "y", "display", "align", "text", "font", "color", "width", "scroll_rate", "scroll_start_delay", "scroll_repeat_delay"]
+    """ # noqa: E501
+    text: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Text content to display (printable ASCII only; fonts are bitmap ASCII)")
+    font: StrictStr = Field(description="One of the available fonts to display the text in")
+    color: Optional[Annotated[str, Field(strict=True)]] = Field(default='#FFFFFFFF', description="Color to display the text in, in #RRGGBBAA format")
+    width: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="Width of the label")
+    scroll_rate: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Scroll rate in pixels per minute")
+    scroll_start_delay: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Delay in milliseconds before the scroll animation begins")
+    scroll_repeat_delay: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Pause duration in milliseconds between successive scroll cycles")
+    __properties: ClassVar[List[str]] = ["id", "timeout", "display_until", "type", "x", "y", "display", "align", "text", "font", "color", "width", "scroll_rate", "scroll_start_delay", "scroll_repeat_delay"]
 
-    @validator('text')
+    @field_validator('text', mode="before")
     def text_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if not re.match(r"^[\x20-\x7E]+$", value):
+        if isinstance(value, str) and not re.match(r"^[\x20-\x7E]+$", value):
             raise ValueError(r"must validate the regular expression /^[\x20-\x7E]+$/")
         return value
 
-    @validator('font')
+    @field_validator('font')
     def font_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('tiny', 'small', 'normal', 'condensed', 'bold', 'large', 'extra_large', 'global',):
+        if value not in set(['tiny', 'small', 'normal', 'condensed', 'bold', 'large', 'extra_large', 'global']):
             raise ValueError("must be one of enum values ('tiny', 'small', 'normal', 'condensed', 'bold', 'large', 'extra_large', 'global')")
         return value
 
-    @validator('color')
+    @field_validator('color', mode="before")
     def color_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
 
-        if not re.match(r"^#[a-fA-F0-9]{8}$", value):
+        if isinstance(value, str) and not re.match(r"^#[a-fA-F0-9]{8}$", value):
             raise ValueError(r"must validate the regular expression /^#[a-fA-F0-9]{8}$/")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        validate_by_name=True,
+        validate_by_alias=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
-    def from_json(cls, json_str: str) -> TextElement:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of TextElement from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TextElement:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of TextElement from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return TextElement.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = TextElement.parse_obj({
+        _obj = cls.model_validate({
             "id": obj.get("id"),
             "timeout": obj.get("timeout"),
             "display_until": obj.get("display_until"),

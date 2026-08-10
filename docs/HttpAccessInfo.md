@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mode** | **str** | Access mode | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of HttpAccessInfo from a JSON string
 http_access_info_instance = HttpAccessInfo.from_json(json)
 # print the JSON string representation of the object
-print HttpAccessInfo.to_json()
+print(HttpAccessInfo.to_json())
 
 # convert the object into a dict
 http_access_info_dict = http_access_info_instance.to_dict()

@@ -17,70 +17,88 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional
-from pydantic import Field, conint, constr, validator
+from pydantic import ConfigDict, Field, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from busybar_python_sdk.models.display_element import DisplayElement
+from typing import Optional, Set
+from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ImageElement(DisplayElement):
     """
     ImageElement
-    """
-    path: constr(strict=True) = Field(default=..., description="Path to the image file in the app's assets")
-    stock_path: constr(strict=True) = Field(default=..., description="Stock image file name")
-    opacity: Optional[conint(strict=True, le=100, ge=0)] = Field(default=100, description="Opacity of the image in percentage (0-100)")
-    __properties = ["id", "timeout", "display_until", "type", "x", "y", "display", "align", "path", "stock_path", "opacity"]
+    """ # noqa: E501
+    path: Annotated[str, Field(strict=True)] = Field(description="Path to the image file in the app's assets")
+    stock_path: Annotated[str, Field(strict=True)] = Field(description="Stock image file name")
+    opacity: Optional[Annotated[int, Field(le=100, strict=True, ge=0)]] = Field(default=100, description="Opacity of the image in percentage (0-100)")
+    __properties: ClassVar[List[str]] = ["id", "timeout", "display_until", "type", "x", "y", "display", "align", "path", "stock_path", "opacity"]
 
-    @validator('path')
+    @field_validator('path', mode="before")
     def path_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if not re.match(r"^[a-zA-Z0-9._\/-]+$", value):
+        if isinstance(value, str) and not re.match(r"^[a-zA-Z0-9._\/-]+$", value):
             raise ValueError(r"must validate the regular expression /^[a-zA-Z0-9._\/-]+$/")
         return value
 
-    @validator('stock_path')
+    @field_validator('stock_path', mode="before")
     def stock_path_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if not re.match(r"shared\/[a-z0-9_.]+$", value):
+        if isinstance(value, str) and not re.match(r"shared\/[a-z0-9_.]+$", value):
             raise ValueError(r"must validate the regular expression /shared\/[a-z0-9_.]+$/")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        validate_by_name=True,
+        validate_by_alias=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
-    def from_json(cls, json_str: str) -> ImageElement:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ImageElement from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ImageElement:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ImageElement from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ImageElement.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ImageElement.parse_obj({
+        _obj = cls.model_validate({
             "id": obj.get("id"),
             "timeout": obj.get("timeout"),
             "display_until": obj.get("display_until"),

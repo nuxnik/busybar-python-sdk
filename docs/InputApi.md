@@ -17,9 +17,8 @@ Send single key press event
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -61,6 +60,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **str**| Key name | 
@@ -79,6 +79,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Input event sent successfully |  -  |

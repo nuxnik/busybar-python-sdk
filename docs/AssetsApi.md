@@ -22,9 +22,8 @@ Deletes display elements drawn by the Canvas application. If application_name is
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -66,6 +65,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **application_name** | **str**| Application identifier | [optional] 
@@ -84,6 +84,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Display cleared successfully |  -  |
@@ -100,9 +101,8 @@ Deletes all assets for a specific app ID
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -144,6 +144,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **application_name** | **str**| Application ID whose assets should be deleted | 
@@ -162,6 +163,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Assets deleted successfully |  -  |
@@ -182,9 +184,8 @@ Supports JSON-defined display elements.
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.display_elements import DisplayElements
 from busybar_python_sdk.models.success_response import SuccessResponse
@@ -227,6 +228,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **display_elements** | [**DisplayElements**](DisplayElements.md)|  | 
@@ -245,6 +247,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Drawing command executed successfully |  -  |
@@ -265,9 +268,8 @@ Supported formats include .snd files.
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.play_audio import PlayAudio
 from busybar_python_sdk.models.success_response import SuccessResponse
@@ -310,6 +312,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **play_audio** | [**PlayAudio**](PlayAudio.md)|  | 
@@ -328,6 +331,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Audio playback started successfully |  -  |
@@ -346,9 +350,8 @@ Stops any currently playing audio
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -388,6 +391,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -404,6 +408,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Audio playback stopped successfully |  -  |
@@ -422,9 +427,8 @@ Uploads a file to a specific app's assets directory
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -453,7 +457,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
     api_instance = busybar_python_sdk.AssetsApi(api_client)
     application_name = 'my_app' # str | Application ID for organizing assets
     file = 'data.png' # str | Filename for the uploaded asset
-    body = None # bytearray | 
+    body = None # bytes | 
 
     try:
         # Upload asset file with app ID
@@ -468,11 +472,12 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **application_name** | **str**| Application ID for organizing assets | 
  **file** | **str**| Filename for the uploaded asset | 
- **body** | **bytearray**|  | 
+ **body** | **bytes**|  | 
 
 ### Return type
 
@@ -488,6 +493,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | File uploaded successfully |  -  |

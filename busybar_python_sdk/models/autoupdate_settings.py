@@ -17,75 +17,93 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, constr, validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class AutoupdateSettings(BaseModel):
     """
-    Autoupdate configuration settings. All fields are optional for POST requests.  # noqa: E501
-    """
-    is_enabled: Optional[StrictBool] = Field(default=None, description="Whether automatic updates are enabled")
-    interval_start: Optional[constr(strict=True)] = Field(default=None, description="Start of autoupdate window in HH:MM format (e.g., \"08:00\")")
-    interval_end: Optional[constr(strict=True)] = Field(default=None, description="End of autoupdate window in HH:MM format (e.g., \"23:59\")")
-    __properties = ["is_enabled", "interval_start", "interval_end"]
+    Autoupdate configuration settings. All fields are optional for POST requests.
+    """ # noqa: E501
+    is_enabled: Optional[StrictBool] = Field(default=None, description="Whether automatic updates are enabled", json_schema_extra={"examples": [True]})
+    interval_start: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="Start of autoupdate window in HH:MM format (e.g., \"08:00\")", json_schema_extra={"examples": ["00:00"]})
+    interval_end: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="End of autoupdate window in HH:MM format (e.g., \"23:59\")", json_schema_extra={"examples": ["08:00"]})
+    __properties: ClassVar[List[str]] = ["is_enabled", "interval_start", "interval_end"]
 
-    @validator('interval_start')
+    @field_validator('interval_start', mode="before")
     def interval_start_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
 
-        if not re.match(r"^([0-1][0-9]|2[0-3]):[0-5][0-9]$", value):
+        if isinstance(value, str) and not re.match(r"^([0-1][0-9]|2[0-3]):[0-5][0-9]$", value):
             raise ValueError(r"must validate the regular expression /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/")
         return value
 
-    @validator('interval_end')
+    @field_validator('interval_end', mode="before")
     def interval_end_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
 
-        if not re.match(r"^([0-1][0-9]|2[0-3]):[0-5][0-9]$", value):
+        if isinstance(value, str) and not re.match(r"^([0-1][0-9]|2[0-3]):[0-5][0-9]$", value):
             raise ValueError(r"must validate the regular expression /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        validate_by_name=True,
+        validate_by_alias=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
-    def from_json(cls, json_str: str) -> AutoupdateSettings:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of AutoupdateSettings from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AutoupdateSettings:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of AutoupdateSettings from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AutoupdateSettings.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AutoupdateSettings.parse_obj({
+        _obj = cls.model_validate({
             "is_enabled": obj.get("is_enabled"),
             "interval_start": obj.get("interval_start"),
             "interval_end": obj.get("interval_end")

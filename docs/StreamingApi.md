@@ -13,14 +13,11 @@ Method | HTTP request | Description
 
 Get single frame for requested screen
 
-
-
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.rest import ApiException
 from pprint import pprint
@@ -61,6 +58,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **display** | **int**| Type of the display Front &#x3D; 0, Back &#x3D; 1 | 
@@ -79,6 +77,7 @@ Name | Type | Description  | Notes
  - **Accept**: image/bmp, application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -99,9 +98,8 @@ After connection, client must enable streaming by sending JSON: {"enable": true}
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.rest import ApiException
 from pprint import pprint
@@ -138,6 +136,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -154,6 +153,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **101** | WebSocket connection established |  -  |

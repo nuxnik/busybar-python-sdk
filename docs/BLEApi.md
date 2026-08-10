@@ -20,9 +20,8 @@ Stops advertising
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -62,6 +61,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -78,6 +78,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | BLE disabled |  -  |
@@ -95,9 +96,8 @@ Enables BLE module and starts advertising
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -137,6 +137,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -153,6 +154,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | BLE enabled |  -  |
@@ -170,9 +172,8 @@ Remove pairing with previous device
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -212,6 +213,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -228,6 +230,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Pairing removed, now device is discoverable |  -  |
@@ -238,16 +241,13 @@ This endpoint does not need any parameter.
 # **api_ble_status_get**
 > BleStatusResponse api_ble_status_get()
 
-
-
 Returns current BLE status
 
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.ble_status_response import BleStatusResponse
 from busybar_python_sdk.rest import ApiException
@@ -286,6 +286,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -302,6 +303,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

@@ -13,16 +13,13 @@ Method | HTTP request | Description
 # **api_wifi_connect_post**
 > SuccessResponse api_wifi_connect_post(connect_request_config)
 
-
-
 Attempts to connect to Wi-Fi using config
 
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.connect_request_config import ConnectRequestConfig
 from busybar_python_sdk.models.success_response import SuccessResponse
@@ -64,6 +61,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **connect_request_config** | [**ConnectRequestConfig**](ConnectRequestConfig.md)|  | 
@@ -82,6 +80,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Network connection established |  -  |
@@ -93,16 +92,13 @@ Name | Type | Description  | Notes
 # **api_wifi_disconnect_post**
 > SuccessResponse api_wifi_disconnect_post()
 
-
-
 Disconnects from Wi-Fi
 
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -141,6 +137,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -157,6 +154,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Network connection terminated |  -  |
@@ -168,16 +166,13 @@ This endpoint does not need any parameter.
 # **api_wifi_status_get**
 > StatusResponse api_wifi_status_get()
 
-
-
 Returns current Wi-Fi status
 
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.status_response import StatusResponse
 from busybar_python_sdk.rest import ApiException
@@ -216,6 +211,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -232,6 +228,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -242,16 +239,13 @@ This endpoint does not need any parameter.
 # **get_wifi_networks**
 > NetworkResponse get_wifi_networks()
 
-
-
 Scans environment for available Wi-Fi networks
 
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.network_response import NetworkResponse
 from busybar_python_sdk.rest import ApiException
@@ -290,6 +284,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -306,6 +301,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

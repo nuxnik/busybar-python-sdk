@@ -24,9 +24,8 @@ Get current device name
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.name_info import NameInfo
 from busybar_python_sdk.rest import ApiException
@@ -66,6 +65,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -82,6 +82,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Information retrieved successfully |  -  |
@@ -98,9 +99,8 @@ Set new device name
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.name_info import NameInfo
 from busybar_python_sdk.models.success_response import SuccessResponse
@@ -143,6 +143,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name_info** | [**NameInfo**](NameInfo.md)|  | 
@@ -161,6 +162,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | New name successfully set |  -  |
@@ -178,9 +180,8 @@ Get audio volume value
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.audio_volume_info import AudioVolumeInfo
 from busybar_python_sdk.rest import ApiException
@@ -220,6 +221,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -236,6 +238,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Information retrieved successfully |  -  |
@@ -252,9 +255,8 @@ Get brightness value for displays
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.display_brightness_info import DisplayBrightnessInfo
 from busybar_python_sdk.rest import ApiException
@@ -294,6 +296,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -310,6 +313,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Information retrieved successfully |  -  |
@@ -326,9 +330,8 @@ Get HTTP API access over Wi-Fi configuration
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.http_access_info import HttpAccessInfo
 from busybar_python_sdk.rest import ApiException
@@ -368,6 +371,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -384,6 +388,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Information retrieved successfully |  -  |
@@ -400,9 +405,8 @@ Set audio volume value
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -445,6 +449,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **volume** | **float**| Audio volume (0-100) | 
@@ -464,6 +469,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Volume set successfully |  -  |
@@ -482,9 +488,8 @@ Set brightness for one or both displays
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -526,6 +531,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **value** | **str**| Displays brightness (0-100/auto) | 
@@ -544,6 +550,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Brightness set successfully |  -  |
@@ -561,9 +568,8 @@ Set HTTP API access over Wi-Fi configuration
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -606,6 +612,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **mode** | **str**| Access mode | 
@@ -625,6 +632,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Set successfully |  -  |

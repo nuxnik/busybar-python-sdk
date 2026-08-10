@@ -17,58 +17,76 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List
+from uuid import UUID
 from busybar_python_sdk.models.busy_bar_settings import BusyBarSettings
 from busybar_python_sdk.models.busy_timer_interval_settings import BusyTimerIntervalSettings
+from typing import Optional, Set
+from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class BusySnapshotSnapshot(BaseModel):
     """
     BusySnapshotSnapshot
-    """
-    type: StrictStr = Field(...)
-    card_id: StrictStr = Field(...)
-    is_paused: StrictBool = Field(...)
-    time_left_ms: StrictInt = Field(...)
-    current_interval: StrictInt = Field(...)
-    current_interval_time_total_ms: StrictInt = Field(...)
-    current_interval_time_left_ms: StrictInt = Field(...)
-    interval_settings: BusyTimerIntervalSettings = Field(...)
-    busy_bar_settings: BusyBarSettings = Field(...)
-    __properties = ["type", "card_id", "is_paused", "time_left_ms", "current_interval", "current_interval_time_total_ms", "current_interval_time_left_ms", "interval_settings", "busy_bar_settings"]
+    """ # noqa: E501
+    type: StrictStr
+    card_id: UUID = Field(json_schema_extra={"examples": ["00000000-0000-0000-0000-000000000000"]})
+    is_paused: StrictBool = Field(json_schema_extra={"examples": [False]})
+    time_left_ms: StrictInt = Field(json_schema_extra={"examples": [9000]})
+    current_interval: StrictInt = Field(json_schema_extra={"examples": [1]})
+    current_interval_time_total_ms: StrictInt = Field(json_schema_extra={"examples": [60000]})
+    current_interval_time_left_ms: StrictInt = Field(json_schema_extra={"examples": [42690]})
+    interval_settings: BusyTimerIntervalSettings
+    busy_bar_settings: BusyBarSettings
+    __properties: ClassVar[List[str]] = ["type", "card_id", "is_paused", "time_left_ms", "current_interval", "current_interval_time_total_ms", "current_interval_time_left_ms", "interval_settings", "busy_bar_settings"]
 
-    @validator('type')
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('INTERVAL',):
+        if value not in set(['INTERVAL']):
             raise ValueError("must be one of enum values ('INTERVAL')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        validate_by_name=True,
+        validate_by_alias=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
-    def from_json(cls, json_str: str) -> BusySnapshotSnapshot:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of BusySnapshotSnapshot from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of interval_settings
         if self.interval_settings:
             _dict['interval_settings'] = self.interval_settings.to_dict()
@@ -78,15 +96,15 @@ class BusySnapshotSnapshot(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> BusySnapshotSnapshot:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of BusySnapshotSnapshot from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return BusySnapshotSnapshot.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = BusySnapshotSnapshot.parse_obj({
+        _obj = cls.model_validate({
             "type": obj.get("type"),
             "card_id": obj.get("card_id"),
             "is_paused": obj.get("is_paused"),
@@ -94,8 +112,8 @@ class BusySnapshotSnapshot(BaseModel):
             "current_interval": obj.get("current_interval"),
             "current_interval_time_total_ms": obj.get("current_interval_time_total_ms"),
             "current_interval_time_left_ms": obj.get("current_interval_time_left_ms"),
-            "interval_settings": BusyTimerIntervalSettings.from_dict(obj.get("interval_settings")) if obj.get("interval_settings") is not None else None,
-            "busy_bar_settings": BusyBarSettings.from_dict(obj.get("busy_bar_settings")) if obj.get("busy_bar_settings") is not None else None
+            "interval_settings": BusyTimerIntervalSettings.from_dict(obj["interval_settings"]) if obj.get("interval_settings") is not None else None,
+            "busy_bar_settings": BusyBarSettings.from_dict(obj["busy_bar_settings"]) if obj.get("busy_bar_settings") is not None else None
         })
         return _obj
 

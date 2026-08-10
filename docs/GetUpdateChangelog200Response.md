@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **changelog** | **str** | Changelog text | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of GetUpdateChangelog200Response from a JSON string
 get_update_changelog200_response_instance = GetUpdateChangelog200Response.from_json(json)
 # print the JSON string representation of the object
-print GetUpdateChangelog200Response.to_json()
+print(GetUpdateChangelog200Response.to_json())
 
 # convert the object into a dict
 get_update_changelog200_response_dict = get_update_changelog200_response_instance.to_dict()

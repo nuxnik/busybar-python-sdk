@@ -17,85 +17,102 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import List, Optional
-from pydantic import BaseModel, Field, conint, conlist, constr, validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from busybar_python_sdk.models.display_elements_elements_inner import DisplayElementsElementsInner
+from typing import Optional, Set
+from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class DisplayElements(BaseModel):
     """
     DisplayElements
-    """
-    application_name: constr(strict=True) = Field(default=..., description="Application ID for organizing assets")
-    priority: Optional[conint(strict=True, le=100, ge=1)] = Field(default=50, description="Draw priority in the range [1, 100] inclusive. A draw request is accepted when its priority is greater than or equal to (>=) the priority of the currently running system app. Equal-priority requests from a different application_name override whatever is on screen. System app priority levels: stub/poweroff apps = 0 (always preemptable), any standard built-in app = 10, active BUSY/CUSTOM work session = 90. The draw API only accepts values 1–100; 0 is reserved for internal use.")
-    led_notification_color: Optional[constr(strict=True)] = Field(default=None, description="Color to blink the status LED, in #RRGGBBAA format.  If not specified, the LED will not blink.")
-    elements: conlist(DisplayElementsElementsInner, min_items=1) = Field(default=..., description="Array of elements to display")
-    __properties = ["application_name", "priority", "led_notification_color", "elements"]
+    """ # noqa: E501
+    application_name: Annotated[str, Field(strict=True)] = Field(description="Application ID for organizing assets", json_schema_extra={"examples": ["my_app"]})
+    priority: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = Field(default=50, description="Draw priority in the range [1, 100] inclusive. A draw request is accepted when its priority is greater than or equal to (>=) the priority of the currently running system app. Equal-priority requests from a different application_name override whatever is on screen. System app priority levels: stub/poweroff apps = 0 (always preemptable), any standard built-in app = 10, active BUSY/CUSTOM work session = 90. The draw API only accepts values 1–100; 0 is reserved for internal use.")
+    led_notification_color: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="Color to blink the status LED, in #RRGGBBAA format.  If not specified, the LED will not blink.", json_schema_extra={"examples": ["#FF0000FF"]})
+    elements: Annotated[List[DisplayElementsElementsInner], Field(min_length=1)] = Field(description="Array of elements to display")
+    __properties: ClassVar[List[str]] = ["application_name", "priority", "led_notification_color", "elements"]
 
-    @validator('application_name')
+    @field_validator('application_name', mode="before")
     def application_name_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if not re.match(r"^[a-zA-Z0-9._-]+$", value):
+        if isinstance(value, str) and not re.match(r"^[a-zA-Z0-9._-]+$", value):
             raise ValueError(r"must validate the regular expression /^[a-zA-Z0-9._-]+$/")
         return value
 
-    @validator('led_notification_color')
+    @field_validator('led_notification_color', mode="before")
     def led_notification_color_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
 
-        if not re.match(r"^#[a-fA-F0-9]{8}$", value):
+        if isinstance(value, str) and not re.match(r"^#[a-fA-F0-9]{8}$", value):
             raise ValueError(r"must validate the regular expression /^#[a-fA-F0-9]{8}$/")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        validate_by_name=True,
+        validate_by_alias=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
-    def from_json(cls, json_str: str) -> DisplayElements:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of DisplayElements from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in elements (list)
         _items = []
         if self.elements:
-            for _item in self.elements:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_elements in self.elements:
+                _items.append(_item_elements.to_dict() if _item_elements is not None else None)
             _dict['elements'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> DisplayElements:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of DisplayElements from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return DisplayElements.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = DisplayElements.parse_obj({
+        _obj = cls.model_validate({
             "application_name": obj.get("application_name"),
             "priority": obj.get("priority") if obj.get("priority") is not None else 50,
             "led_notification_color": obj.get("led_notification_color"),
-            "elements": [DisplayElementsElementsInner.from_dict(_item) for _item in obj.get("elements")] if obj.get("elements") is not None else None
+            "elements": [DisplayElementsElementsInner.from_dict(_item) for _item in obj["elements"]] if obj.get("elements") is not None else None
         })
         return _obj
 

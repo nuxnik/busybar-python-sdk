@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **application_name** | **str** | Application ID for organizing assets | 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of DisplayElements from a JSON string
 display_elements_instance = DisplayElements.from_json(json)
 # print the JSON string representation of the object
-print DisplayElements.to_json()
+print(DisplayElements.to_json())
 
 # convert the object into a dict
 display_elements_dict = display_elements_instance.to_dict()

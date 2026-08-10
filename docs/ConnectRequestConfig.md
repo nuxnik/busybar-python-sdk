@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ssid** | **str** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ConnectRequestConfig from a JSON string
 connect_request_config_instance = ConnectRequestConfig.from_json(json)
 # print the JSON string representation of the object
-print ConnectRequestConfig.to_json()
+print(ConnectRequestConfig.to_json())
 
 # convert the object into a dict
 connect_request_config_dict = connect_request_config_instance.to_dict()

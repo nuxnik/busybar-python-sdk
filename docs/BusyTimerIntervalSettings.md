@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
@@ -20,7 +21,7 @@ json = "{}"
 # create an instance of BusyTimerIntervalSettings from a JSON string
 busy_timer_interval_settings_instance = BusyTimerIntervalSettings.from_json(json)
 # print the JSON string representation of the object
-print BusyTimerIntervalSettings.to_json()
+print(BusyTimerIntervalSettings.to_json())
 
 # convert the object into a dict
 busy_timer_interval_settings_dict = busy_timer_interval_settings_instance.to_dict()

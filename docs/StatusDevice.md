@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **serial_number** | **str** | Device serial number | 
@@ -23,7 +24,7 @@ json = "{}"
 # create an instance of StatusDevice from a JSON string
 status_device_instance = StatusDevice.from_json(json)
 # print the JSON string representation of the object
-print StatusDevice.to_json()
+print(StatusDevice.to_json())
 
 # convert the object into a dict
 status_device_dict = status_device_instance.to_dict()

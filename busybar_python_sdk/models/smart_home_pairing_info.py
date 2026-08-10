@@ -17,60 +17,77 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional
-from pydantic import BaseModel, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
 from busybar_python_sdk.models.smart_home_pairing_info_latest_pairing_status import SmartHomePairingInfoLatestPairingStatus
+from typing import Optional, Set
+from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class SmartHomePairingInfo(BaseModel):
     """
     SmartHomePairingInfo
-    """
-    fabric_count: Optional[StrictInt] = Field(default=None, description="Number of smart homes (Matter \"fabrics\") that this device is paired with (\"commissioned into\")")
+    """ # noqa: E501
+    fabric_count: Optional[StrictInt] = Field(default=None, description="Number of smart homes (Matter \"fabrics\") that this device is paired with (\"commissioned into\")", json_schema_extra={"examples": [1]})
     latest_pairing_status: Optional[SmartHomePairingInfoLatestPairingStatus] = None
-    __properties = ["fabric_count", "latest_pairing_status"]
+    __properties: ClassVar[List[str]] = ["fabric_count", "latest_pairing_status"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        validate_by_name=True,
+        validate_by_alias=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
-    def from_json(cls, json_str: str) -> SmartHomePairingInfo:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SmartHomePairingInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of latest_pairing_status
         if self.latest_pairing_status:
             _dict['latest_pairing_status'] = self.latest_pairing_status.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SmartHomePairingInfo:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SmartHomePairingInfo from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SmartHomePairingInfo.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SmartHomePairingInfo.parse_obj({
+        _obj = cls.model_validate({
             "fabric_count": obj.get("fabric_count"),
-            "latest_pairing_status": SmartHomePairingInfoLatestPairingStatus.from_dict(obj.get("latest_pairing_status")) if obj.get("latest_pairing_status") is not None else None
+            "latest_pairing_status": SmartHomePairingInfoLatestPairingStatus.from_dict(obj["latest_pairing_status"]) if obj.get("latest_pairing_status") is not None else None
         })
         return _obj
 

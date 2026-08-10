@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 
@@ -15,7 +16,7 @@ json = "{}"
 # create an instance of StorageDirElement from a JSON string
 storage_dir_element_instance = StorageDirElement.from_json(json)
 # print the JSON string representation of the object
-print StorageDirElement.to_json()
+print(StorageDirElement.to_json())
 
 # convert the object into a dict
 storage_dir_element_dict = storage_dir_element_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **application_name** | **str** | Application ID for organizing assets | 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of PlayAudio from a JSON string
 play_audio_instance = PlayAudio.from_json(json)
 # print the JSON string representation of the object
-print PlayAudio.to_json()
+print(PlayAudio.to_json())
 
 # convert the object into a dict
 play_audio_dict = play_audio_instance.to_dict()

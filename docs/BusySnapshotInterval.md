@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
-**card_id** | **str** |  | 
+**card_id** | **UUID** |  | 
 **current_interval** | **int** |  | 
 **current_interval_time_total_ms** | **int** |  | 
 **current_interval_time_left_ms** | **int** |  | 
@@ -22,7 +23,7 @@ json = "{}"
 # create an instance of BusySnapshotInterval from a JSON string
 busy_snapshot_interval_instance = BusySnapshotInterval.from_json(json)
 # print the JSON string representation of the object
-print BusySnapshotInterval.to_json()
+print(BusySnapshotInterval.to_json())
 
 # convert the object into a dict
 busy_snapshot_interval_dict = busy_snapshot_interval_instance.to_dict()

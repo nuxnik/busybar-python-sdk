@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **timestamp** | **str** | Seconds-based Unix UTC timestamp to count down or up to. Note: it&#39;s a number in a string. | 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of CountdownElement from a JSON string
 countdown_element_instance = CountdownElement.from_json(json)
 # print the JSON string representation of the object
-print CountdownElement.to_json()
+print(CountdownElement.to_json())
 
 # convert the object into a dict
 countdown_element_dict = countdown_element_instance.to_dict()

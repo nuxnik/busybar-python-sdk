@@ -17,48 +17,65 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
+from typing import Any, ClassVar, Dict, List, Optional
 from busybar_python_sdk.models.status_device import StatusDevice
 from busybar_python_sdk.models.status_firmware import StatusFirmware
 from busybar_python_sdk.models.status_power import StatusPower
 from busybar_python_sdk.models.status_system import StatusSystem
+from typing import Optional, Set
+from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class Status(BaseModel):
     """
     Status
-    """
+    """ # noqa: E501
     device: Optional[StatusDevice] = None
     firmware: Optional[StatusFirmware] = None
     system: Optional[StatusSystem] = None
     power: Optional[StatusPower] = None
-    __properties = ["device", "firmware", "system", "power"]
+    __properties: ClassVar[List[str]] = ["device", "firmware", "system", "power"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        validate_by_name=True,
+        validate_by_alias=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
-    def from_json(cls, json_str: str) -> Status:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Status from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of device
         if self.device:
             _dict['device'] = self.device.to_dict()
@@ -74,19 +91,19 @@ class Status(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Status:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Status from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return Status.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = Status.parse_obj({
-            "device": StatusDevice.from_dict(obj.get("device")) if obj.get("device") is not None else None,
-            "firmware": StatusFirmware.from_dict(obj.get("firmware")) if obj.get("firmware") is not None else None,
-            "system": StatusSystem.from_dict(obj.get("system")) if obj.get("system") is not None else None,
-            "power": StatusPower.from_dict(obj.get("power")) if obj.get("power") is not None else None
+        _obj = cls.model_validate({
+            "device": StatusDevice.from_dict(obj["device"]) if obj.get("device") is not None else None,
+            "firmware": StatusFirmware.from_dict(obj["firmware"]) if obj.get("firmware") is not None else None,
+            "system": StatusSystem.from_dict(obj["system"]) if obj.get("system") is not None else None,
+            "power": StatusPower.from_dict(obj["power"]) if obj.get("power") is not None else None
         })
         return _obj
 

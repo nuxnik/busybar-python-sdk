@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**file** | **bytearray** | File to upload | 
+**file** | **bytes** | File to upload | 
 
 ## Example
 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of FileUpload from a JSON string
 file_upload_instance = FileUpload.from_json(json)
 # print the JSON string representation of the object
-print FileUpload.to_json()
+print(FileUpload.to_json())
 
 # convert the object into a dict
 file_upload_dict = file_upload_instance.to_dict()

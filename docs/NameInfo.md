@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Device name (letters, digits, spaces and common punctuation; no backtick or tilde) | 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of NameInfo from a JSON string
 name_info_instance = NameInfo.from_json(json)
 # print the JSON string representation of the object
-print NameInfo.to_json()
+print(NameInfo.to_json())
 
 # convert the object into a dict
 name_info_dict = name_info_instance.to_dict()

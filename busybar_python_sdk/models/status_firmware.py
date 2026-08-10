@@ -17,60 +17,77 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class StatusFirmware(BaseModel):
     """
     StatusFirmware
-    """
-    version: StrictStr = Field(default=..., description="Firmware version")
-    target: StrictInt = Field(default=..., description="Firmware target code")
-    branch: StrictStr = Field(default=..., description="Git branch name")
-    build_date: StrictStr = Field(default=..., description="Build date")
-    commit_hash: StrictStr = Field(default=..., description="Git commit hash (may include -dirty suffix)")
-    intercom_version: StrictStr = Field(default=..., description="Intercom handshake version string (forced version, git hash, or \"intercom\" if check disabled)")
-    nwp_version: Optional[StrictStr] = Field(default=None, description="Radio firmware version")
-    matter_version: Optional[StrictStr] = Field(default=None, description="Matter version")
-    __properties = ["version", "target", "branch", "build_date", "commit_hash", "intercom_version", "nwp_version", "matter_version"]
+    """ # noqa: E501
+    version: StrictStr = Field(description="Firmware version", json_schema_extra={"examples": ["1.0.0"]})
+    target: StrictInt = Field(description="Firmware target code", json_schema_extra={"examples": [22]})
+    branch: StrictStr = Field(description="Git branch name", json_schema_extra={"examples": ["main"]})
+    build_date: StrictStr = Field(description="Build date", json_schema_extra={"examples": ["2024-01-01"]})
+    commit_hash: StrictStr = Field(description="Git commit hash (may include -dirty suffix)", json_schema_extra={"examples": ["abc123def456-dirty"]})
+    intercom_version: StrictStr = Field(description="Intercom handshake version string (forced version, git hash, or \"intercom\" if check disabled)", json_schema_extra={"examples": ["abc123de"]})
+    nwp_version: Optional[StrictStr] = Field(default=None, description="Radio firmware version", json_schema_extra={"examples": ["1711.2.14.5.2.0.7"]})
+    matter_version: Optional[StrictStr] = Field(default=None, description="Matter version", json_schema_extra={"examples": ["1.0"]})
+    __properties: ClassVar[List[str]] = ["version", "target", "branch", "build_date", "commit_hash", "intercom_version", "nwp_version", "matter_version"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        validate_by_name=True,
+        validate_by_alias=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
-    def from_json(cls, json_str: str) -> StatusFirmware:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of StatusFirmware from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> StatusFirmware:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of StatusFirmware from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return StatusFirmware.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = StatusFirmware.parse_obj({
+        _obj = cls.model_validate({
             "version": obj.get("version"),
             "target": obj.get("target"),
             "branch": obj.get("branch"),

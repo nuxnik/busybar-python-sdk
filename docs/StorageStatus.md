@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **used_bytes** | **int** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of StorageStatus from a JSON string
 storage_status_instance = StorageStatus.from_json(json)
 # print the JSON string representation of the object
-print StorageStatus.to_json()
+print(StorageStatus.to_json())
 
 # convert the object into a dict
 storage_status_dict = storage_status_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | **str** | Displays brightness (0-100/auto) | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of DisplayBrightnessInfo from a JSON string
 display_brightness_info_instance = DisplayBrightnessInfo.from_json(json)
 # print the JSON string representation of the object
-print DisplayBrightnessInfo.to_json()
+print(DisplayBrightnessInfo.to_json())
 
 # convert the object into a dict
 display_brightness_info_dict = display_brightness_info_instance.to_dict()

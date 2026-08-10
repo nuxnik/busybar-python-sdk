@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
-**card_id** | **str** |  | 
+**card_id** | **UUID** |  | 
 **is_paused** | **bool** |  | 
 **time_left_ms** | **int** |  | 
 **current_interval** | **int** |  | 
@@ -24,7 +25,7 @@ json = "{}"
 # create an instance of BusySnapshotSnapshot from a JSON string
 busy_snapshot_snapshot_instance = BusySnapshotSnapshot.from_json(json)
 # print the JSON string representation of the object
-print BusySnapshotSnapshot.to_json()
+print(BusySnapshotSnapshot.to_json())
 
 # convert the object into a dict
 busy_snapshot_snapshot_dict = busy_snapshot_snapshot_instance.to_dict()

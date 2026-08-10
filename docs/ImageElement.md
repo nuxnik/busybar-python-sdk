@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **path** | **str** | Path to the image file in the app&#39;s assets | 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of ImageElement from a JSON string
 image_element_instance = ImageElement.from_json(json)
 # print the JSON string representation of the object
-print ImageElement.to_json()
+print(ImageElement.to_json())
 
 # convert the object into a dict
 image_element_dict = image_element_instance.to_dict()

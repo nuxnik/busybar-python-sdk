@@ -3,6 +3,7 @@
 Only present when connected
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ip_method** | [**WifiIpMethod**](WifiIpMethod.md) |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of StatusResponseIpConfig from a JSON string
 status_response_ip_config_instance = StatusResponseIpConfig.from_json(json)
 # print the JSON string representation of the object
-print StatusResponseIpConfig.to_json()
+print(StatusResponseIpConfig.to_json())
 
 # convert the object into a dict
 status_response_ip_config_dict = status_response_ip_config_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **count** | **int** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of NetworkResponse from a JSON string
 network_response_instance = NetworkResponse.from_json(json)
 # print the JSON string representation of the object
-print NetworkResponse.to_json()
+print(NetworkResponse.to_json())
 
 # convert the object into a dict
 network_response_dict = network_response_instance.to_dict()

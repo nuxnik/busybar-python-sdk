@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **volume** | **float** | Audio volume value (0-100) | [optional] 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of AudioVolumeInfo from a JSON string
 audio_volume_info_instance = AudioVolumeInfo.from_json(json)
 # print the JSON string representation of the object
-print AudioVolumeInfo.to_json()
+print(AudioVolumeInfo.to_json())
 
 # convert the object into a dict
 audio_volume_info_dict = audio_volume_info_instance.to_dict()

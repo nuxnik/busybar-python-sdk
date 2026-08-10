@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **is_allowed** | **bool** | Whether update installation is allowed (battery check) | [optional] 
@@ -21,7 +22,7 @@ json = "{}"
 # create an instance of UpdateStatusInstall from a JSON string
 update_status_install_instance = UpdateStatusInstall.from_json(json)
 # print the JSON string representation of the object
-print UpdateStatusInstall.to_json()
+print(UpdateStatusInstall.to_json())
 
 # convert the object into a dict
 update_status_install_dict = update_status_install_instance.to_dict()

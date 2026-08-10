@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **size** | **int** | File size in bytes | 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of StorageFileElement from a JSON string
 storage_file_element_instance = StorageFileElement.from_json(json)
 # print the JSON string representation of the object
-print StorageFileElement.to_json()
+print(StorageFileElement.to_json())
 
 # convert the object into a dict
 storage_file_element_dict = storage_file_element_instance.to_dict()

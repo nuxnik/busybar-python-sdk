@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **state** | **bool** | State of emulated switch. | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of SmartHomeSwitchState from a JSON string
 smart_home_switch_state_instance = SmartHomeSwitchState.from_json(json)
 # print the JSON string representation of the object
-print SmartHomeSwitchState.to_json()
+print(SmartHomeSwitchState.to_json())
 
 # convert the object into a dict
 smart_home_switch_state_dict = smart_home_switch_state_instance.to_dict()

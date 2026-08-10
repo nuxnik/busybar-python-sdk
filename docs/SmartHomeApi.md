@@ -16,14 +16,11 @@ Method | HTTP request | Description
 
 Erase all smart home links
 
-
-
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -63,6 +60,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -79,6 +77,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successfully erased all smart home pairing info, device restart is needed |  -  |
@@ -91,14 +90,11 @@ This endpoint does not need any parameter.
 
 Get state of emulated smart home switch
 
-
-
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.smart_home_switch_state import SmartHomeSwitchState
 from busybar_python_sdk.rest import ApiException
@@ -138,6 +134,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -154,6 +151,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successfully got state of emulated smart home switch |  -  |
@@ -166,14 +164,11 @@ This endpoint does not need any parameter.
 
 Set state of emulated smart home switch
 
-
-
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.smart_home_switch_state import SmartHomeSwitchState
 from busybar_python_sdk.models.success_response import SuccessResponse
@@ -216,6 +211,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **smart_home_switch_state** | [**SmartHomeSwitchState**](SmartHomeSwitchState.md)|  | 
@@ -234,6 +230,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successfully set state of emulated smart home switch |  -  |
@@ -246,14 +243,11 @@ Name | Type | Description  | Notes
 
 Smart home commissioning status
 
-
-
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.smart_home_pairing_info import SmartHomePairingInfo
 from busybar_python_sdk.rest import ApiException
@@ -293,6 +287,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -309,6 +304,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successfully got smart home commissioning status |  -  |
@@ -320,14 +316,11 @@ This endpoint does not need any parameter.
 
 Link device to a smart home
 
-
-
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.smart_home_pairing_payload import SmartHomePairingPayload
 from busybar_python_sdk.rest import ApiException
@@ -367,6 +360,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -383,6 +377,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successfully started smart home pairing |  -  |

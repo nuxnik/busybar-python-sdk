@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **path** | **str** | Path to the animation file in the app&#39;s assets | [optional] 
@@ -21,7 +22,7 @@ json = "{}"
 # create an instance of AnimationElement from a JSON string
 animation_element_instance = AnimationElement.from_json(json)
 # print the JSON string representation of the object
-print AnimationElement.to_json()
+print(AnimationElement.to_json())
 
 # convert the object into a dict
 animation_element_dict = animation_element_instance.to_dict()

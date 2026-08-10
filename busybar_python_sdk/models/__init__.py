@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from busybar_python_sdk.models.account_backend import AccountBackend
 from busybar_python_sdk.models.account_info import AccountInfo
@@ -83,3 +82,4 @@ from busybar_python_sdk.models.version_info import VersionInfo
 from busybar_python_sdk.models.wifi_ip_method import WifiIpMethod
 from busybar_python_sdk.models.wifi_ip_type import WifiIpType
 from busybar_python_sdk.models.wifi_security_method import WifiSecurityMethod
+

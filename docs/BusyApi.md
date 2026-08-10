@@ -20,9 +20,8 @@ Gets the BUSY timer profile under specified slot
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.busy_profile import BusyProfile
 from busybar_python_sdk.models.busy_profile_slot import BusyProfileSlot
@@ -65,6 +64,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slot** | [**BusyProfileSlot**](.md)|  | 
@@ -83,6 +83,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Got profile successfully |  -  |
@@ -100,9 +101,8 @@ Gets the current state of the BUSY timer in snapshot form
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.busy_snapshot import BusySnapshot
 from busybar_python_sdk.rest import ApiException
@@ -142,6 +142,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -158,6 +159,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Got snapshot successfully |  -  |
@@ -175,9 +177,8 @@ Sets the BUSY timer profile under specified slot
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.busy_profile import BusyProfile
 from busybar_python_sdk.models.busy_profile_slot import BusyProfileSlot
@@ -222,6 +223,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slot** | [**BusyProfileSlot**](.md)|  | 
@@ -241,6 +243,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Profile successfully set |  -  |
@@ -258,9 +261,8 @@ Run the timer starting from the given snapshot
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.busy_snapshot import BusySnapshot
 from busybar_python_sdk.models.success_response import SuccessResponse
@@ -303,6 +305,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **busy_snapshot** | [**BusySnapshot**](BusySnapshot.md)|  | 
@@ -321,6 +324,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Snapshot successfully set |  -  |

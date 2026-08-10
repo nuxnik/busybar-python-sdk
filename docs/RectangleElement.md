@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **width** | **int** | Width of the rectangle in pixels | 
@@ -22,7 +23,7 @@ json = "{}"
 # create an instance of RectangleElement from a JSON string
 rectangle_element_instance = RectangleElement.from_json(json)
 # print the JSON string representation of the object
-print RectangleElement.to_json()
+print(RectangleElement.to_json())
 
 # convert the object into a dict
 rectangle_element_dict = rectangle_element_instance.to_dict()

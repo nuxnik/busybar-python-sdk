@@ -23,9 +23,8 @@ Creates a new directory with a specified path
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -67,6 +66,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **str**| Path to a new directory | 
@@ -85,6 +85,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Directory created successfully |  -  |
@@ -97,14 +98,11 @@ Name | Type | Description  | Notes
 
 Show storage usage
 
-
-
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.storage_status import StorageStatus
 from busybar_python_sdk.rest import ApiException
@@ -144,6 +142,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -160,6 +159,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Storage status queried successfully |  -  |
@@ -172,14 +172,11 @@ This endpoint does not need any parameter.
 
 List files on internal storage
 
-
-
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.storage_list import StorageList
 from busybar_python_sdk.rest import ApiException
@@ -221,6 +218,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **str**| Path to the file | 
@@ -239,6 +237,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Directory contents read successfully |  -  |
@@ -247,7 +246,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **read_storage_file**
-> bytearray read_storage_file(path)
+> bytes read_storage_file(path)
 
 Download file from internal storage
 
@@ -256,9 +255,8 @@ Downloads a file from a specified path
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.rest import ApiException
 from pprint import pprint
@@ -299,13 +297,14 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **str**| Path to the file | 
 
 ### Return type
 
-**bytearray**
+**bytes**
 
 ### Authorization
 
@@ -317,6 +316,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/octet-stream, application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | File downloaded successfully |  -  |
@@ -334,9 +334,8 @@ Removes a file with a specified path
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -378,6 +377,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **str**| Path of a file to remove | 
@@ -396,6 +396,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | File deleted successfully |  -  |
@@ -413,9 +414,8 @@ Moves a file to a new location
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -458,6 +458,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **str**| Old location path | 
@@ -477,6 +478,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Renamed successfully |  -  |
@@ -494,9 +496,8 @@ Uploads a file to a specified path
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -524,7 +525,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = busybar_python_sdk.StorageApi(api_client)
     path = '/ext/test.png' # str | Path for the uploaded file
-    body = None # bytearray | 
+    body = None # bytes | 
 
     try:
         # Upload file to internal storage
@@ -539,10 +540,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **str**| Path for the uploaded file | 
- **body** | **bytearray**|  | 
+ **body** | **bytes**|  | 
 
 ### Return type
 
@@ -558,6 +560,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | File uploaded successfully |  -  |

@@ -207,3 +207,4 @@ from busybar_python_sdk.models.version_info import VersionInfo as VersionInfo
 from busybar_python_sdk.models.wifi_ip_method import WifiIpMethod as WifiIpMethod
 from busybar_python_sdk.models.wifi_ip_type import WifiIpType as WifiIpType
 from busybar_python_sdk.models.wifi_security_method import WifiSecurityMethod as WifiSecurityMethod
+

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of BusySnapshotNotStarted from a JSON string
 busy_snapshot_not_started_instance = BusySnapshotNotStarted.from_json(json)
 # print the JSON string representation of the object
-print BusySnapshotNotStarted.to_json()
+print(BusySnapshotNotStarted.to_json())
 
 # convert the object into a dict
 busy_snapshot_not_started_dict = busy_snapshot_not_started_instance.to_dict()

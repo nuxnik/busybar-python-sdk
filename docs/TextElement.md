@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **text** | **str** | Text content to display (printable ASCII only; fonts are bitmap ASCII) | 
@@ -22,7 +23,7 @@ json = "{}"
 # create an instance of TextElement from a JSON string
 text_element_instance = TextElement.from_json(json)
 # print the JSON string representation of the object
-print TextElement.to_json()
+print(TextElement.to_json())
 
 # convert the object into a dict
 text_element_dict = text_element_instance.to_dict()

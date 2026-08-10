@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **result** | **str** | Success status message | 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of SuccessResponse from a JSON string
 success_response_instance = SuccessResponse.from_json(json)
 # print the JSON string representation of the object
-print SuccessResponse.to_json()
+print(SuccessResponse.to_json())
 
 # convert the object into a dict
 success_response_dict = success_response_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of AccountLink from a JSON string
 account_link_instance = AccountLink.from_json(json)
 # print the JSON string representation of the object
-print AccountLink.to_json()
+print(AccountLink.to_json())
 
 # convert the object into a dict
 account_link_dict = account_link_instance.to_dict()

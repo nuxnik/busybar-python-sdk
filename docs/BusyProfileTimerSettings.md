@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
@@ -21,7 +22,7 @@ json = "{}"
 # create an instance of BusyProfileTimerSettings from a JSON string
 busy_profile_timer_settings_instance = BusyProfileTimerSettings.from_json(json)
 # print the JSON string representation of the object
-print BusyProfileTimerSettings.to_json()
+print(BusyProfileTimerSettings.to_json())
 
 # convert the object into a dict
 busy_profile_timer_settings_dict = busy_profile_timer_settings_instance.to_dict()

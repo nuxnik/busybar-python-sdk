@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ip_method** | [**WifiIpMethod**](WifiIpMethod.md) |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ConnectRequestConfigIpConfig from a JSON string
 connect_request_config_ip_config_instance = ConnectRequestConfigIpConfig.from_json(json)
 # print the JSON string representation of the object
-print ConnectRequestConfigIpConfig.to_json()
+print(ConnectRequestConfigIpConfig.to_json())
 
 # convert the object into a dict
 connect_request_config_ip_config_dict = connect_request_config_ip_config_instance.to_dict()

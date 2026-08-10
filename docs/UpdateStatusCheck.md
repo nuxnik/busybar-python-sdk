@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **available_version** | **str** | Version of available update (empty if none) | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of UpdateStatusCheck from a JSON string
 update_status_check_instance = UpdateStatusCheck.from_json(json)
 # print the JSON string representation of the object
-print UpdateStatusCheck.to_json()
+print(UpdateStatusCheck.to_json())
 
 # convert the object into a dict
 update_status_check_dict = update_status_check_instance.to_dict()

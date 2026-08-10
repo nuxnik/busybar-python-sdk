@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **str** |  | 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of BleStatusResponse from a JSON string
 ble_status_response_instance = BleStatusResponse.from_json(json)
 # print the JSON string representation of the object
-print BleStatusResponse.to_json()
+print(BleStatusResponse.to_json())
 
 # convert the object into a dict
 ble_status_response_dict = ble_status_response_instance.to_dict()

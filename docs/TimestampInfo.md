@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **timestamp** | **str** | ISO 8601 formatted timestamp with timezone | 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of TimestampInfo from a JSON string
 timestamp_info_instance = TimestampInfo.from_json(json)
 # print the JSON string representation of the object
-print TimestampInfo.to_json()
+print(TimestampInfo.to_json())
 
 # convert the object into a dict
 timestamp_info_dict = timestamp_info_instance.to_dict()

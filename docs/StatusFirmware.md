@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **version** | **str** | Firmware version | 
@@ -23,7 +24,7 @@ json = "{}"
 # create an instance of StatusFirmware from a JSON string
 status_firmware_instance = StatusFirmware.from_json(json)
 # print the JSON string representation of the object
-print StatusFirmware.to_json()
+print(StatusFirmware.to_json())
 
 # convert the object into a dict
 status_firmware_dict = status_firmware_instance.to_dict()

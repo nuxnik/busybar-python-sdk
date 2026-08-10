@@ -24,9 +24,8 @@ Signals the updater to abort an ongoing download operation.
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -66,6 +65,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -82,6 +82,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Abort signal sent successfully |  -  |
@@ -98,9 +99,8 @@ Initiates an asynchronous check for available firmware updates.
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -140,6 +140,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -156,6 +157,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Update check started successfully |  -  |
@@ -174,9 +176,8 @@ Returns current autoupdate configuration
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.autoupdate_settings import AutoupdateSettings
 from busybar_python_sdk.rest import ApiException
@@ -216,6 +217,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -232,6 +234,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Settings retrieved successfully |  -  |
@@ -248,9 +251,8 @@ Returns current update and check status including progress information.
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.update_status import UpdateStatus
 from busybar_python_sdk.rest import ApiException
@@ -290,6 +292,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -306,6 +309,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Status retrieved successfully |  -  |
@@ -322,9 +326,8 @@ Returns the changelog for a specific firmware version.
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.get_update_changelog200_response import GetUpdateChangelog200Response
 from busybar_python_sdk.rest import ApiException
@@ -366,6 +369,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **version** | **str**| Firmware version to get changelog for | 
@@ -384,6 +388,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Changelog retrieved successfully |  -  |
@@ -404,9 +409,8 @@ Use /api/update/status to monitor progress.
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -448,6 +452,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **version** | **str**| Firmware version to install | 
@@ -466,6 +471,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Update installation started successfully in background |  -  |
@@ -485,9 +491,8 @@ Updates autoupdate configuration. All fields are optional - only provided fields
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.autoupdate_settings import AutoupdateSettings
 from busybar_python_sdk.models.success_response import SuccessResponse
@@ -530,6 +535,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **autoupdate_settings** | [**AutoupdateSettings**](AutoupdateSettings.md)|  | 
@@ -548,6 +554,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Settings updated successfully |  -  |
@@ -566,9 +573,8 @@ Uploads a firmware update package (TAR file) and initiates the update process.
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import busybar_python_sdk
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
@@ -595,7 +601,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = busybar_python_sdk.UpdaterApi(api_client)
-    body = None # bytearray | 
+    body = None # bytes | 
 
     try:
         # Update firmware
@@ -610,9 +616,10 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **bytearray**|  | 
+ **body** | **bytes**|  | 
 
 ### Return type
 
@@ -628,6 +635,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Update initiated successfully. The device will reboot. |  -  |

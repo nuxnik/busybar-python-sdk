@@ -17,88 +17,106 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional
-from pydantic import Field, StrictStr, constr, validator
+from pydantic import ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from busybar_python_sdk.models.display_element import DisplayElement
+from typing import Optional, Set
+from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class CountdownElement(DisplayElement):
     """
     CountdownElement
-    """
-    timestamp: constr(strict=True) = Field(default=..., description="Seconds-based Unix UTC timestamp to count down or up to. Note: it's a number in a string.")
-    color: Optional[constr(strict=True)] = Field(default='#FFFFFFFF', description="Color to display the text in, in #RRGGBBAA format")
-    direction: StrictStr = Field(default=..., description="Whether to count up or down")
-    show_hours: StrictStr = Field(default=..., description="When to show the hours position")
-    __properties = ["id", "timeout", "display_until", "type", "x", "y", "display", "align", "timestamp", "color", "direction", "show_hours"]
+    """ # noqa: E501
+    timestamp: Annotated[str, Field(strict=True)] = Field(description="Seconds-based Unix UTC timestamp to count down or up to. Note: it's a number in a string.")
+    color: Optional[Annotated[str, Field(strict=True)]] = Field(default='#FFFFFFFF', description="Color to display the text in, in #RRGGBBAA format")
+    direction: StrictStr = Field(description="Whether to count up or down")
+    show_hours: StrictStr = Field(description="When to show the hours position")
+    __properties: ClassVar[List[str]] = ["id", "timeout", "display_until", "type", "x", "y", "display", "align", "timestamp", "color", "direction", "show_hours"]
 
-    @validator('timestamp')
+    @field_validator('timestamp', mode="before")
     def timestamp_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if not re.match(r"^[0-9]+$", value):
+        if isinstance(value, str) and not re.match(r"^[0-9]+$", value):
             raise ValueError(r"must validate the regular expression /^[0-9]+$/")
         return value
 
-    @validator('color')
+    @field_validator('color', mode="before")
     def color_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
 
-        if not re.match(r"^#[a-fA-F0-9]{8}$", value):
+        if isinstance(value, str) and not re.match(r"^#[a-fA-F0-9]{8}$", value):
             raise ValueError(r"must validate the regular expression /^#[a-fA-F0-9]{8}$/")
         return value
 
-    @validator('direction')
+    @field_validator('direction')
     def direction_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('time_left', 'time_since',):
+        if value not in set(['time_left', 'time_since']):
             raise ValueError("must be one of enum values ('time_left', 'time_since')")
         return value
 
-    @validator('show_hours')
+    @field_validator('show_hours')
     def show_hours_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('when_non_zero', 'always',):
+        if value not in set(['when_non_zero', 'always']):
             raise ValueError("must be one of enum values ('when_non_zero', 'always')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        validate_by_name=True,
+        validate_by_alias=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
-    def from_json(cls, json_str: str) -> CountdownElement:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of CountdownElement from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CountdownElement:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of CountdownElement from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CountdownElement.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = CountdownElement.parse_obj({
+        _obj = cls.model_validate({
             "id": obj.get("id"),
             "timeout": obj.get("timeout"),
             "display_until": obj.get("display_until"),

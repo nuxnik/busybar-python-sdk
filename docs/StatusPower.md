@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **state** | **str** | Power state | 
@@ -20,7 +21,7 @@ json = "{}"
 # create an instance of StatusPower from a JSON string
 status_power_instance = StatusPower.from_json(json)
 # print the JSON string representation of the object
-print StatusPower.to_json()
+print(StatusPower.to_json())
 
 # convert the object into a dict
 status_power_dict = status_power_instance.to_dict()

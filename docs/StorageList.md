@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **list** | [**List[StorageListElement]**](StorageListElement.md) | Array of elements to display | 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of StorageList from a JSON string
 storage_list_instance = StorageList.from_json(json)
 # print the JSON string representation of the object
-print StorageList.to_json()
+print(StorageList.to_json())
 
 # convert the object into a dict
 storage_list_dict = storage_list_instance.to_dict()

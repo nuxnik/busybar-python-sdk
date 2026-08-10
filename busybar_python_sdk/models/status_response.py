@@ -17,88 +17,106 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, constr, validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from busybar_python_sdk.models.status_response_ip_config import StatusResponseIpConfig
 from busybar_python_sdk.models.wifi_security_method import WifiSecurityMethod
+from typing import Optional, Set
+from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class StatusResponse(BaseModel):
     """
-    Wi-Fi status. Only `state` is always present. Fields `ssid`, `bssid`, `channel`, `rssi`, `security`, and `ip_config` are only included when state is \"connected\".   # noqa: E501
-    """
-    state: StrictStr = Field(...)
-    ssid: Optional[StrictStr] = Field(default=None, description="Only present when connected")
-    bssid: Optional[constr(strict=True)] = Field(default=None, description="Only present when connected")
-    channel: Optional[StrictInt] = Field(default=None, description="Only present when connected")
-    rssi: Optional[StrictInt] = Field(default=None, description="Only present when connected")
+    Wi-Fi status. Only `state` is always present. Fields `ssid`, `bssid`, `channel`, `rssi`, `security`, and `ip_config` are only included when state is \"connected\". 
+    """ # noqa: E501
+    state: StrictStr = Field(json_schema_extra={"examples": ["disconnected"]})
+    ssid: Optional[StrictStr] = Field(default=None, description="Only present when connected", json_schema_extra={"examples": ["Your_WIFI_SSID"]})
+    bssid: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="Only present when connected", json_schema_extra={"examples": ["EC:5A:00:0B:55:1D"]})
+    channel: Optional[StrictInt] = Field(default=None, description="Only present when connected", json_schema_extra={"examples": [3]})
+    rssi: Optional[StrictInt] = Field(default=None, description="Only present when connected", json_schema_extra={"examples": [-43]})
     security: Optional[WifiSecurityMethod] = Field(default=None, description="Only present when connected")
     ip_config: Optional[StatusResponseIpConfig] = None
-    __properties = ["state", "ssid", "bssid", "channel", "rssi", "security", "ip_config"]
+    __properties: ClassVar[List[str]] = ["state", "ssid", "bssid", "channel", "rssi", "security", "ip_config"]
 
-    @validator('state')
+    @field_validator('state')
     def state_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('unknown', 'disconnected', 'connected', 'connecting', 'disconnecting', 'reconnecting',):
+        if value not in set(['unknown', 'disconnected', 'connected', 'connecting', 'disconnecting', 'reconnecting']):
             raise ValueError("must be one of enum values ('unknown', 'disconnected', 'connected', 'connecting', 'disconnecting', 'reconnecting')")
         return value
 
-    @validator('bssid')
+    @field_validator('bssid', mode="before")
     def bssid_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
 
-        if not re.match(r"^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$", value):
+        if isinstance(value, str) and not re.match(r"^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$", value):
             raise ValueError(r"must validate the regular expression /^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$/")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        validate_by_name=True,
+        validate_by_alias=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
-    def from_json(cls, json_str: str) -> StatusResponse:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of StatusResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of ip_config
         if self.ip_config:
             _dict['ip_config'] = self.ip_config.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> StatusResponse:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of StatusResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return StatusResponse.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = StatusResponse.parse_obj({
+        _obj = cls.model_validate({
             "state": obj.get("state"),
             "ssid": obj.get("ssid"),
             "bssid": obj.get("bssid"),
             "channel": obj.get("channel"),
             "rssi": obj.get("rssi"),
             "security": obj.get("security"),
-            "ip_config": StatusResponseIpConfig.from_dict(obj.get("ip_config")) if obj.get("ip_config") is not None else None
+            "ip_config": StatusResponseIpConfig.from_dict(obj["ip_config"]) if obj.get("ip_config") is not None else None
         })
         return _obj
 

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier for the element | 
@@ -23,7 +24,7 @@ json = "{}"
 # create an instance of DisplayElement from a JSON string
 display_element_instance = DisplayElement.from_json(json)
 # print the JSON string representation of the object
-print DisplayElement.to_json()
+print(DisplayElement.to_json())
 
 # convert the object into a dict
 display_element_dict = display_element_instance.to_dict()

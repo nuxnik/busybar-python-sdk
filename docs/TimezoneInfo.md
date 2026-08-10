@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Time zone name | 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of TimezoneInfo from a JSON string
 timezone_info_instance = TimezoneInfo.from_json(json)
 # print the JSON string representation of the object
-print TimezoneInfo.to_json()
+print(TimezoneInfo.to_json())
 
 # convert the object into a dict
 timezone_info_dict = timezone_info_instance.to_dict()

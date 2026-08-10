@@ -3,6 +3,7 @@
 Autoupdate configuration settings. All fields are optional for POST requests.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **is_enabled** | **bool** | Whether automatic updates are enabled | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of AutoupdateSettings from a JSON string
 autoupdate_settings_instance = AutoupdateSettings.from_json(json)
 # print the JSON string representation of the object
-print AutoupdateSettings.to_json()
+print(AutoupdateSettings.to_json())
 
 # convert the object into a dict
 autoupdate_settings_dict = autoupdate_settings_instance.to_dict()

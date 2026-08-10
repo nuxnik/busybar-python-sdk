@@ -3,6 +3,7 @@
 Wi-Fi status. Only `state` is always present. Fields `ssid`, `bssid`, `channel`, `rssi`, `security`, and `ip_config` are only included when state is \"connected\". 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **state** | **str** |  | 
@@ -23,7 +24,7 @@ json = "{}"
 # create an instance of StatusResponse from a JSON string
 status_response_instance = StatusResponse.from_json(json)
 # print the JSON string representation of the object
-print StatusResponse.to_json()
+print(StatusResponse.to_json())
 
 # convert the object into a dict
 status_response_dict = status_response_instance.to_dict()
