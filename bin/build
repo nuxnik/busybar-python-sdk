@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#
+# Generate the busy bar SDK from the OPENAPI openapi.yaml spec
+#
+docker run --rm \
+    -v $PWD:/build openapitools/openapi-generator-cli generate \
+    -i /build/openapi.yaml \
+    -g python-pydantic-v1 \
+    -o /build
+
