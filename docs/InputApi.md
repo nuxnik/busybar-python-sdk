@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**set_input_key**](InputApi.md#set_input_key) | **POST** /api/input | Send input event
+[**set_input_key**](InputApi.md#set_input_key) | **POST** /busybar/input | Send input event
 
 
 # **set_input_key**
@@ -16,7 +16,7 @@ Send single key press event
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -35,11 +35,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -71,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 

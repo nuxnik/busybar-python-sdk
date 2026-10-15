@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**application_name** | **str** | Application ID for organizing assets | 
+**application_name** | **str** | Application name for organizing assets | 
 **path** | **str** | Path to audio file within app&#39;s assets directory | 
 **stock_path** | **str** | Stock audio file name | 
 

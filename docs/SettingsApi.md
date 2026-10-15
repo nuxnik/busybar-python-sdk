@@ -4,18 +4,22 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**api_name_get**](SettingsApi.md#api_name_get) | **GET** /api/name | Get current device name
-[**api_name_post**](SettingsApi.md#api_name_post) | **POST** /api/name | Set new device name
-[**get_audio_volume**](SettingsApi.md#get_audio_volume) | **GET** /api/audio/volume | Get audio volume
-[**get_display_brightness**](SettingsApi.md#get_display_brightness) | **GET** /api/display/brightness | Get display brightness
-[**get_http_access**](SettingsApi.md#get_http_access) | **GET** /api/access | Get HTTP API access over Wi-Fi configuration
-[**set_audio_volume**](SettingsApi.md#set_audio_volume) | **POST** /api/audio/volume | Set audio volume
-[**set_display_brightness**](SettingsApi.md#set_display_brightness) | **POST** /api/display/brightness | Set display brightness
-[**set_http_access**](SettingsApi.md#set_http_access) | **POST** /api/access | Set HTTP API access over Wi-Fi configuration
+[**busybar_name_get**](SettingsApi.md#busybar_name_get) | **GET** /busybar/name | Get current device name
+[**busybar_name_post**](SettingsApi.md#busybar_name_post) | **POST** /busybar/name | Set new device name
+[**create_access_token**](SettingsApi.md#create_access_token) | **POST** /busybar/access/tokens | Create a new access token
+[**delete_all_access_tokens**](SettingsApi.md#delete_all_access_tokens) | **DELETE** /busybar/access/tokens | Revoke all access tokens
+[**get_access_tokens**](SettingsApi.md#get_access_tokens) | **GET** /busybar/access/tokens | List all access tokens
+[**get_audio_volume**](SettingsApi.md#get_audio_volume) | **GET** /busybar/audio/volume | Get audio volume
+[**get_display_brightness**](SettingsApi.md#get_display_brightness) | **GET** /busybar/display/brightness | Get display brightness
+[**get_http_access**](SettingsApi.md#get_http_access) | **GET** /busybar/access | Get HTTP API access over Wi-Fi configuration
+[**revoke_access_token**](SettingsApi.md#revoke_access_token) | **DELETE** /busybar/access/tokens/{short_id} | Revoke an access token
+[**set_audio_volume**](SettingsApi.md#set_audio_volume) | **POST** /busybar/audio/volume | Set audio volume
+[**set_display_brightness**](SettingsApi.md#set_display_brightness) | **POST** /busybar/display/brightness | Set display brightness
+[**set_http_access**](SettingsApi.md#set_http_access) | **POST** /busybar/access | Set HTTP API access over Wi-Fi configuration
 
 
-# **api_name_get**
-> NameInfo api_name_get()
+# **busybar_name_get**
+> NameInfo busybar_name_get()
 
 Get current device name
 
@@ -23,7 +27,7 @@ Get current device name
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -42,11 +46,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -55,11 +58,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Get current device name
-        api_response = api_instance.api_name_get()
-        print("The response of SettingsApi->api_name_get:\n")
+        api_response = api_instance.busybar_name_get()
+        print("The response of SettingsApi->busybar_name_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SettingsApi->api_name_get: %s\n" % e)
+        print("Exception when calling SettingsApi->busybar_name_get: %s\n" % e)
 ```
 
 
@@ -74,7 +77,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -89,8 +92,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_name_post**
-> SuccessResponse api_name_post(name_info)
+# **busybar_name_post**
+> SuccessResponse busybar_name_post(name_info)
 
 Set new device name
 
@@ -98,7 +101,7 @@ Set new device name
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -118,11 +121,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -132,11 +134,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Set new device name
-        api_response = api_instance.api_name_post(name_info)
-        print("The response of SettingsApi->api_name_post:\n")
+        api_response = api_instance.busybar_name_post(name_info)
+        print("The response of SettingsApi->busybar_name_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SettingsApi->api_name_post: %s\n" % e)
+        print("Exception when calling SettingsApi->busybar_name_post: %s\n" % e)
 ```
 
 
@@ -154,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -170,6 +172,233 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_access_token**
+> AccessToken create_access_token(access_tokens_create_request)
+
+Create a new access token
+
+Generates a new access token for authorization alongside the access key
+
+### Example
+
+* Bearer Authentication (barApiToken):
+
+```python
+import busybar_python_sdk
+from busybar_python_sdk.models.access_token import AccessToken
+from busybar_python_sdk.models.access_tokens_create_request import AccessTokensCreateRequest
+from busybar_python_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = busybar_python_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with busybar_python_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = busybar_python_sdk.SettingsApi(api_client)
+    access_tokens_create_request = busybar_python_sdk.AccessTokensCreateRequest() # AccessTokensCreateRequest | 
+
+    try:
+        # Create a new access token
+        api_response = api_instance.create_access_token(access_tokens_create_request)
+        print("The response of SettingsApi->create_access_token:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_access_token: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **access_tokens_create_request** | [**AccessTokensCreateRequest**](AccessTokensCreateRequest.md)|  | 
+
+### Return type
+
+[**AccessToken**](AccessToken.md)
+
+### Authorization
+
+[barApiToken](../README.md#barApiToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Retrieved information about access tokens |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_all_access_tokens**
+> SuccessResponse delete_all_access_tokens()
+
+Revoke all access tokens
+
+Removes all access tokens all at once
+
+### Example
+
+* Bearer Authentication (barApiToken):
+
+```python
+import busybar_python_sdk
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = busybar_python_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with busybar_python_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = busybar_python_sdk.SettingsApi(api_client)
+
+    try:
+        # Revoke all access tokens
+        api_response = api_instance.delete_all_access_tokens()
+        print("The response of SettingsApi->delete_all_access_tokens:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->delete_all_access_tokens: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SuccessResponse**](SuccessResponse.md)
+
+### Authorization
+
+[barApiToken](../README.md#barApiToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Deleted all access tokens |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_access_tokens**
+> AccessTokensInfo get_access_tokens()
+
+List all access tokens
+
+Provides basic information all access tokens (IDs, names and timestamps)
+
+### Example
+
+* Bearer Authentication (barApiToken):
+
+```python
+import busybar_python_sdk
+from busybar_python_sdk.models.access_tokens_info import AccessTokensInfo
+from busybar_python_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = busybar_python_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with busybar_python_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = busybar_python_sdk.SettingsApi(api_client)
+
+    try:
+        # List all access tokens
+        api_response = api_instance.get_access_tokens()
+        print("The response of SettingsApi->get_access_tokens:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_access_tokens: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AccessTokensInfo**](AccessTokensInfo.md)
+
+### Authorization
+
+[barApiToken](../README.md#barApiToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Information retrieved successfully |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_audio_volume**
 > AudioVolumeInfo get_audio_volume()
 
@@ -179,7 +408,7 @@ Get audio volume value
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -198,11 +427,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -230,7 +458,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -254,7 +482,7 @@ Get brightness value for displays
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -273,11 +501,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -305,7 +532,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -329,7 +556,7 @@ Get HTTP API access over Wi-Fi configuration
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -348,11 +575,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -380,7 +606,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -395,16 +621,16 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **set_audio_volume**
-> SuccessResponse set_audio_volume(volume, silent=silent)
+# **revoke_access_token**
+> SuccessResponse revoke_access_token(short_id)
 
-Set audio volume
+Revoke an access token
 
-Set audio volume value
+Removes the access token with the specified short ID
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -423,11 +649,88 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Enter a context with an instance of the API client
+with busybar_python_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = busybar_python_sdk.SettingsApi(api_client)
+    short_id = 'short_id_example' # str | 
+
+    try:
+        # Revoke an access token
+        api_response = api_instance.revoke_access_token(short_id)
+        print("The response of SettingsApi->revoke_access_token:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->revoke_access_token: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **short_id** | **str**|  | 
+
+### Return type
+
+[**SuccessResponse**](SuccessResponse.md)
+
+### Authorization
+
+[barApiToken](../README.md#barApiToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Deleted corresponding access token |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **set_audio_volume**
+> SuccessResponse set_audio_volume(volume, silent=silent)
+
+Set audio volume
+
+Set audio volume value
+
+### Example
+
+* Bearer Authentication (barApiToken):
+
+```python
+import busybar_python_sdk
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = busybar_python_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -461,7 +764,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -487,7 +790,7 @@ Set brightness for one or both displays
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -506,11 +809,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -542,7 +844,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -567,7 +869,7 @@ Set HTTP API access over Wi-Fi configuration
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -586,11 +888,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -624,7 +925,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 

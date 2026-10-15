@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_time**](TimeApi.md#get_time) | **GET** /api/time | Get current timestamp with timezone
-[**get_time_timezone**](TimeApi.md#get_time_timezone) | **GET** /api/time/timezone | Get timezone
-[**get_time_tzlist**](TimeApi.md#get_time_tzlist) | **GET** /api/time/tzlist | Get list of supported time zones
-[**set_time_timestamp**](TimeApi.md#set_time_timestamp) | **POST** /api/time/timestamp | Set current timestamp
-[**set_time_timezone**](TimeApi.md#set_time_timezone) | **POST** /api/time/timezone | Set timezone
+[**get_time**](TimeApi.md#get_time) | **GET** /busybar/time | Get current timestamp with timezone
+[**get_time_timezone**](TimeApi.md#get_time_timezone) | **GET** /busybar/time/timezone | Get timezone
+[**get_time_tzlist**](TimeApi.md#get_time_tzlist) | **GET** /busybar/time/tzlist | Get list of supported time zones
+[**set_time_timestamp**](TimeApi.md#set_time_timestamp) | **POST** /busybar/time/timestamp | Set current timestamp
+[**set_time_timezone**](TimeApi.md#set_time_timezone) | **POST** /busybar/time/timezone | Set timezone
 
 
 # **get_time**
@@ -20,7 +20,7 @@ Retrieves the current timestamp from RTC with timezone in ISO 8601 format
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -39,11 +39,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -71,7 +70,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -95,7 +94,7 @@ Get current timezone name
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -114,11 +113,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -146,7 +144,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -171,7 +169,7 @@ Retrieves the list of time zones accepted by /api/time/timezone
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -190,11 +188,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -222,7 +219,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -248,7 +245,7 @@ Sets the RTC timestamp in ISO 8601 format. Time zone qualifier (e.g. Z of UTC or
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -267,11 +264,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -303,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -328,7 +324,7 @@ Sets the timezone name. Use /api/time/tzlist to get available names list.
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -347,11 +343,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -383,7 +378,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **y** | **int** | Y coordinate of selected anchor point relative to top-left of display | [optional] [default to 0]
 **display** | **str** | Which display to show the element on (for dual-display devices) | [optional] [default to 'front']
 **align** | **str** | Anchor point of element. Also use &#x60;x&#x60; and &#x60;y&#x60; to position element. | [optional] 
+**z_index** | **int** | Order of the element. Elements with higher Z-indexes are drawn on top of those with lower ones. | [optional] 
 **text** | **str** | Text content to display (printable ASCII only; fonts are bitmap ASCII) | 
 **font** | **str** | One of the available fonts to display the text in | 
 **color** | **str** | Color to display the text in, in #RRGGBBAA format | [optional] [default to '#FFFFFFFF']
@@ -22,7 +23,7 @@ Name | Type | Description | Notes
 **scroll_repeat_delay** | **int** | Pause duration in milliseconds between successive scroll cycles | [optional] 
 **path** | **str** | Path to the animation file in the app&#39;s assets | 
 **stock_path** | **str** | Stock animation file name | 
-**opacity** | **int** | Opacity of the animated image in percentage (0-100) | [optional] [default to 100]
+**opacity** | **int** | Opacity of the image in percentage (0-100) | [optional] [default to 100]
 **loop** | **bool** | Whether to loop the requested part of the animation | [optional] [default to False]
 **await_previous_end** | **bool** | If the element has been created before and this flag is true, the previous range will finish before the requested one starts. | [optional] [default to False]
 **section** | **str** | Name of the section to play back. Specifying \&quot;default\&quot; selects the entire animation. | [optional] 
@@ -35,6 +36,7 @@ Name | Type | Description | Notes
 **fill_colors** | **List[str]** | Colors used for filling the rectangle. For solid fill, provide one color. For gradient fill, provide two colors. | [optional] [default to [#FFFFFFFF, #00000000]]
 **border_width** | **int** | Width of the rectangle border in pixels (0 for no border) | [optional] [default to 1]
 **border_color** | **str** | Color of the rectangle border in #RRGGBBAA format | [optional] [default to '#FFFFFFFF']
+**data** | **str** | XPM2 source as plain text: must begin with a \&quot;! XPM2\&quot; signature line, followed by a \&quot;width height ncolors cpp\&quot; header line, then ncolors color lines, then height pixel rows. Each color line is \&quot;&lt;chars&gt; &lt;visual&gt; &lt;value&gt;\&quot; where visual is c (color), g/g4 (grayscale), m (monochrome), or s (symbolic). Values can be hex (#RGB, #RRGGBB, #RRRGGGBBB, #RRRRGGGGBBBB),  or named (none, black, white, red, green, blue, yellow, cyan, magenta, gray, grey). Limits: ncolors &lt;&#x3D; 32, cpp &lt;&#x3D; 4, and width/height must not exceed the target display dimensions (see the \&quot;display\&quot; field). | 
 
 ## Example
 

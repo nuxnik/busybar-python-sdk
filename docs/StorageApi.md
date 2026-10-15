@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_storage_dir**](StorageApi.md#create_storage_dir) | **POST** /api/storage/mkdir | Create a directory on internal storage
-[**get_storage_status**](StorageApi.md#get_storage_status) | **GET** /api/storage/status | Show storage usage
-[**list_storage_files**](StorageApi.md#list_storage_files) | **GET** /api/storage/list | List files on internal storage
-[**read_storage_file**](StorageApi.md#read_storage_file) | **GET** /api/storage/read | Download file from internal storage
-[**remove_storage_file**](StorageApi.md#remove_storage_file) | **DELETE** /api/storage/remove | Remove a file on internal storage
-[**rename_storage_file**](StorageApi.md#rename_storage_file) | **POST** /api/storage/rename | Rename/move a file
-[**write_storage_file**](StorageApi.md#write_storage_file) | **POST** /api/storage/write | Upload file to internal storage
+[**create_storage_dir**](StorageApi.md#create_storage_dir) | **POST** /busybar/storage/mkdir | Create a directory on internal storage
+[**get_storage_status**](StorageApi.md#get_storage_status) | **GET** /busybar/storage/status | Show storage usage
+[**list_storage_files**](StorageApi.md#list_storage_files) | **GET** /busybar/storage/list | List files on internal storage
+[**read_storage_file**](StorageApi.md#read_storage_file) | **GET** /busybar/storage/read | Download file from internal storage
+[**remove_storage_file**](StorageApi.md#remove_storage_file) | **DELETE** /busybar/storage/remove | Remove a file on internal storage
+[**rename_storage_file**](StorageApi.md#rename_storage_file) | **POST** /busybar/storage/rename | Rename/move a file
+[**write_storage_file**](StorageApi.md#write_storage_file) | **POST** /busybar/storage/write | Upload file to internal storage
 
 
 # **create_storage_dir**
@@ -22,7 +22,7 @@ Creates a new directory with a specified path
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -41,11 +41,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -77,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -100,7 +99,7 @@ Show storage usage
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -119,11 +118,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -151,7 +149,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -174,7 +172,7 @@ List files on internal storage
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -193,11 +191,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -229,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -254,7 +251,7 @@ Downloads a file from a specified path
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -272,11 +269,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -308,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -333,7 +329,7 @@ Removes a file with a specified path
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -352,11 +348,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -388,7 +383,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -413,7 +408,7 @@ Moves a file to a new location
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -432,11 +427,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -470,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -487,7 +481,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **write_storage_file**
-> SuccessResponse write_storage_file(path, body)
+> SuccessResponse write_storage_file(path, body, append=append)
 
 Upload file to internal storage
 
@@ -495,7 +489,7 @@ Uploads a file to a specified path
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -514,11 +508,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -526,10 +519,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
     api_instance = busybar_python_sdk.StorageApi(api_client)
     path = '/ext/test.png' # str | Path for the uploaded file
     body = None # bytes | 
+    append = 1 # int | Append to the file instead of replacing it (0 - replace (default), 1 - append; the file is created if it does not exist) (optional)
 
     try:
         # Upload file to internal storage
-        api_response = api_instance.write_storage_file(path, body)
+        api_response = api_instance.write_storage_file(path, body, append=append)
         print("The response of StorageApi->write_storage_file:\n")
         pprint(api_response)
     except Exception as e:
@@ -545,6 +539,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **path** | **str**| Path for the uploaded file | 
  **body** | **bytes**|  | 
+ **append** | **int**| Append to the file instead of replacing it (0 - replace (default), 1 - append; the file is created if it does not exist) | [optional] 
 
 ### Return type
 
@@ -552,7 +547,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 

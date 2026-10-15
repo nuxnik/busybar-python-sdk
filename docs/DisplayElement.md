@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **y** | **int** | Y coordinate of selected anchor point relative to top-left of display | [optional] [default to 0]
 **display** | **str** | Which display to show the element on (for dual-display devices) | [optional] [default to 'front']
 **align** | **str** | Anchor point of element. Also use &#x60;x&#x60; and &#x60;y&#x60; to position element. | [optional] 
+**z_index** | **int** | Order of the element. Elements with higher Z-indexes are drawn on top of those with lower ones. | [optional] 
 
 ## Example
 

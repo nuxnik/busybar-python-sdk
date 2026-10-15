@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**api_ble_disable_post**](BLEApi.md#api_ble_disable_post) | **POST** /api/ble/disable | Disable BLE
-[**api_ble_enable_post**](BLEApi.md#api_ble_enable_post) | **POST** /api/ble/enable | Enable BLE
-[**api_ble_pairing_delete**](BLEApi.md#api_ble_pairing_delete) | **DELETE** /api/ble/pairing | Remove pairing
-[**api_ble_status_get**](BLEApi.md#api_ble_status_get) | **GET** /api/ble/status | 
+[**busybar_ble_disable_post**](BLEApi.md#busybar_ble_disable_post) | **POST** /busybar/ble/disable | Disable BLE
+[**busybar_ble_enable_post**](BLEApi.md#busybar_ble_enable_post) | **POST** /busybar/ble/enable | Enable BLE
+[**busybar_ble_pairing_delete**](BLEApi.md#busybar_ble_pairing_delete) | **DELETE** /busybar/ble/pairing | Remove pairing
+[**busybar_ble_status_get**](BLEApi.md#busybar_ble_status_get) | **GET** /busybar/ble/status | 
 
 
-# **api_ble_disable_post**
-> SuccessResponse api_ble_disable_post()
+# **busybar_ble_disable_post**
+> SuccessResponse busybar_ble_disable_post()
 
 Disable BLE
 
@@ -19,7 +19,7 @@ Stops advertising
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -38,11 +38,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -51,11 +50,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Disable BLE
-        api_response = api_instance.api_ble_disable_post()
-        print("The response of BLEApi->api_ble_disable_post:\n")
+        api_response = api_instance.busybar_ble_disable_post()
+        print("The response of BLEApi->busybar_ble_disable_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BLEApi->api_ble_disable_post: %s\n" % e)
+        print("Exception when calling BLEApi->busybar_ble_disable_post: %s\n" % e)
 ```
 
 
@@ -70,7 +69,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -86,8 +85,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_ble_enable_post**
-> SuccessResponse api_ble_enable_post()
+# **busybar_ble_enable_post**
+> SuccessResponse busybar_ble_enable_post()
 
 Enable BLE
 
@@ -95,7 +94,7 @@ Enables BLE module and starts advertising
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -114,11 +113,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -127,11 +125,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Enable BLE
-        api_response = api_instance.api_ble_enable_post()
-        print("The response of BLEApi->api_ble_enable_post:\n")
+        api_response = api_instance.busybar_ble_enable_post()
+        print("The response of BLEApi->busybar_ble_enable_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BLEApi->api_ble_enable_post: %s\n" % e)
+        print("Exception when calling BLEApi->busybar_ble_enable_post: %s\n" % e)
 ```
 
 
@@ -146,7 +144,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -162,8 +160,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_ble_pairing_delete**
-> SuccessResponse api_ble_pairing_delete()
+# **busybar_ble_pairing_delete**
+> SuccessResponse busybar_ble_pairing_delete()
 
 Remove pairing
 
@@ -171,7 +169,7 @@ Remove pairing with previous device
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -190,11 +188,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -203,11 +200,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Remove pairing
-        api_response = api_instance.api_ble_pairing_delete()
-        print("The response of BLEApi->api_ble_pairing_delete:\n")
+        api_response = api_instance.busybar_ble_pairing_delete()
+        print("The response of BLEApi->busybar_ble_pairing_delete:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BLEApi->api_ble_pairing_delete: %s\n" % e)
+        print("Exception when calling BLEApi->busybar_ble_pairing_delete: %s\n" % e)
 ```
 
 
@@ -222,7 +219,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -238,14 +235,14 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_ble_status_get**
-> BleStatusResponse api_ble_status_get()
+# **busybar_ble_status_get**
+> BleStatusResponse busybar_ble_status_get()
 
 Returns current BLE status
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -264,11 +261,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -276,11 +272,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
     api_instance = busybar_python_sdk.BLEApi(api_client)
 
     try:
-        api_response = api_instance.api_ble_status_get()
-        print("The response of BLEApi->api_ble_status_get:\n")
+        api_response = api_instance.busybar_ble_status_get()
+        print("The response of BLEApi->busybar_ble_status_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BLEApi->api_ble_status_get: %s\n" % e)
+        print("Exception when calling BLEApi->busybar_ble_status_get: %s\n" % e)
 ```
 
 
@@ -295,7 +291,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 

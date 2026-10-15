@@ -4,27 +4,28 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**clear_display**](AssetsApi.md#clear_display) | **DELETE** /api/display/draw | Clear display
-[**delete_app_assets**](AssetsApi.md#delete_app_assets) | **DELETE** /api/assets/upload | Delete app assets
-[**draw_on_display**](AssetsApi.md#draw_on_display) | **POST** /api/display/draw | Draw on display
-[**play_audio**](AssetsApi.md#play_audio) | **POST** /api/audio/play | Play audio file
-[**stop_audio**](AssetsApi.md#stop_audio) | **DELETE** /api/audio/play | Stop audio playback
-[**upload_asset_with_app_id**](AssetsApi.md#upload_asset_with_app_id) | **POST** /api/assets/upload | Upload asset file with app ID
+[**clear_display**](AssetsApi.md#clear_display) | **DELETE** /busybar/display/draw | Clear display
+[**delete_app_assets**](AssetsApi.md#delete_app_assets) | **DELETE** /busybar/assets/upload | Delete app assets
+[**draw_on_display**](AssetsApi.md#draw_on_display) | **POST** /busybar/display/draw | Draw on display
+[**play_audio**](AssetsApi.md#play_audio) | **POST** /busybar/audio/play | Play audio file
+[**stop_audio**](AssetsApi.md#stop_audio) | **DELETE** /busybar/audio/play | Stop audio playback
+[**upload_asset_with_app_id**](AssetsApi.md#upload_asset_with_app_id) | **POST** /busybar/assets/upload | Upload asset file with app ID
 
 
 # **clear_display**
-> SuccessResponse clear_display(application_name=application_name)
+> SuccessResponse clear_display(application_name=application_name, deletion_parameters=deletion_parameters)
 
 Clear display
 
-Deletes display elements drawn by the Canvas application. If application_name is specified, only elements for that app are removed.
+Deletes display elements drawn via this API. This operation can be selective - see the request body type.
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
+from busybar_python_sdk.models.deletion_parameters import DeletionParameters
 from busybar_python_sdk.models.success_response import SuccessResponse
 from busybar_python_sdk.rest import ApiException
 from pprint import pprint
@@ -40,21 +41,21 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = busybar_python_sdk.AssetsApi(api_client)
-    application_name = 'my_app' # str | Application identifier (optional)
+    application_name = 'application_name_example' # str | Application identifier (optional)
+    deletion_parameters = busybar_python_sdk.DeletionParameters() # DeletionParameters |  (optional)
 
     try:
         # Clear display
-        api_response = api_instance.clear_display(application_name=application_name)
+        api_response = api_instance.clear_display(application_name=application_name, deletion_parameters=deletion_parameters)
         print("The response of AssetsApi->clear_display:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,6 +70,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **application_name** | **str**| Application identifier | [optional] 
+ **deletion_parameters** | [**DeletionParameters**](DeletionParameters.md)|  | [optional] 
 
 ### Return type
 
@@ -76,18 +78,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Display cleared successfully |  -  |
+**200** | Display or some elements cleared successfully |  -  |
+**400** | Invalid deletion data |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -100,7 +103,7 @@ Deletes all assets for a specific app ID
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -119,17 +122,16 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = busybar_python_sdk.AssetsApi(api_client)
-    application_name = 'my_app' # str | Application ID whose assets should be deleted
+    application_name = 'application_name_example' # str | Application ID whose assets should be deleted
 
     try:
         # Delete app assets
@@ -155,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -183,7 +185,7 @@ Supports JSON-defined display elements.
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -203,11 +205,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -239,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -267,7 +268,7 @@ Supported formats include .snd files.
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -287,11 +288,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -349,7 +349,7 @@ Stops any currently playing audio
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -368,11 +368,10 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -400,7 +399,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
@@ -422,11 +421,13 @@ This endpoint does not need any parameter.
 
 Upload asset file with app ID
 
-Uploads a file to a specific app's assets directory
+Upload a file to the application-specific assets directory. If the directory does not yet exist, it will be created automatically.
+Additionally, if the file name contains a subdirectory, it will be created as well, and the file will be placed inside of it.
+
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
+* Bearer Authentication (barApiToken):
 
 ```python
 import busybar_python_sdk
@@ -445,18 +446,17 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+# Configure Bearer authorization: barApiToken
+configuration = busybar_python_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = busybar_python_sdk.AssetsApi(api_client)
-    application_name = 'my_app' # str | Application ID for organizing assets
-    file = 'data.png' # str | Filename for the uploaded asset
+    application_name = 'application_name_example' # str | Application name for organizing assets
+    file = 'file.png' # str | File path for the uploaded asset within the app assets directory
     body = None # bytes | 
 
     try:
@@ -475,8 +475,8 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **application_name** | **str**| Application ID for organizing assets | 
- **file** | **str**| Filename for the uploaded asset | 
+ **application_name** | **str**| Application name for organizing assets | 
+ **file** | **str**| File path for the uploaded asset within the app assets directory | 
  **body** | **bytes**|  | 
 
 ### Return type
@@ -485,7 +485,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+[barApiToken](../README.md#barApiToken)
 
 ### HTTP request headers
 
