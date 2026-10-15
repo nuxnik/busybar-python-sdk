@@ -2,59 +2,13 @@ openapi: 3.1.0
 info:
   title: BUSY Bar HTTP API
   description: HTTP API for BUSY Bar web server
-  version: 25.0.0
+  version: 27.5.0
   contact:
     name: tbd
-
 security:
-  - ApiKeyAuth: []
-  - {}
-
+- barApiToken: []
 paths:
-  /api/account:
-    delete:
-      tags:
-      - Account
-      summary: Unlink device from account
-      description: Removes account linking data
-      x-local-only: true
-      operationId: unlinkAccount
-      responses:
-        '200':
-          description: Done successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SuccessResponse'
-  /api/account/link:
-    post:
-      tags:
-      - Account
-      summary: Link device to account
-      description: Requests account link PIN. Works only if device is connected to MQTT
-        and is not linked to account
-      x-local-only: true
-      operationId: linkAccount
-      responses:
-        '200':
-          description: Data retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AccountLink'
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '503':
-          description: PIN request timeout
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /api/account/info:
+  /busybar/account/info:
     get:
       tags:
       - Account
@@ -68,7 +22,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountInfo'
-  /api/account/status:
+  /busybar/account/status:
     get:
       tags:
       - Account
@@ -82,7 +36,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountStatus'
-  /api/account/backend:
+  /busybar/account/backend:
     get:
       tags:
       - Account
@@ -102,56 +56,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    put:
-      tags:
-      - Account
-      summary: Set MQTT configuration
-      description: Sets MQTT backend configuration
-      x-local-only: true
-      operationId: setAccountBackend
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AccountBackend'
-      responses:
-        '200':
-          description: Set successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SuccessResponse'
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /api/assets/upload:
+  /busybar/assets/upload:
     post:
       tags:
       - Assets
       summary: Upload asset file with app ID
-      description: Uploads a file to a specific app's assets directory
+      description: 'Upload a file to the application-specific assets directory. If
+        the directory does not yet exist, it will be created automatically.
+
+        Additionally, if the file name contains a subdirectory, it will be created
+        as well, and the file will be placed inside of it.
+
+        '
       operationId: uploadAssetWithAppId
       parameters:
       - name: application_name
         in: query
         required: true
         schema:
-          type: string
-          pattern: ^[a-zA-Z0-9._-]+$
-        description: Application ID for organizing assets
-        example: my_app
+          $ref: '#/components/schemas/ApplicationName'
+        description: Application name for organizing assets
       - name: file
         in: query
         required: true
         schema:
-          type: string
-          pattern: ^[a-zA-Z0-9._-]+$
-        description: Filename for the uploaded asset
-        example: data.png
+          $ref: '#/components/schemas/AssetsPath'
+        description: File path for the uploaded asset within the app assets directory
+        example: file.png
       requestBody:
         required: true
         content:
@@ -196,10 +127,8 @@ paths:
         in: query
         required: true
         schema:
-          type: string
-          pattern: ^[a-zA-Z0-9._-]+$
+          $ref: '#/components/schemas/ApplicationName'
         description: Application ID whose assets should be deleted
-        example: my_app
       responses:
         '200':
           description: Assets deleted successfully
@@ -219,15 +148,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/display/draw:
+  /busybar/display/draw:
     post:
       tags:
       - Assets
       summary: Draw on display
       description: 'Sends drawing data to the display.
-  
+
         Supports JSON-defined display elements.
-  
+
         '
       operationId: drawOnDisplay
       requestBody:
@@ -250,7 +179,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
         '409':
-          description: Requested priority level is below that of currently active app
+          description: Requested priority level is below that of currently active
+            app
           content:
             application/json:
               schema:
@@ -259,33 +189,44 @@ paths:
       tags:
       - Assets
       summary: Clear display
-      description: Deletes display elements drawn by the Canvas application. If application_name
-        is specified, only elements for that app are removed.
+      description: Deletes display elements drawn via this API. This operation can
+        be selective - see the request body type.
       operationId: clearDisplay
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeletionParameters'
       parameters:
       - name: application_name
         in: query
         required: false
         schema:
-          type: string
+          $ref: '#/components/schemas/ApplicationName'
         description: Application identifier
-        example: my_app
       responses:
         '200':
-          description: Display cleared successfully
+          description: Display or some elements cleared successfully
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
-  /api/audio/play:
+        '400':
+          description: Invalid deletion data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /busybar/audio/play:
     post:
       tags:
       - Assets
       summary: Play audio file
       description: 'Plays an audio file from the assets directory.
-  
+
         Supported formats include .snd files.
-  
+
         '
       operationId: playAudio
       requestBody:
@@ -338,7 +279,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/ble/enable:
+  /busybar/ble/enable:
     post:
       tags:
       - BLE
@@ -358,7 +299,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/ble/disable:
+  /busybar/ble/disable:
     post:
       tags:
       - BLE
@@ -378,7 +319,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/ble/pairing:
+  /busybar/ble/pairing:
     delete:
       tags:
       - BLE
@@ -393,13 +334,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
         '503':
-          description: Failed to remove because BLE is not initialized or pairing was
-            already removed
+          description: Failed to remove because BLE is not initialized or pairing
+            was already removed
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/ble/status:
+  /busybar/ble/status:
     get:
       tags:
       - BLE
@@ -417,7 +358,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/busy/snapshot:
+  /busybar/busy/snapshot:
     get:
       tags:
       - Busy
@@ -463,7 +404,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/busy/profiles/{slot}:
+  /busybar/busy/profiles/{slot}:
     get:
       tags:
       - Busy
@@ -520,7 +461,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/input:
+  /busybar/input:
     post:
       tags:
       - Input
@@ -559,7 +500,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/access:
+  /busybar/access:
     get:
       tags:
       - Settings
@@ -612,7 +553,74 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/name:
+  /busybar/access/tokens:
+    get:
+      tags:
+      - Settings
+      summary: List all access tokens
+      description: Provides basic information all access tokens (IDs, names and timestamps)
+      operationId: getAccessTokens
+      responses:
+        '200':
+          description: Information retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessTokensInfo'
+    post:
+      tags:
+      - Settings
+      summary: Create a new access token
+      description: Generates a new access token for authorization alongside the access
+        key
+      operationId: createAccessToken
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessTokensCreateRequest'
+      responses:
+        '200':
+          description: Retrieved information about access tokens
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessToken'
+    delete:
+      tags:
+      - Settings
+      summary: Revoke all access tokens
+      description: Removes all access tokens all at once
+      operationId: deleteAllAccessTokens
+      responses:
+        '200':
+          description: Deleted all access tokens
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+  /busybar/access/tokens/{short_id}:
+    delete:
+      tags:
+      - Settings
+      summary: Revoke an access token
+      description: Removes the access token with the specified short ID
+      operationId: revokeAccessToken
+      parameters:
+      - name: short_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deleted corresponding access token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+  /busybar/name:
     get:
       tags:
       - Settings
@@ -649,7 +657,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/display/brightness:
+  /busybar/display/brightness:
     get:
       tags:
       - Settings
@@ -668,7 +676,7 @@ paths:
       - Settings
       summary: Set display brightness
       description: 'Set brightness for one or both displays
-  
+
         '
       operationId: setDisplayBrightness
       parameters:
@@ -693,7 +701,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/audio/volume:
+  /busybar/audio/volume:
     get:
       tags:
       - Settings
@@ -729,8 +737,8 @@ paths:
           enum:
           - 0
           - 1
-        description: Set volume silently (0 - play volume change sound(default), 1 -
-          do not play sound)
+        description: Set volume silently (0 - play volume change sound(default), 1
+          - do not play sound)
         example: 1
       responses:
         '200':
@@ -745,7 +753,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/smart_home/pairing:
+  /busybar/smart_home/pairing:
     get:
       tags:
       - Smart Home
@@ -797,7 +805,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/smart_home/switch:
+  /busybar/smart_home/switch:
     get:
       tags:
       - Smart Home
@@ -840,7 +848,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/storage/write:
+  /busybar/storage/write:
     post:
       tags:
       - Storage
@@ -856,6 +864,17 @@ paths:
           pattern: ^/ext(/[a-zA-Z0-9._\-]*)*$
         description: Path for the uploaded file
         example: /ext/test.png
+      - name: append
+        in: query
+        required: false
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+        description: Append to the file instead of replacing it (0 - replace (default),
+          1 - append; the file is created if it does not exist)
+        example: 1
       requestBody:
         required: true
         content:
@@ -889,7 +908,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/storage/read:
+  /busybar/storage/read:
     get:
       tags:
       - Storage
@@ -920,7 +939,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/storage/list:
+  /busybar/storage/list:
     get:
       tags:
       - Storage
@@ -948,7 +967,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/storage/remove:
+  /busybar/storage/remove:
     delete:
       tags:
       - Storage
@@ -977,7 +996,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/storage/mkdir:
+  /busybar/storage/mkdir:
     post:
       tags:
       - Storage
@@ -1006,7 +1025,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/storage/rename:
+  /busybar/storage/rename:
     post:
       tags:
       - Storage
@@ -1043,7 +1062,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/storage/status:
+  /busybar/storage/status:
     get:
       tags:
       - Storage
@@ -1062,29 +1081,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/status/ws:
-    get:
-      tags:
-      - Streaming
-      summary: Device status streaming WebSocket endpoint
-      description: 'WebSocket connection for real-time device status and screen streaming.
-  
-        Upgrade from HTTP to WebSocket protocol is required.
-  
-        After connection, client must enable streaming by sending JSON: {"enable": true}
-  
-        '
-      operationId: connectWebSocket
-      responses:
-        '101':
-          description: WebSocket connection established
-        '400':
-          description: Exceed max clients count
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /api/screen:
+  /busybar/screen:
     get:
       tags:
       - Streaming
@@ -1112,7 +1109,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/version:
+  /busybar/version:
     get:
       tags:
       - System
@@ -1126,7 +1123,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VersionInfo'
-  /api/transport:
+  /busybar/transport:
     get:
       tags:
       - System
@@ -1140,7 +1137,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NetworkInterfaceInfo'
-  /api/status:
+  /busybar/status:
     get:
       tags:
       - System
@@ -1160,7 +1157,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/status/device:
+  /busybar/status/device:
     get:
       tags:
       - System
@@ -1180,7 +1177,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/status/firmware:
+  /busybar/status/firmware:
     get:
       tags:
       - System
@@ -1200,7 +1197,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/status/system:
+  /busybar/status/system:
     get:
       tags:
       - System
@@ -1220,7 +1217,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/status/power:
+  /busybar/status/power:
     get:
       tags:
       - System
@@ -1240,7 +1237,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/log_dump:
+  /busybar/log_dump:
     post:
       tags:
       - System
@@ -1270,7 +1267,7 @@ paths:
                   path:
                     type: string
                     description: Full path to the written log file
-                    example: /ext/dump.txt
+                    example: /ext/log.txt
                 required:
                 - result
                 - path
@@ -1286,7 +1283,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/time:
+  /busybar/time:
     get:
       tags:
       - Time
@@ -1301,14 +1298,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TimestampInfo'
-  /api/time/timestamp:
+  /busybar/time/timestamp:
     post:
       tags:
       - Time
       summary: Set current timestamp
-      description: 'Sets the RTC timestamp in ISO 8601 format. Time zone qualifier (e.g.
-        Z of UTC or +hh:mm for local time) is required.
-  
+      description: 'Sets the RTC timestamp in ISO 8601 format. Time zone qualifier
+        (e.g. Z of UTC or +hh:mm for local time) is required.
+
         '
       operationId: setTimeTimestamp
       parameters:
@@ -1319,8 +1316,8 @@ paths:
           type: string
           format: date-time
           pattern: ^20[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3])(:?[0-5][0-9])?)$
-        description: ISO 8601 timestamp (e.g., 2025-10-02T14:30:45+02:00 for local time
-          or 2025-10-02T14:30:45Z for UTC)
+        description: ISO 8601 timestamp (e.g., 2025-10-02T14:30:45+02:00 for local
+          time or 2025-10-02T14:30:45Z for UTC)
         example: 2025-10-02T14:30:45+0100
       responses:
         '200':
@@ -1335,7 +1332,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/time/timezone:
+  /busybar/time/timezone:
     get:
       tags:
       - Time
@@ -1384,7 +1381,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/time/tzlist:
+  /busybar/time/tzlist:
     get:
       tags:
       - Time
@@ -1404,55 +1401,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/update:
-    post:
-      tags:
-      - Updater
-      summary: Update firmware
-      description: Uploads a firmware update package (TAR file) and initiates the update
-        process.
-      operationId: updateFirmware
-      parameters: []
-      requestBody:
-        required: true
-        content:
-          application/octet-stream:
-            schema:
-              type: string
-              format: binary
-              description: Firmware update TAR file.
-      responses:
-        '200':
-          description: Update initiated successfully. The device will reboot.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SuccessResponse'
-        '400':
-          description: Invalid parameters, invalid TAR file, or update preparation failed.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '409':
-          description: Upload received on a closed or invalid update context.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '413':
-          description: Update package too large.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '508':
-          description: Failed to save the update package.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /api/update/check:
+  /busybar/update/check:
     post:
       tags:
       - Updater
@@ -1478,7 +1427,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/update/status:
+  /busybar/update/status:
     get:
       tags:
       - Updater
@@ -1492,7 +1441,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateStatus'
-  /api/update/changelog:
+  /busybar/update/changelog:
     get:
       tags:
       - Updater
@@ -1519,23 +1468,24 @@ paths:
                     type: string
                     description: Changelog text
         '400':
-          description: Version parameter missing, update not available, or version mismatch
+          description: Version parameter missing, update not available, or version
+            mismatch
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/update/install:
+  /busybar/update/install:
     post:
       tags:
       - Updater
       summary: Install firmware update
       description: 'Starts asynchronous firmware installation from a remote URL.
-  
+
         The update process (download, SHA verification, unpack, prepare, reboot) runs
         in the background.
-  
+
         Use /api/update/status to monitor progress.
-  
+
         '
       operationId: installFirmwareUpdate
       parameters:
@@ -1554,24 +1504,48 @@ paths:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
         '400':
-          description: Version parameter missing, update not available, or version mismatch
+          description: Version parameter missing, update not available, or version
+            mismatch
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                allOf:
+                - $ref: '#/components/schemas/Error'
+                - type: object
+                  properties:
+                    error_code:
+                      type: string
+                      enum:
+                      - version_missing
+                      - not_available
+                      - version_mismatch
         '409':
           description: Update already in progress
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                allOf:
+                - $ref: '#/components/schemas/Error'
+                - type: object
+                  properties:
+                    error_code:
+                      type: string
+                      enum:
+                      - busy
         '503':
           description: Battery too low or installation failed to start
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-  /api/update/abort_download:
+                allOf:
+                - $ref: '#/components/schemas/Error'
+                - type: object
+                  properties:
+                    error_code:
+                      type: string
+                      enum:
+                      - battery_low
+  /busybar/update/abort_download:
     post:
       tags:
       - Updater
@@ -1585,7 +1559,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuccessResponse'
-  /api/update/autoupdate:
+  /busybar/update/autoupdate:
     get:
       tags:
       - Updater
@@ -1631,7 +1605,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/wifi/status:
+  /busybar/wifi/status:
     get:
       tags:
       - Wi-Fi
@@ -1650,125 +1624,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /api/wifi/connect:
-    post:
-      tags:
-      - Wi-Fi
-      description: Attempts to connect to Wi-Fi using config
-      x-local-only: true
-      parameters: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ConnectRequestConfig'
-      responses:
-        '200':
-          description: Network connection established
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SuccessResponse'
-        '400':
-          description: Already connected
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '503':
-          description: Wi-Fi operation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /api/wifi/disconnect:
-    post:
-      tags:
-      - Wi-Fi
-      description: Disconnects from Wi-Fi
-      x-local-only: true
-      parameters: []
-      responses:
-        '200':
-          description: Network connection terminated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SuccessResponse'
-        '400':
-          description: Already disconnected
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '503':
-          description: Wi-Fi operation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /api/wifi/networks:
-    get:
-      tags:
-      - Wi-Fi
-      operationId: getWifiNetworks
-      description: Scans environment for available Wi-Fi networks
-      x-local-only: true
-      parameters: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NetworkResponse'
-        '400':
-          description: Scan not possible when connected
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '503':
-          description: Wi-Fi operation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-
 components:
   securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: X-API-Token
-
+    barApiToken:
+      type: http
+      scheme: bearer
+      description: BUSY Cloud BAR-scope API token (Bearer).
   schemas:
     SuccessResponse:
       type: object
       properties:
         result:
           type: string
-          example: "OK"
+          example: OK
           description: Success status message
       required:
-        - result
-
+      - result
     Error:
       type: object
       properties:
         error:
           type: string
           description: Error message
-        code:
-          type: integer
+        error_code:
+          type: string
           description: Error code
       required:
-        - error
+      - error
       example:
-        error: "Invalid parameter"
-        code: 400
-
+        error: Invalid parameter
+        error_code: invalid_parameter
     AccountLink:
       type: object
       properties:
@@ -1831,14 +1716,25 @@ components:
       - server_url
       - client_cert_type
       - ignore_server_cert
+    ApplicationName:
+      type: string
+      maxLength: 32
+      pattern: ^[a-zA-Z0-9._-]+$
+      example: my_app
+    AssetsPath:
+      type: string
+      maxLength: 64
+      pattern: ^[a-zA-Z0-9._/-]+$
+    StockPath:
+      type: string
+      maxLength: 256
+      pattern: shared/[a-zA-Z0-9._/-]+$
     DisplayElements:
       type: object
       properties:
         application_name:
-          type: string
-          pattern: ^[a-zA-Z0-9._-]+$
-          description: Application ID for organizing assets
-          example: my_app
+          $ref: '#/components/schemas/ApplicationName'
+          description: Application name for organizing assets
         priority:
           type: integer
           minimum: 1
@@ -1847,15 +1743,15 @@ components:
             is accepted when its priority is greater than or equal to (>=) the priority
             of the currently running system app. Equal-priority requests from a different
             application_name override whatever is on screen. System app priority levels:
-            stub/poweroff apps = 0 (always preemptable), any standard built-in app = 10,
-            active BUSY/CUSTOM work session = 90. The draw API only accepts values 1–100;
-            0 is reserved for internal use.'
+            stub/poweroff apps = 0 (always preemptable), any standard built-in app
+            = 10, active BUSY/CUSTOM work session = 90. The draw API only accepts
+            values 1–100; 0 is reserved for internal use.'
           default: 50
         led_notification_color:
           type: string
           pattern: ^#[a-fA-F0-9]{8}$
-          description: 'Color to blink the status LED, in #RRGGBBAA format.  If not specified,
-            the LED will not blink.'
+          description: 'Color to blink the status LED, in #RRGGBBAA format. If not
+            specified, the LED will not blink.'
           example: '#FF0000FF'
         elements:
           type: array
@@ -1867,6 +1763,7 @@ components:
             - $ref: '#/components/schemas/AnimationElement'
             - $ref: '#/components/schemas/CountdownElement'
             - $ref: '#/components/schemas/RectangleElement'
+            - $ref: '#/components/schemas/XpmBitmapElement'
           description: Array of elements to display
       required:
       - application_name
@@ -1899,13 +1796,6 @@ components:
           font: small
           color: '#AAFF00FF'
           display: front
-        - id: '2'
-          timeout: 6
-          type: image
-          path: data.png
-          x: 0
-          y: 0
-          display: back
     DisplayElement:
       type: object
       required:
@@ -1933,18 +1823,21 @@ components:
           - animation
           - countdown
           - rectangle
+          - xpmbitmap
           description: Type of display element
         x:
           type: integer
           minimum: -4096
           maximum: 4095
-          description: X coordinate of selected anchor point relative to top-left of display
+          description: X coordinate of selected anchor point relative to top-left
+            of display
           default: 0
         y:
           type: integer
           minimum: -4096
           maximum: 4095
-          description: Y coordinate of selected anchor point relative to top-left of display
+          description: Y coordinate of selected anchor point relative to top-left
+            of display
           default: 0
         display:
           type: string
@@ -1966,6 +1859,12 @@ components:
           - bottom_left
           - bottom_mid
           - bottom_right
+        z_index:
+          type: integer
+          minimum: 0
+          maximum: 2147483647
+          description: Order of the element. Elements with higher Z-indexes are drawn
+            on top of those with lower ones.
       discriminator:
         propertyName: type
         mapping:
@@ -1974,6 +1873,7 @@ components:
           animation: '#/components/schemas/AnimationElement'
           countdown: '#/components/schemas/CountdownElement'
           rectangle: '#/components/schemas/RectangleElement'
+          xpmbitmap: '#/components/schemas/XpmBitmapElement'
     TextElement:
       allOf:
       - $ref: '#/components/schemas/DisplayElement'
@@ -1986,8 +1886,8 @@ components:
             type: string
             minLength: 1
             pattern: ^[\x20-\x7E]+$
-            description: Text content to display (printable ASCII only; fonts are bitmap
-              ASCII)
+            description: Text content to display (printable ASCII only; fonts are
+              bitmap ASCII)
           font:
             type: string
             description: One of the available fonts to display the text in
@@ -2020,7 +1920,8 @@ components:
           scroll_repeat_delay:
             type: integer
             minimum: 0
-            description: Pause duration in milliseconds between successive scroll cycles
+            description: Pause duration in milliseconds between successive scroll
+              cycles
     ImageElement:
       allOf:
       - $ref: '#/components/schemas/DisplayElement'
@@ -2031,15 +1932,13 @@ components:
             - path
             properties:
               path:
-                type: string
-                pattern: ^[a-zA-Z0-9._/-]+$
+                $ref: '#/components/schemas/AssetsPath'
                 description: Path to the image file in the app's assets
           - required:
             - stock_path
             properties:
               stock_path:
-                type: string
-                pattern: shared/[a-z0-9_.]+$
+                $ref: '#/components/schemas/StockPath'
                 description: Stock image file name
         - properties:
             opacity:
@@ -2056,13 +1955,11 @@ components:
         - oneOf:
           - properties:
               path:
-                type: string
-                pattern: ^[a-zA-Z0-9._/-]+$
+                $ref: '#/components/schemas/AssetsPath'
                 description: Path to the animation file in the app's assets
           - properties:
               stock_path:
-                type: string
-                pattern: shared/[a-z0-9_.]+$
+                $ref: '#/components/schemas/StockPath'
                 description: Stock animation file name
         - properties:
             loop:
@@ -2071,13 +1968,13 @@ components:
               default: false
             await_previous_end:
               type: boolean
-              description: If the element has been created before and this flag is true,
-                the previous range will finish before the requested one starts.
+              description: If the element has been created before and this flag is
+                true, the previous range will finish before the requested one starts.
               default: false
             section:
               type: string
-              description: Name of the section to play back. Specifying "default" selects
-                the entire animation.
+              description: Name of the section to play back. Specifying "default"
+                selects the entire animation.
             opacity:
               type: integer
               minimum: 0
@@ -2096,8 +1993,8 @@ components:
           timestamp:
             type: string
             pattern: ^[0-9]+$
-            description: 'Seconds-based Unix UTC timestamp to count down or up to. Note:
-              it''s a number in a string.'
+            description: 'Seconds-based Unix UTC timestamp to count down or up to.
+              Note: it''s a number in a string.'
           color:
             type: string
             description: 'Color to display the text in, in #RRGGBBAA format'
@@ -2166,33 +2063,71 @@ components:
             pattern: ^#[a-fA-F0-9]{8}$
             description: 'Color of the rectangle border in #RRGGBBAA format'
             default: '#FFFFFFFF'
+    XpmBitmapElement:
+      allOf:
+      - $ref: '#/components/schemas/DisplayElement'
+      - type: object
+        required:
+        - data
+        properties:
+          data:
+            type: string
+            minLength: 1
+            description: 'XPM2 source as plain text: must begin with a "! XPM2" signature
+              line, followed by a "width height ncolors cpp" header line, then ncolors
+              color lines, then height pixel rows. Each color line is "<chars> <visual>
+              <value>" where visual is c (color), g/g4 (grayscale), m (monochrome),
+              or s (symbolic). Values can be hex (#RGB, #RRGGBB, #RRRGGGBBB, #RRRRGGGGBBBB),  or
+              named (none, black, white, red, green, blue, yellow, cyan, magenta,
+              gray, grey). Limits: ncolors <= 32, cpp <= 4, and width/height must
+              not exceed the target display dimensions (see the "display" field).'
+          opacity:
+            type: integer
+            minimum: 0
+            maximum: 100
+            description: Opacity of the image in percentage (0-100)
+            default: 100
     PlayAudio:
       type: object
       allOf:
       - properties:
           application_name:
-            type: string
-            pattern: ^[a-zA-Z0-9._-]+$
-            description: Application ID for organizing assets
-            example: my_app
+            $ref: '#/components/schemas/ApplicationName'
+            description: Application name for organizing assets
         required:
         - application_name
       - oneOf:
         - properties:
             path:
-              type: string
-              pattern: ^[a-zA-Z0-9._/-]+$
+              $ref: '#/components/schemas/AssetsPath'
               description: Path to audio file within app's assets directory
-              example: data.snd
           required:
           - path
         - properties:
             stock_path:
-              type: string
-              pattern: shared/[a-z0-9_.]+$
+              $ref: '#/components/schemas/StockPath'
               description: Stock audio file name
+              examples:
+              - beep.snd
+              - sounds/alert.snd
           required:
           - stock_path
+    DeletionParameters:
+      type: object
+      properties:
+        application_name:
+          $ref: '#/components/schemas/ApplicationName'
+          description: Fill in this field for a sanity check that you actually own
+            these elements. Omit it to delete them anyway.
+          example: my_app
+        element_ids:
+          description: Unique identifiers of elements that should be deleted. Omit
+            this field to delete all elements.
+          type: array
+          items:
+            type: string
+            pattern: ^[a-zA-Z0-9._-]+$
+            example: my_element
     BleStatusResponse:
       type: object
       properties:
@@ -2424,6 +2359,58 @@ components:
           type: boolean
           description: Access key was set and is valid
           example: true
+    AccessToken:
+      type: object
+      properties:
+        short_id:
+          type: string
+          minLength: 8
+          maxLength: 8
+          description: Short ID of the access token. Matches the first 8 characters
+            of the token.
+          example: AAMTBO0f
+        display_id:
+          type: string
+          minLength: 15
+          maxLength: 15
+          description: Long ("display") ID of the access token. Matches the first
+            8 characters and last 6 characters of the token.
+          example: AAMTBO0f…Wn4fID
+        name:
+          type: string
+          description: User-assigned name of the token
+          example: My Script Name
+        created_at:
+          type: string
+          description: 'Unix millisecond timestamp of when the token was created.
+            Note: it''s a number in a string.'
+          example: '1785812863582'
+        last_used_at:
+          type: string
+          description: 'Unix millisecond timestamp of when the token was used to make
+            any request. Note: it''s a number in a string.'
+          example: '1785812891337'
+        token:
+          type: string
+          description: Full access token. Can be used in place of the access key in
+            "X-API-Token" header. Only shown once when generated, never again.
+          example: AAMTBO0fvAxB5ZO8ds8bA1JofGWn4fID
+    AccessTokensInfo:
+      type: object
+      properties:
+        tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccessToken'
+    AccessTokensCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Arbitrary name to differentiate this token from others
+          example: My Script Name
+      required:
+      - name
     NameInfo:
       type: object
       properties:
@@ -2432,8 +2419,8 @@ components:
           minLength: 1
           maxLength: 20
           pattern: ^[a-zA-Z0-9 !()_=+;:,.?'|@#$%^&*\[\]{}/\\"<>-]+$
-          description: Device name (letters, digits, spaces and common punctuation; no
-            backtick or tilde)
+          description: Device name (letters, digits, spaces and common punctuation;
+            no backtick or tilde)
           example: BUSY bar
       required:
       - name
@@ -2460,8 +2447,8 @@ components:
         fabric_count:
           type: integer
           example: 1
-          description: Number of smart homes (Matter "fabrics") that this device is paired
-            with ("commissioned into")
+          description: Number of smart homes (Matter "fabrics") that this device is
+            paired with ("commissioned into")
         latest_pairing_status:
           type: object
           properties:
@@ -2478,8 +2465,8 @@ components:
               example: completed_successfully
             timestamp:
               type: integer
-              description: UTC Unix second timestamp of latest state update. Only present
-                when a status update has occurred.
+              description: UTC Unix second timestamp of latest state update. Only
+                present when a status update has occurred.
               example: 1769436711
     SmartHomePairingPayload:
       type: object
@@ -2498,7 +2485,8 @@ components:
           example: MT:YNDA0-O913..VV7I000
         manual_code:
           type: string
-          description: Manual code for pairing with ("commissioning into") a smart home
+          description: Manual code for pairing with ("commissioning into") a smart
+            home
           example: 1155-360-0377
     SmartHomeSwitchState:
       type: object
@@ -2667,12 +2655,12 @@ components:
           example: 1767225600
         firmware_security:
           type: string
-          description: 'Summary of firmware signature protection derived from the wireless
-            coprocessor (Si917) NWP and M4 signature state. "secure" - both NWP and M4
-            firmware signature verification active; "insecure" - neither active; "other"
-            - mixed state (exactly one active); "unknown" - coprocessor info not ready
-            yet.
-    
+          description: 'Summary of firmware signature protection derived from the
+            wireless coprocessor (Si917) NWP and M4 signature state. "secure" - both
+            NWP and M4 firmware signature verification active; "insecure" - neither
+            active; "other" - mixed state (exactly one active); "unknown" - coprocessor
+            info not ready yet.
+
             '
           enum:
           - secure
@@ -2710,8 +2698,8 @@ components:
           example: abc123def456-dirty
         intercom_version:
           type: string
-          description: Intercom handshake version string (forced version, git hash, or
-            "intercom" if check disabled)
+          description: Intercom handshake version string (forced version, git hash,
+            or "intercom" if check disabled)
           example: abc123de
         nwp_version:
           type: string
@@ -2921,8 +2909,8 @@ components:
           status: available
     AutoupdateSettings:
       type: object
-      description: Autoupdate configuration settings. All fields are optional for POST
-        requests.
+      description: Autoupdate configuration settings. All fields are optional for
+        POST requests.
       properties:
         is_enabled:
           type: boolean
@@ -3011,10 +2999,10 @@ components:
     StatusResponse:
       type: object
       description: 'Wi-Fi status. Only `state` is always present.
-    
-        Fields `ssid`, `bssid`, `channel`, `rssi`, `security`, and `ip_config` are only
-        included when state is "connected".
-    
+
+        Fields `ssid`, `bssid`, `channel`, `rssi`, `security`, and `ip_config` are
+        only included when state is "connected".
+
         '
       required:
       - state
@@ -3060,31 +3048,32 @@ components:
             address:
               type: string
               example: 192.168.50.5
-
 tags:
-  - name: Account
-    description: Account linking and MQTT status
-  - name: Assets
-    description: Asset file management and display control
-  - name: BLE
-    description: Allows to operate with BLE
-  - name: Busy
-    description: BUSY timer control
-  - name: Input
-    description: Input events
-  - name: Settings
-    description: Device settings
-  - name: Smart Home
-    description: Smart Home event handling
-  - name: Storage
-    description: File storage operations
-  - name: Streaming
-    description: Screen streaming
-  - name: System
-    description: System information and control
-  - name: Time
-    description: Time-related methods
-  - name: Updater
-    description: Firmware update control
-  - name: Wi-Fi
-    description: Allows to operate with Wi-Fi
+- name: Account
+  description: Account linking and MQTT status
+- name: Assets
+  description: Asset file management and display control
+- name: BLE
+  description: Allows to operate with BLE
+- name: Busy
+  description: BUSY timer control
+- name: Input
+  description: Input events
+- name: Settings
+  description: Device settings
+- name: Smart Home
+  description: Smart Home event handling
+- name: Storage
+  description: File storage operations
+- name: Streaming
+  description: Screen streaming
+- name: System
+  description: System information and control
+- name: Time
+  description: Time-related methods
+- name: Updater
+  description: Firmware update control
+- name: Wi-Fi
+  description: Allows to operate with Wi-Fi
+servers:
+- url: /
