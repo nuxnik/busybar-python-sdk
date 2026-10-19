@@ -36,4 +36,4 @@ jobs:
         run: |
           # The legacy test/ suite targets the abandoned openapi_client package.
           # Hand-written tests for the current busybar_python_sdk live in tests/.
-          pytest --ignore=test --cov=busybar_python_sdk
+          python -m pytest --ignore=test --cov=busybar_python_sdk
