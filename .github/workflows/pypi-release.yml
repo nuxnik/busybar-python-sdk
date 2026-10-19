@@ -82,12 +82,11 @@ jobs:
               echo "Working tree already conforms to ${RELEASE_VERSION}."
               if git rev-parse -q --verify "refs/tags/v${RELEASE_VERSION}" >/dev/null 2>&1; then
                   TAG_COMMIT="$(git rev-list -n 1 "v${RELEASE_VERSION}")"
-                  HEAD_COMMIT="$(git rev-parse HEAD)"
-                  if [ "${TAG_COMMIT}" != "${HEAD_COMMIT}" ]; then
-                      echo "::error::Tag v${RELEASE_VERSION} already exists at ${TAG_COMMIT} (HEAD is ${HEAD_COMMIT}); refusing to re-release ${RELEASE_VERSION}."
+                  if ! git diff --quiet "v${RELEASE_VERSION}" -- busybar_python_sdk pyproject.toml setup.py setup.cfg requirements.txt README.md; then
+                      echo "::error::Tag v${RELEASE_VERSION} exists, but package files differ from the tagged release commit ${TAG_COMMIT}; refusing to reuse this version."
                       exit 1
                   fi
-                  echo "Existing tag v${RELEASE_VERSION} points at HEAD; continuing to retry the package publish."
+                  echo "Tag v${RELEASE_VERSION} exists and package files match the tagged version; continuing to retry the package publish."
                   echo "needs_commit=false" >> "${GITHUB_OUTPUT}"
                   echo "needs_tag=false" >> "${GITHUB_OUTPUT}"
               else
