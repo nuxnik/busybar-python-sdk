@@ -68,6 +68,7 @@ jobs:
         run: ./bin/build
 
       - name: Finalize packaging metadata
+        id: finalize
         env:
           RELEASE_VERSION: ${{ steps.api-version.outputs.version }}
         run: |
@@ -75,30 +76,39 @@ jobs:
           python3 -m pip install --quiet tomlkit
           python3 bin/release-metadata "${RELEASE_VERSION}"
 
-          # No-op guard: metadata and build artifacts already conform to
-          # this version -> complete without committing, tagging, or
-          # publishing. (git diff --exit-code plus untracked files, so a
-          # freshly generated file can never be missed.)
-          if git diff --exit-code --quiet \
+          # Detect both tracked changes and newly generated files.
+          if git diff --quiet \
               && [ -z "$(git ls-files --others --exclude-standard)" ]; then
-              echo "Working tree already conforms to ${RELEASE_VERSION}; nothing to release."
-              exit 0
-          fi
-
-          # Tag collision guard.
-          if git rev-parse -q --verify "refs/tags/v${RELEASE_VERSION}" >/dev/null 2>&1; then
-              TAG_COMMIT="$(git rev-list -n 1 "v${RELEASE_VERSION}")"
-              HEAD_COMMIT="$(git rev-parse HEAD)"
-              if [ "${TAG_COMMIT}" = "${HEAD_COMMIT}" ]; then
-                  echo "Tag v${RELEASE_VERSION} already points at HEAD; this version is already released."
-                  exit 0
+              echo "Working tree already conforms to ${RELEASE_VERSION}."
+              if git rev-parse -q --verify "refs/tags/v${RELEASE_VERSION}" >/dev/null 2>&1; then
+                  TAG_COMMIT="$(git rev-list -n 1 "v${RELEASE_VERSION}")"
+                  HEAD_COMMIT="$(git rev-parse HEAD)"
+                  if [ "${TAG_COMMIT}" != "${HEAD_COMMIT}" ]; then
+                      echo "::error::Tag v${RELEASE_VERSION} already exists at ${TAG_COMMIT} (HEAD is ${HEAD_COMMIT}); refusing to re-release ${RELEASE_VERSION}."
+                      exit 1
+                  fi
+                  echo "Existing tag v${RELEASE_VERSION} points at HEAD; continuing to retry the package publish."
+                  echo "needs_commit=false" >> "${GITHUB_OUTPUT}"
+                  echo "needs_tag=false" >> "${GITHUB_OUTPUT}"
+              else
+                  echo "No metadata changes and no existing tag; tagging current HEAD."
+                  echo "needs_commit=false" >> "${GITHUB_OUTPUT}"
+                  echo "needs_tag=true" >> "${GITHUB_OUTPUT}"
               fi
-              echo "::error::Tag v${RELEASE_VERSION} already exists at ${TAG_COMMIT} (HEAD is ${HEAD_COMMIT}); refusing to re-release ${RELEASE_VERSION}."
-              exit 1
+          else
+              # Changed files may not reuse an existing version tag.
+              if git rev-parse -q --verify "refs/tags/v${RELEASE_VERSION}" >/dev/null 2>&1; then
+                  TAG_COMMIT="$(git rev-list -n 1 "v${RELEASE_VERSION}")"
+                  echo "::error::Tag v${RELEASE_VERSION} already exists at ${TAG_COMMIT}; refusing to release changed files under the same version."
+                  exit 1
+              fi
+              echo "Proceeding with release of ${RELEASE_VERSION}"
+              echo "needs_commit=true" >> "${GITHUB_OUTPUT}"
+              echo "needs_tag=true" >> "${GITHUB_OUTPUT}"
           fi
-          echo "Proceeding with release of ${RELEASE_VERSION}"
 
       - name: Commit and push finalized metadata
+        if: steps.finalize.outputs.needs_commit == 'true'
         env:
           RELEASE_VERSION: ${{ steps.api-version.outputs.version }}
         run: |
@@ -110,6 +120,7 @@ jobs:
           git push origin HEAD:main
 
       - name: Create and push release tag
+        if: steps.finalize.outputs.needs_tag == 'true'
         env:
           RELEASE_VERSION: ${{ steps.api-version.outputs.version }}
         run: |
