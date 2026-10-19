@@ -21,3 +21,6 @@
 #docs/*.md
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
+
+# Preserve the hand-maintained CI workflow; the release token cannot update workflow files.
+.github/workflows/python.yml
