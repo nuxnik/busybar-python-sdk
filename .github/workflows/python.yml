@@ -34,4 +34,6 @@ jobs:
           pip install -r test-requirements.txt
       - name: Test with pytest
         run: |
-          pytest --cov=busybar_python_sdk
+          # The legacy test/ suite targets the abandoned openapi_client package.
+          # Hand-written tests for the current busybar_python_sdk live in tests/.
+          pytest --ignore=test --cov=busybar_python_sdk
