@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_time**](TimeApi.md#get_time) | **GET** /busybar/time | Get current timestamp with timezone
-[**get_time_timezone**](TimeApi.md#get_time_timezone) | **GET** /busybar/time/timezone | Get timezone
-[**get_time_tzlist**](TimeApi.md#get_time_tzlist) | **GET** /busybar/time/tzlist | Get list of supported time zones
-[**set_time_timestamp**](TimeApi.md#set_time_timestamp) | **POST** /busybar/time/timestamp | Set current timestamp
-[**set_time_timezone**](TimeApi.md#set_time_timezone) | **POST** /busybar/time/timezone | Set timezone
+[**get_time**](TimeApi.md#get_time) | **GET** /api/time | Get current timestamp with timezone
+[**get_time_timezone**](TimeApi.md#get_time_timezone) | **GET** /api/time/timezone | Get timezone
+[**get_time_tzlist**](TimeApi.md#get_time_tzlist) | **GET** /api/time/tzlist | Get list of supported time zones
+[**set_time_timestamp**](TimeApi.md#set_time_timestamp) | **POST** /api/time/timestamp | Set current timestamp
+[**set_time_timezone**](TimeApi.md#set_time_timezone) | **POST** /api/time/timezone | Set timezone
 
 
 # **get_time**

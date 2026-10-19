@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**busybar_screen_get**](StreamingApi.md#busybar_screen_get) | **GET** /busybar/screen | Get single frame for requested screen
+[**api_screen_get**](StreamingApi.md#api_screen_get) | **GET** /api/screen | Get single frame for requested screen
 
 
-# **busybar_screen_get**
-> str busybar_screen_get(display)
+# **api_screen_get**
+> str api_screen_get(display)
 
 Get single frame for requested screen
 
@@ -45,11 +45,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Get single frame for requested screen
-        api_response = api_instance.busybar_screen_get(display)
-        print("The response of StreamingApi->busybar_screen_get:\n")
+        api_response = api_instance.api_screen_get(display)
+        print("The response of StreamingApi->api_screen_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling StreamingApi->busybar_screen_get: %s\n" % e)
+        print("Exception when calling StreamingApi->api_screen_get: %s\n" % e)
 ```
 
 

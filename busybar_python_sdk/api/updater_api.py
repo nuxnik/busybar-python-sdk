@@ -270,7 +270,7 @@ class UpdaterApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/update/abort_download',
+            resource_path='/api/update/abort_download',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -522,7 +522,7 @@ class UpdaterApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/update/check',
+            resource_path='/api/update/check',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -768,7 +768,7 @@ class UpdaterApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/update/autoupdate',
+            resource_path='/api/update/autoupdate',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1014,7 +1014,7 @@ class UpdaterApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/update/status',
+            resource_path='/api/update/status',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1280,7 +1280,7 @@ class UpdaterApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/update/changelog',
+            resource_path='/api/update/changelog',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1552,7 +1552,7 @@ class UpdaterApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/update/install',
+            resource_path='/api/update/install',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1832,7 +1832,7 @@ class UpdaterApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/update/autoupdate',
+            resource_path='/api/update/autoupdate',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

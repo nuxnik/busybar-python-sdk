@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**set_input_key**](InputApi.md#set_input_key) | **POST** /busybar/input | Send input event
+[**set_input_key**](InputApi.md#set_input_key) | **POST** /api/input | Send input event
 
 
 # **set_input_key**

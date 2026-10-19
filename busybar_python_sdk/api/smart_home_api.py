@@ -39,7 +39,7 @@ class SmartHomeApi:
 
 
     @validate_call
-    def busybar_smart_home_pairing_delete(
+    def api_smart_home_pairing_delete(
         self,
         _request_timeout: Union[
             None,
@@ -79,7 +79,7 @@ class SmartHomeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_smart_home_pairing_delete_serialize(
+        _param = self._api_smart_home_pairing_delete_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -102,7 +102,7 @@ class SmartHomeApi:
 
 
     @validate_call
-    def busybar_smart_home_pairing_delete_with_http_info(
+    def api_smart_home_pairing_delete_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -142,7 +142,7 @@ class SmartHomeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_smart_home_pairing_delete_serialize(
+        _param = self._api_smart_home_pairing_delete_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -165,7 +165,7 @@ class SmartHomeApi:
 
 
     @validate_call
-    def busybar_smart_home_pairing_delete_without_preload_content(
+    def api_smart_home_pairing_delete_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -205,7 +205,7 @@ class SmartHomeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_smart_home_pairing_delete_serialize(
+        _param = self._api_smart_home_pairing_delete_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -223,7 +223,7 @@ class SmartHomeApi:
         return response_data.response
 
 
-    def _busybar_smart_home_pairing_delete_serialize(
+    def _api_smart_home_pairing_delete_serialize(
         self,
         _request_auth,
         _content_type,
@@ -268,7 +268,7 @@ class SmartHomeApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/busybar/smart_home/pairing',
+            resource_path='/api/smart_home/pairing',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -285,7 +285,7 @@ class SmartHomeApi:
 
 
     @validate_call
-    def busybar_smart_home_switch_get(
+    def api_smart_home_switch_get(
         self,
         _request_timeout: Union[
             None,
@@ -325,7 +325,7 @@ class SmartHomeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_smart_home_switch_get_serialize(
+        _param = self._api_smart_home_switch_get_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -348,7 +348,7 @@ class SmartHomeApi:
 
 
     @validate_call
-    def busybar_smart_home_switch_get_with_http_info(
+    def api_smart_home_switch_get_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -388,7 +388,7 @@ class SmartHomeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_smart_home_switch_get_serialize(
+        _param = self._api_smart_home_switch_get_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -411,7 +411,7 @@ class SmartHomeApi:
 
 
     @validate_call
-    def busybar_smart_home_switch_get_without_preload_content(
+    def api_smart_home_switch_get_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -451,7 +451,7 @@ class SmartHomeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_smart_home_switch_get_serialize(
+        _param = self._api_smart_home_switch_get_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -469,7 +469,7 @@ class SmartHomeApi:
         return response_data.response
 
 
-    def _busybar_smart_home_switch_get_serialize(
+    def _api_smart_home_switch_get_serialize(
         self,
         _request_auth,
         _content_type,
@@ -514,7 +514,7 @@ class SmartHomeApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/smart_home/switch',
+            resource_path='/api/smart_home/switch',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -531,7 +531,7 @@ class SmartHomeApi:
 
 
     @validate_call
-    def busybar_smart_home_switch_post(
+    def api_smart_home_switch_post(
         self,
         smart_home_switch_state: SmartHomeSwitchState,
         _request_timeout: Union[
@@ -574,7 +574,7 @@ class SmartHomeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_smart_home_switch_post_serialize(
+        _param = self._api_smart_home_switch_post_serialize(
             smart_home_switch_state=smart_home_switch_state,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -598,7 +598,7 @@ class SmartHomeApi:
 
 
     @validate_call
-    def busybar_smart_home_switch_post_with_http_info(
+    def api_smart_home_switch_post_with_http_info(
         self,
         smart_home_switch_state: SmartHomeSwitchState,
         _request_timeout: Union[
@@ -641,7 +641,7 @@ class SmartHomeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_smart_home_switch_post_serialize(
+        _param = self._api_smart_home_switch_post_serialize(
             smart_home_switch_state=smart_home_switch_state,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -665,7 +665,7 @@ class SmartHomeApi:
 
 
     @validate_call
-    def busybar_smart_home_switch_post_without_preload_content(
+    def api_smart_home_switch_post_without_preload_content(
         self,
         smart_home_switch_state: SmartHomeSwitchState,
         _request_timeout: Union[
@@ -708,7 +708,7 @@ class SmartHomeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_smart_home_switch_post_serialize(
+        _param = self._api_smart_home_switch_post_serialize(
             smart_home_switch_state=smart_home_switch_state,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -727,7 +727,7 @@ class SmartHomeApi:
         return response_data.response
 
 
-    def _busybar_smart_home_switch_post_serialize(
+    def _api_smart_home_switch_post_serialize(
         self,
         smart_home_switch_state,
         _request_auth,
@@ -788,7 +788,7 @@ class SmartHomeApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/smart_home/switch',
+            resource_path='/api/smart_home/switch',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1031,7 +1031,7 @@ class SmartHomeApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/smart_home/pairing',
+            resource_path='/api/smart_home/pairing',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1277,7 +1277,7 @@ class SmartHomeApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/smart_home/pairing',
+            resource_path='/api/smart_home/pairing',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

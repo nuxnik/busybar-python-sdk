@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**dump_log**](SystemApi.md#dump_log) | **POST** /busybar/log_dump | Dump captured log
-[**get_status**](SystemApi.md#get_status) | **GET** /busybar/status | Get device status
-[**get_status_device**](SystemApi.md#get_status_device) | **GET** /busybar/status/device | Get device info
-[**get_status_firmware**](SystemApi.md#get_status_firmware) | **GET** /busybar/status/firmware | Get firmware info
-[**get_status_power**](SystemApi.md#get_status_power) | **GET** /busybar/status/power | Get power status
-[**get_status_system**](SystemApi.md#get_status_system) | **GET** /busybar/status/system | Get system status
-[**get_transport**](SystemApi.md#get_transport) | **GET** /busybar/transport | Get device network connection info
-[**get_version**](SystemApi.md#get_version) | **GET** /busybar/version | Get API version information
+[**dump_log**](SystemApi.md#dump_log) | **POST** /api/log_dump | Dump captured log
+[**get_status**](SystemApi.md#get_status) | **GET** /api/status | Get device status
+[**get_status_device**](SystemApi.md#get_status_device) | **GET** /api/status/device | Get device info
+[**get_status_firmware**](SystemApi.md#get_status_firmware) | **GET** /api/status/firmware | Get firmware info
+[**get_status_power**](SystemApi.md#get_status_power) | **GET** /api/status/power | Get power status
+[**get_status_system**](SystemApi.md#get_status_system) | **GET** /api/status/system | Get system status
+[**get_transport**](SystemApi.md#get_transport) | **GET** /api/transport | Get device network connection info
+[**get_version**](SystemApi.md#get_version) | **GET** /api/version | Get API version information
 
 
 # **dump_log**

@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**busybar_wifi_status_get**](WiFiApi.md#busybar_wifi_status_get) | **GET** /busybar/wifi/status | 
+[**api_wifi_status_get**](WiFiApi.md#api_wifi_status_get) | **GET** /api/wifi/status | 
 
 
-# **busybar_wifi_status_get**
-> StatusResponse busybar_wifi_status_get()
+# **api_wifi_status_get**
+> StatusResponse api_wifi_status_get()
 
 Returns current Wi-Fi status
 
@@ -44,11 +44,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
     api_instance = busybar_python_sdk.WiFiApi(api_client)
 
     try:
-        api_response = api_instance.busybar_wifi_status_get()
-        print("The response of WiFiApi->busybar_wifi_status_get:\n")
+        api_response = api_instance.api_wifi_status_get()
+        print("The response of WiFiApi->api_wifi_status_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling WiFiApi->busybar_wifi_status_get: %s\n" % e)
+        print("Exception when calling WiFiApi->api_wifi_status_get: %s\n" % e)
 ```
 
 

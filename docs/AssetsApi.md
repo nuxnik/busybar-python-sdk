@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**clear_display**](AssetsApi.md#clear_display) | **DELETE** /busybar/display/draw | Clear display
-[**delete_app_assets**](AssetsApi.md#delete_app_assets) | **DELETE** /busybar/assets/upload | Delete app assets
-[**draw_on_display**](AssetsApi.md#draw_on_display) | **POST** /busybar/display/draw | Draw on display
-[**play_audio**](AssetsApi.md#play_audio) | **POST** /busybar/audio/play | Play audio file
-[**stop_audio**](AssetsApi.md#stop_audio) | **DELETE** /busybar/audio/play | Stop audio playback
-[**upload_asset_with_app_id**](AssetsApi.md#upload_asset_with_app_id) | **POST** /busybar/assets/upload | Upload asset file with app ID
+[**clear_display**](AssetsApi.md#clear_display) | **DELETE** /api/display/draw | Clear display
+[**delete_app_assets**](AssetsApi.md#delete_app_assets) | **DELETE** /api/assets/upload | Delete app assets
+[**draw_on_display**](AssetsApi.md#draw_on_display) | **POST** /api/display/draw | Draw on display
+[**play_audio**](AssetsApi.md#play_audio) | **POST** /api/audio/play | Play audio file
+[**stop_audio**](AssetsApi.md#stop_audio) | **DELETE** /api/audio/play | Stop audio playback
+[**upload_asset_with_app_id**](AssetsApi.md#upload_asset_with_app_id) | **POST** /api/assets/upload | Upload asset file with app ID
 
 
 # **clear_display**

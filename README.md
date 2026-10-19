@@ -98,70 +98,70 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountApi* | [**get_account_backend**](docs/AccountApi.md#get_account_backend) | **GET** /busybar/account/backend | Get MQTT configuration
-*AccountApi* | [**get_account_info**](docs/AccountApi.md#get_account_info) | **GET** /busybar/account/info | Get linked account info
-*AccountApi* | [**get_account_status**](docs/AccountApi.md#get_account_status) | **GET** /busybar/account/status | Get MQTT status info
-*AssetsApi* | [**clear_display**](docs/AssetsApi.md#clear_display) | **DELETE** /busybar/display/draw | Clear display
-*AssetsApi* | [**delete_app_assets**](docs/AssetsApi.md#delete_app_assets) | **DELETE** /busybar/assets/upload | Delete app assets
-*AssetsApi* | [**draw_on_display**](docs/AssetsApi.md#draw_on_display) | **POST** /busybar/display/draw | Draw on display
-*AssetsApi* | [**play_audio**](docs/AssetsApi.md#play_audio) | **POST** /busybar/audio/play | Play audio file
-*AssetsApi* | [**stop_audio**](docs/AssetsApi.md#stop_audio) | **DELETE** /busybar/audio/play | Stop audio playback
-*AssetsApi* | [**upload_asset_with_app_id**](docs/AssetsApi.md#upload_asset_with_app_id) | **POST** /busybar/assets/upload | Upload asset file with app ID
-*BLEApi* | [**busybar_ble_disable_post**](docs/BLEApi.md#busybar_ble_disable_post) | **POST** /busybar/ble/disable | Disable BLE
-*BLEApi* | [**busybar_ble_enable_post**](docs/BLEApi.md#busybar_ble_enable_post) | **POST** /busybar/ble/enable | Enable BLE
-*BLEApi* | [**busybar_ble_pairing_delete**](docs/BLEApi.md#busybar_ble_pairing_delete) | **DELETE** /busybar/ble/pairing | Remove pairing
-*BLEApi* | [**busybar_ble_status_get**](docs/BLEApi.md#busybar_ble_status_get) | **GET** /busybar/ble/status | 
-*BusyApi* | [**get_busy_profile**](docs/BusyApi.md#get_busy_profile) | **GET** /busybar/busy/profiles/{slot} | Get BUSY timer profile
-*BusyApi* | [**get_busy_snapshot**](docs/BusyApi.md#get_busy_snapshot) | **GET** /busybar/busy/snapshot | Get BUSY timer snapshot
-*BusyApi* | [**set_busy_profile**](docs/BusyApi.md#set_busy_profile) | **PUT** /busybar/busy/profiles/{slot} | Set BUSY timer profile
-*BusyApi* | [**set_busy_snapshot**](docs/BusyApi.md#set_busy_snapshot) | **PUT** /busybar/busy/snapshot | Set BUSY timer snapshot
-*InputApi* | [**set_input_key**](docs/InputApi.md#set_input_key) | **POST** /busybar/input | Send input event
-*SettingsApi* | [**busybar_name_get**](docs/SettingsApi.md#busybar_name_get) | **GET** /busybar/name | Get current device name
-*SettingsApi* | [**busybar_name_post**](docs/SettingsApi.md#busybar_name_post) | **POST** /busybar/name | Set new device name
-*SettingsApi* | [**create_access_token**](docs/SettingsApi.md#create_access_token) | **POST** /busybar/access/tokens | Create a new access token
-*SettingsApi* | [**delete_all_access_tokens**](docs/SettingsApi.md#delete_all_access_tokens) | **DELETE** /busybar/access/tokens | Revoke all access tokens
-*SettingsApi* | [**get_access_tokens**](docs/SettingsApi.md#get_access_tokens) | **GET** /busybar/access/tokens | List all access tokens
-*SettingsApi* | [**get_audio_volume**](docs/SettingsApi.md#get_audio_volume) | **GET** /busybar/audio/volume | Get audio volume
-*SettingsApi* | [**get_display_brightness**](docs/SettingsApi.md#get_display_brightness) | **GET** /busybar/display/brightness | Get display brightness
-*SettingsApi* | [**get_http_access**](docs/SettingsApi.md#get_http_access) | **GET** /busybar/access | Get HTTP API access over Wi-Fi configuration
-*SettingsApi* | [**revoke_access_token**](docs/SettingsApi.md#revoke_access_token) | **DELETE** /busybar/access/tokens/{short_id} | Revoke an access token
-*SettingsApi* | [**set_audio_volume**](docs/SettingsApi.md#set_audio_volume) | **POST** /busybar/audio/volume | Set audio volume
-*SettingsApi* | [**set_display_brightness**](docs/SettingsApi.md#set_display_brightness) | **POST** /busybar/display/brightness | Set display brightness
-*SettingsApi* | [**set_http_access**](docs/SettingsApi.md#set_http_access) | **POST** /busybar/access | Set HTTP API access over Wi-Fi configuration
-*SmartHomeApi* | [**busybar_smart_home_pairing_delete**](docs/SmartHomeApi.md#busybar_smart_home_pairing_delete) | **DELETE** /busybar/smart_home/pairing | Erase all smart home links
-*SmartHomeApi* | [**busybar_smart_home_switch_get**](docs/SmartHomeApi.md#busybar_smart_home_switch_get) | **GET** /busybar/smart_home/switch | Get state of emulated smart home switch
-*SmartHomeApi* | [**busybar_smart_home_switch_post**](docs/SmartHomeApi.md#busybar_smart_home_switch_post) | **POST** /busybar/smart_home/switch | Set state of emulated smart home switch
-*SmartHomeApi* | [**get_smart_home_commissioning_status**](docs/SmartHomeApi.md#get_smart_home_commissioning_status) | **GET** /busybar/smart_home/pairing | Smart home commissioning status
-*SmartHomeApi* | [**start_smart_home_pairing**](docs/SmartHomeApi.md#start_smart_home_pairing) | **POST** /busybar/smart_home/pairing | Link device to a smart home
-*StorageApi* | [**create_storage_dir**](docs/StorageApi.md#create_storage_dir) | **POST** /busybar/storage/mkdir | Create a directory on internal storage
-*StorageApi* | [**get_storage_status**](docs/StorageApi.md#get_storage_status) | **GET** /busybar/storage/status | Show storage usage
-*StorageApi* | [**list_storage_files**](docs/StorageApi.md#list_storage_files) | **GET** /busybar/storage/list | List files on internal storage
-*StorageApi* | [**read_storage_file**](docs/StorageApi.md#read_storage_file) | **GET** /busybar/storage/read | Download file from internal storage
-*StorageApi* | [**remove_storage_file**](docs/StorageApi.md#remove_storage_file) | **DELETE** /busybar/storage/remove | Remove a file on internal storage
-*StorageApi* | [**rename_storage_file**](docs/StorageApi.md#rename_storage_file) | **POST** /busybar/storage/rename | Rename/move a file
-*StorageApi* | [**write_storage_file**](docs/StorageApi.md#write_storage_file) | **POST** /busybar/storage/write | Upload file to internal storage
-*StreamingApi* | [**busybar_screen_get**](docs/StreamingApi.md#busybar_screen_get) | **GET** /busybar/screen | Get single frame for requested screen
-*SystemApi* | [**dump_log**](docs/SystemApi.md#dump_log) | **POST** /busybar/log_dump | Dump captured log
-*SystemApi* | [**get_status**](docs/SystemApi.md#get_status) | **GET** /busybar/status | Get device status
-*SystemApi* | [**get_status_device**](docs/SystemApi.md#get_status_device) | **GET** /busybar/status/device | Get device info
-*SystemApi* | [**get_status_firmware**](docs/SystemApi.md#get_status_firmware) | **GET** /busybar/status/firmware | Get firmware info
-*SystemApi* | [**get_status_power**](docs/SystemApi.md#get_status_power) | **GET** /busybar/status/power | Get power status
-*SystemApi* | [**get_status_system**](docs/SystemApi.md#get_status_system) | **GET** /busybar/status/system | Get system status
-*SystemApi* | [**get_transport**](docs/SystemApi.md#get_transport) | **GET** /busybar/transport | Get device network connection info
-*SystemApi* | [**get_version**](docs/SystemApi.md#get_version) | **GET** /busybar/version | Get API version information
-*TimeApi* | [**get_time**](docs/TimeApi.md#get_time) | **GET** /busybar/time | Get current timestamp with timezone
-*TimeApi* | [**get_time_timezone**](docs/TimeApi.md#get_time_timezone) | **GET** /busybar/time/timezone | Get timezone
-*TimeApi* | [**get_time_tzlist**](docs/TimeApi.md#get_time_tzlist) | **GET** /busybar/time/tzlist | Get list of supported time zones
-*TimeApi* | [**set_time_timestamp**](docs/TimeApi.md#set_time_timestamp) | **POST** /busybar/time/timestamp | Set current timestamp
-*TimeApi* | [**set_time_timezone**](docs/TimeApi.md#set_time_timezone) | **POST** /busybar/time/timezone | Set timezone
-*UpdaterApi* | [**abort_firmware_download**](docs/UpdaterApi.md#abort_firmware_download) | **POST** /busybar/update/abort_download | Abort ongoing firmware download
-*UpdaterApi* | [**check_firmware_update**](docs/UpdaterApi.md#check_firmware_update) | **POST** /busybar/update/check | Start firmware update check
-*UpdaterApi* | [**get_autoupdate_settings**](docs/UpdaterApi.md#get_autoupdate_settings) | **GET** /busybar/update/autoupdate | Get autoupdate settings
-*UpdaterApi* | [**get_firmware_update_status**](docs/UpdaterApi.md#get_firmware_update_status) | **GET** /busybar/update/status | Get firmware update status
-*UpdaterApi* | [**get_update_changelog**](docs/UpdaterApi.md#get_update_changelog) | **GET** /busybar/update/changelog | Get update changelog
-*UpdaterApi* | [**install_firmware_update**](docs/UpdaterApi.md#install_firmware_update) | **POST** /busybar/update/install | Install firmware update
-*UpdaterApi* | [**set_autoupdate_settings**](docs/UpdaterApi.md#set_autoupdate_settings) | **POST** /busybar/update/autoupdate | Set autoupdate settings
-*WiFiApi* | [**busybar_wifi_status_get**](docs/WiFiApi.md#busybar_wifi_status_get) | **GET** /busybar/wifi/status | 
+*AccountApi* | [**get_account_backend**](docs/AccountApi.md#get_account_backend) | **GET** /api/account/backend | Get MQTT configuration
+*AccountApi* | [**get_account_info**](docs/AccountApi.md#get_account_info) | **GET** /api/account/info | Get linked account info
+*AccountApi* | [**get_account_status**](docs/AccountApi.md#get_account_status) | **GET** /api/account/status | Get MQTT status info
+*AssetsApi* | [**clear_display**](docs/AssetsApi.md#clear_display) | **DELETE** /api/display/draw | Clear display
+*AssetsApi* | [**delete_app_assets**](docs/AssetsApi.md#delete_app_assets) | **DELETE** /api/assets/upload | Delete app assets
+*AssetsApi* | [**draw_on_display**](docs/AssetsApi.md#draw_on_display) | **POST** /api/display/draw | Draw on display
+*AssetsApi* | [**play_audio**](docs/AssetsApi.md#play_audio) | **POST** /api/audio/play | Play audio file
+*AssetsApi* | [**stop_audio**](docs/AssetsApi.md#stop_audio) | **DELETE** /api/audio/play | Stop audio playback
+*AssetsApi* | [**upload_asset_with_app_id**](docs/AssetsApi.md#upload_asset_with_app_id) | **POST** /api/assets/upload | Upload asset file with app ID
+*BLEApi* | [**api_ble_disable_post**](docs/BLEApi.md#api_ble_disable_post) | **POST** /api/ble/disable | Disable BLE
+*BLEApi* | [**api_ble_enable_post**](docs/BLEApi.md#api_ble_enable_post) | **POST** /api/ble/enable | Enable BLE
+*BLEApi* | [**api_ble_pairing_delete**](docs/BLEApi.md#api_ble_pairing_delete) | **DELETE** /api/ble/pairing | Remove pairing
+*BLEApi* | [**api_ble_status_get**](docs/BLEApi.md#api_ble_status_get) | **GET** /api/ble/status | 
+*BusyApi* | [**get_busy_profile**](docs/BusyApi.md#get_busy_profile) | **GET** /api/busy/profiles/{slot} | Get BUSY timer profile
+*BusyApi* | [**get_busy_snapshot**](docs/BusyApi.md#get_busy_snapshot) | **GET** /api/busy/snapshot | Get BUSY timer snapshot
+*BusyApi* | [**set_busy_profile**](docs/BusyApi.md#set_busy_profile) | **PUT** /api/busy/profiles/{slot} | Set BUSY timer profile
+*BusyApi* | [**set_busy_snapshot**](docs/BusyApi.md#set_busy_snapshot) | **PUT** /api/busy/snapshot | Set BUSY timer snapshot
+*InputApi* | [**set_input_key**](docs/InputApi.md#set_input_key) | **POST** /api/input | Send input event
+*SettingsApi* | [**api_name_get**](docs/SettingsApi.md#api_name_get) | **GET** /api/name | Get current device name
+*SettingsApi* | [**api_name_post**](docs/SettingsApi.md#api_name_post) | **POST** /api/name | Set new device name
+*SettingsApi* | [**create_access_token**](docs/SettingsApi.md#create_access_token) | **POST** /api/access/tokens | Create a new access token
+*SettingsApi* | [**delete_all_access_tokens**](docs/SettingsApi.md#delete_all_access_tokens) | **DELETE** /api/access/tokens | Revoke all access tokens
+*SettingsApi* | [**get_access_tokens**](docs/SettingsApi.md#get_access_tokens) | **GET** /api/access/tokens | List all access tokens
+*SettingsApi* | [**get_audio_volume**](docs/SettingsApi.md#get_audio_volume) | **GET** /api/audio/volume | Get audio volume
+*SettingsApi* | [**get_display_brightness**](docs/SettingsApi.md#get_display_brightness) | **GET** /api/display/brightness | Get display brightness
+*SettingsApi* | [**get_http_access**](docs/SettingsApi.md#get_http_access) | **GET** /api/access | Get HTTP API access over Wi-Fi configuration
+*SettingsApi* | [**revoke_access_token**](docs/SettingsApi.md#revoke_access_token) | **DELETE** /api/access/tokens/{short_id} | Revoke an access token
+*SettingsApi* | [**set_audio_volume**](docs/SettingsApi.md#set_audio_volume) | **POST** /api/audio/volume | Set audio volume
+*SettingsApi* | [**set_display_brightness**](docs/SettingsApi.md#set_display_brightness) | **POST** /api/display/brightness | Set display brightness
+*SettingsApi* | [**set_http_access**](docs/SettingsApi.md#set_http_access) | **POST** /api/access | Set HTTP API access over Wi-Fi configuration
+*SmartHomeApi* | [**api_smart_home_pairing_delete**](docs/SmartHomeApi.md#api_smart_home_pairing_delete) | **DELETE** /api/smart_home/pairing | Erase all smart home links
+*SmartHomeApi* | [**api_smart_home_switch_get**](docs/SmartHomeApi.md#api_smart_home_switch_get) | **GET** /api/smart_home/switch | Get state of emulated smart home switch
+*SmartHomeApi* | [**api_smart_home_switch_post**](docs/SmartHomeApi.md#api_smart_home_switch_post) | **POST** /api/smart_home/switch | Set state of emulated smart home switch
+*SmartHomeApi* | [**get_smart_home_commissioning_status**](docs/SmartHomeApi.md#get_smart_home_commissioning_status) | **GET** /api/smart_home/pairing | Smart home commissioning status
+*SmartHomeApi* | [**start_smart_home_pairing**](docs/SmartHomeApi.md#start_smart_home_pairing) | **POST** /api/smart_home/pairing | Link device to a smart home
+*StorageApi* | [**create_storage_dir**](docs/StorageApi.md#create_storage_dir) | **POST** /api/storage/mkdir | Create a directory on internal storage
+*StorageApi* | [**get_storage_status**](docs/StorageApi.md#get_storage_status) | **GET** /api/storage/status | Show storage usage
+*StorageApi* | [**list_storage_files**](docs/StorageApi.md#list_storage_files) | **GET** /api/storage/list | List files on internal storage
+*StorageApi* | [**read_storage_file**](docs/StorageApi.md#read_storage_file) | **GET** /api/storage/read | Download file from internal storage
+*StorageApi* | [**remove_storage_file**](docs/StorageApi.md#remove_storage_file) | **DELETE** /api/storage/remove | Remove a file on internal storage
+*StorageApi* | [**rename_storage_file**](docs/StorageApi.md#rename_storage_file) | **POST** /api/storage/rename | Rename/move a file
+*StorageApi* | [**write_storage_file**](docs/StorageApi.md#write_storage_file) | **POST** /api/storage/write | Upload file to internal storage
+*StreamingApi* | [**api_screen_get**](docs/StreamingApi.md#api_screen_get) | **GET** /api/screen | Get single frame for requested screen
+*SystemApi* | [**dump_log**](docs/SystemApi.md#dump_log) | **POST** /api/log_dump | Dump captured log
+*SystemApi* | [**get_status**](docs/SystemApi.md#get_status) | **GET** /api/status | Get device status
+*SystemApi* | [**get_status_device**](docs/SystemApi.md#get_status_device) | **GET** /api/status/device | Get device info
+*SystemApi* | [**get_status_firmware**](docs/SystemApi.md#get_status_firmware) | **GET** /api/status/firmware | Get firmware info
+*SystemApi* | [**get_status_power**](docs/SystemApi.md#get_status_power) | **GET** /api/status/power | Get power status
+*SystemApi* | [**get_status_system**](docs/SystemApi.md#get_status_system) | **GET** /api/status/system | Get system status
+*SystemApi* | [**get_transport**](docs/SystemApi.md#get_transport) | **GET** /api/transport | Get device network connection info
+*SystemApi* | [**get_version**](docs/SystemApi.md#get_version) | **GET** /api/version | Get API version information
+*TimeApi* | [**get_time**](docs/TimeApi.md#get_time) | **GET** /api/time | Get current timestamp with timezone
+*TimeApi* | [**get_time_timezone**](docs/TimeApi.md#get_time_timezone) | **GET** /api/time/timezone | Get timezone
+*TimeApi* | [**get_time_tzlist**](docs/TimeApi.md#get_time_tzlist) | **GET** /api/time/tzlist | Get list of supported time zones
+*TimeApi* | [**set_time_timestamp**](docs/TimeApi.md#set_time_timestamp) | **POST** /api/time/timestamp | Set current timestamp
+*TimeApi* | [**set_time_timezone**](docs/TimeApi.md#set_time_timezone) | **POST** /api/time/timezone | Set timezone
+*UpdaterApi* | [**abort_firmware_download**](docs/UpdaterApi.md#abort_firmware_download) | **POST** /api/update/abort_download | Abort ongoing firmware download
+*UpdaterApi* | [**check_firmware_update**](docs/UpdaterApi.md#check_firmware_update) | **POST** /api/update/check | Start firmware update check
+*UpdaterApi* | [**get_autoupdate_settings**](docs/UpdaterApi.md#get_autoupdate_settings) | **GET** /api/update/autoupdate | Get autoupdate settings
+*UpdaterApi* | [**get_firmware_update_status**](docs/UpdaterApi.md#get_firmware_update_status) | **GET** /api/update/status | Get firmware update status
+*UpdaterApi* | [**get_update_changelog**](docs/UpdaterApi.md#get_update_changelog) | **GET** /api/update/changelog | Get update changelog
+*UpdaterApi* | [**install_firmware_update**](docs/UpdaterApi.md#install_firmware_update) | **POST** /api/update/install | Install firmware update
+*UpdaterApi* | [**set_autoupdate_settings**](docs/UpdaterApi.md#set_autoupdate_settings) | **POST** /api/update/autoupdate | Set autoupdate settings
+*WiFiApi* | [**api_wifi_status_get**](docs/WiFiApi.md#api_wifi_status_get) | **GET** /api/wifi/status | 
 
 
 ## Documentation For Models

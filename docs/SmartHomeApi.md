@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**busybar_smart_home_pairing_delete**](SmartHomeApi.md#busybar_smart_home_pairing_delete) | **DELETE** /busybar/smart_home/pairing | Erase all smart home links
-[**busybar_smart_home_switch_get**](SmartHomeApi.md#busybar_smart_home_switch_get) | **GET** /busybar/smart_home/switch | Get state of emulated smart home switch
-[**busybar_smart_home_switch_post**](SmartHomeApi.md#busybar_smart_home_switch_post) | **POST** /busybar/smart_home/switch | Set state of emulated smart home switch
-[**get_smart_home_commissioning_status**](SmartHomeApi.md#get_smart_home_commissioning_status) | **GET** /busybar/smart_home/pairing | Smart home commissioning status
-[**start_smart_home_pairing**](SmartHomeApi.md#start_smart_home_pairing) | **POST** /busybar/smart_home/pairing | Link device to a smart home
+[**api_smart_home_pairing_delete**](SmartHomeApi.md#api_smart_home_pairing_delete) | **DELETE** /api/smart_home/pairing | Erase all smart home links
+[**api_smart_home_switch_get**](SmartHomeApi.md#api_smart_home_switch_get) | **GET** /api/smart_home/switch | Get state of emulated smart home switch
+[**api_smart_home_switch_post**](SmartHomeApi.md#api_smart_home_switch_post) | **POST** /api/smart_home/switch | Set state of emulated smart home switch
+[**get_smart_home_commissioning_status**](SmartHomeApi.md#get_smart_home_commissioning_status) | **GET** /api/smart_home/pairing | Smart home commissioning status
+[**start_smart_home_pairing**](SmartHomeApi.md#start_smart_home_pairing) | **POST** /api/smart_home/pairing | Link device to a smart home
 
 
-# **busybar_smart_home_pairing_delete**
-> SuccessResponse busybar_smart_home_pairing_delete()
+# **api_smart_home_pairing_delete**
+> SuccessResponse api_smart_home_pairing_delete()
 
 Erase all smart home links
 
@@ -49,11 +49,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Erase all smart home links
-        api_response = api_instance.busybar_smart_home_pairing_delete()
-        print("The response of SmartHomeApi->busybar_smart_home_pairing_delete:\n")
+        api_response = api_instance.api_smart_home_pairing_delete()
+        print("The response of SmartHomeApi->api_smart_home_pairing_delete:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SmartHomeApi->busybar_smart_home_pairing_delete: %s\n" % e)
+        print("Exception when calling SmartHomeApi->api_smart_home_pairing_delete: %s\n" % e)
 ```
 
 
@@ -84,8 +84,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **busybar_smart_home_switch_get**
-> SmartHomeSwitchState busybar_smart_home_switch_get()
+# **api_smart_home_switch_get**
+> SmartHomeSwitchState api_smart_home_switch_get()
 
 Get state of emulated smart home switch
 
@@ -122,11 +122,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Get state of emulated smart home switch
-        api_response = api_instance.busybar_smart_home_switch_get()
-        print("The response of SmartHomeApi->busybar_smart_home_switch_get:\n")
+        api_response = api_instance.api_smart_home_switch_get()
+        print("The response of SmartHomeApi->api_smart_home_switch_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SmartHomeApi->busybar_smart_home_switch_get: %s\n" % e)
+        print("Exception when calling SmartHomeApi->api_smart_home_switch_get: %s\n" % e)
 ```
 
 
@@ -157,8 +157,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **busybar_smart_home_switch_post**
-> SuccessResponse busybar_smart_home_switch_post(smart_home_switch_state)
+# **api_smart_home_switch_post**
+> SuccessResponse api_smart_home_switch_post(smart_home_switch_state)
 
 Set state of emulated smart home switch
 
@@ -197,11 +197,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Set state of emulated smart home switch
-        api_response = api_instance.busybar_smart_home_switch_post(smart_home_switch_state)
-        print("The response of SmartHomeApi->busybar_smart_home_switch_post:\n")
+        api_response = api_instance.api_smart_home_switch_post(smart_home_switch_state)
+        print("The response of SmartHomeApi->api_smart_home_switch_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SmartHomeApi->busybar_smart_home_switch_post: %s\n" % e)
+        print("Exception when calling SmartHomeApi->api_smart_home_switch_post: %s\n" % e)
 ```
 
 

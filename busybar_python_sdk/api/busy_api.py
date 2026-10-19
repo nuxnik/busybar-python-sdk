@@ -286,7 +286,7 @@ class BusyApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/busy/profiles/{slot}',
+            resource_path='/api/busy/profiles/{slot}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -535,7 +535,7 @@ class BusyApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/busy/snapshot',
+            resource_path='/api/busy/snapshot',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -827,7 +827,7 @@ class BusyApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/busybar/busy/profiles/{slot}',
+            resource_path='/api/busy/profiles/{slot}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1104,7 +1104,7 @@ class BusyApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/busybar/busy/snapshot',
+            resource_path='/api/busy/snapshot',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

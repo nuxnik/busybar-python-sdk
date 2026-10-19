@@ -270,7 +270,7 @@ class AccountApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/account/backend',
+            resource_path='/api/account/backend',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -516,7 +516,7 @@ class AccountApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/account/info',
+            resource_path='/api/account/info',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -762,7 +762,7 @@ class AccountApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/account/status',
+            resource_path='/api/account/status',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

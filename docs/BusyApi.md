@@ -4,10 +4,10 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_busy_profile**](BusyApi.md#get_busy_profile) | **GET** /busybar/busy/profiles/{slot} | Get BUSY timer profile
-[**get_busy_snapshot**](BusyApi.md#get_busy_snapshot) | **GET** /busybar/busy/snapshot | Get BUSY timer snapshot
-[**set_busy_profile**](BusyApi.md#set_busy_profile) | **PUT** /busybar/busy/profiles/{slot} | Set BUSY timer profile
-[**set_busy_snapshot**](BusyApi.md#set_busy_snapshot) | **PUT** /busybar/busy/snapshot | Set BUSY timer snapshot
+[**get_busy_profile**](BusyApi.md#get_busy_profile) | **GET** /api/busy/profiles/{slot} | Get BUSY timer profile
+[**get_busy_snapshot**](BusyApi.md#get_busy_snapshot) | **GET** /api/busy/snapshot | Get BUSY timer snapshot
+[**set_busy_profile**](BusyApi.md#set_busy_profile) | **PUT** /api/busy/profiles/{slot} | Set BUSY timer profile
+[**set_busy_snapshot**](BusyApi.md#set_busy_snapshot) | **PUT** /api/busy/snapshot | Set BUSY timer snapshot
 
 
 # **get_busy_profile**

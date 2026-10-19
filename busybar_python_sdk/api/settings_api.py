@@ -46,7 +46,7 @@ class SettingsApi:
 
 
     @validate_call
-    def busybar_name_get(
+    def api_name_get(
         self,
         _request_timeout: Union[
             None,
@@ -87,7 +87,7 @@ class SettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_name_get_serialize(
+        _param = self._api_name_get_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -109,7 +109,7 @@ class SettingsApi:
 
 
     @validate_call
-    def busybar_name_get_with_http_info(
+    def api_name_get_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -150,7 +150,7 @@ class SettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_name_get_serialize(
+        _param = self._api_name_get_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -172,7 +172,7 @@ class SettingsApi:
 
 
     @validate_call
-    def busybar_name_get_without_preload_content(
+    def api_name_get_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -213,7 +213,7 @@ class SettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_name_get_serialize(
+        _param = self._api_name_get_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -230,7 +230,7 @@ class SettingsApi:
         return response_data.response
 
 
-    def _busybar_name_get_serialize(
+    def _api_name_get_serialize(
         self,
         _request_auth,
         _content_type,
@@ -275,7 +275,7 @@ class SettingsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/name',
+            resource_path='/api/name',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -292,7 +292,7 @@ class SettingsApi:
 
 
     @validate_call
-    def busybar_name_post(
+    def api_name_post(
         self,
         name_info: NameInfo,
         _request_timeout: Union[
@@ -336,7 +336,7 @@ class SettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_name_post_serialize(
+        _param = self._api_name_post_serialize(
             name_info=name_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -360,7 +360,7 @@ class SettingsApi:
 
 
     @validate_call
-    def busybar_name_post_with_http_info(
+    def api_name_post_with_http_info(
         self,
         name_info: NameInfo,
         _request_timeout: Union[
@@ -404,7 +404,7 @@ class SettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_name_post_serialize(
+        _param = self._api_name_post_serialize(
             name_info=name_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -428,7 +428,7 @@ class SettingsApi:
 
 
     @validate_call
-    def busybar_name_post_without_preload_content(
+    def api_name_post_without_preload_content(
         self,
         name_info: NameInfo,
         _request_timeout: Union[
@@ -472,7 +472,7 @@ class SettingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_name_post_serialize(
+        _param = self._api_name_post_serialize(
             name_info=name_info,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -491,7 +491,7 @@ class SettingsApi:
         return response_data.response
 
 
-    def _busybar_name_post_serialize(
+    def _api_name_post_serialize(
         self,
         name_info,
         _request_auth,
@@ -552,7 +552,7 @@ class SettingsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/name',
+            resource_path='/api/name',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -826,7 +826,7 @@ class SettingsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/access/tokens',
+            resource_path='/api/access/tokens',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1072,7 +1072,7 @@ class SettingsApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/busybar/access/tokens',
+            resource_path='/api/access/tokens',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1318,7 +1318,7 @@ class SettingsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/access/tokens',
+            resource_path='/api/access/tokens',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1564,7 +1564,7 @@ class SettingsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/audio/volume',
+            resource_path='/api/audio/volume',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1810,7 +1810,7 @@ class SettingsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/display/brightness',
+            resource_path='/api/display/brightness',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2056,7 +2056,7 @@ class SettingsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/access',
+            resource_path='/api/access',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2317,7 +2317,7 @@ class SettingsApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/busybar/access/tokens/{short_id}',
+            resource_path='/api/access/tokens/{short_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2600,7 +2600,7 @@ class SettingsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/audio/volume',
+            resource_path='/api/audio/volume',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2866,7 +2866,7 @@ class SettingsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/display/brightness',
+            resource_path='/api/display/brightness',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3149,7 +3149,7 @@ class SettingsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/access',
+            resource_path='/api/access',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

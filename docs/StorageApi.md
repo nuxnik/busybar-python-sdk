@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_storage_dir**](StorageApi.md#create_storage_dir) | **POST** /busybar/storage/mkdir | Create a directory on internal storage
-[**get_storage_status**](StorageApi.md#get_storage_status) | **GET** /busybar/storage/status | Show storage usage
-[**list_storage_files**](StorageApi.md#list_storage_files) | **GET** /busybar/storage/list | List files on internal storage
-[**read_storage_file**](StorageApi.md#read_storage_file) | **GET** /busybar/storage/read | Download file from internal storage
-[**remove_storage_file**](StorageApi.md#remove_storage_file) | **DELETE** /busybar/storage/remove | Remove a file on internal storage
-[**rename_storage_file**](StorageApi.md#rename_storage_file) | **POST** /busybar/storage/rename | Rename/move a file
-[**write_storage_file**](StorageApi.md#write_storage_file) | **POST** /busybar/storage/write | Upload file to internal storage
+[**create_storage_dir**](StorageApi.md#create_storage_dir) | **POST** /api/storage/mkdir | Create a directory on internal storage
+[**get_storage_status**](StorageApi.md#get_storage_status) | **GET** /api/storage/status | Show storage usage
+[**list_storage_files**](StorageApi.md#list_storage_files) | **GET** /api/storage/list | List files on internal storage
+[**read_storage_file**](StorageApi.md#read_storage_file) | **GET** /api/storage/read | Download file from internal storage
+[**remove_storage_file**](StorageApi.md#remove_storage_file) | **DELETE** /api/storage/remove | Remove a file on internal storage
+[**rename_storage_file**](StorageApi.md#rename_storage_file) | **POST** /api/storage/rename | Rename/move a file
+[**write_storage_file**](StorageApi.md#write_storage_file) | **POST** /api/storage/write | Upload file to internal storage
 
 
 # **create_storage_dir**

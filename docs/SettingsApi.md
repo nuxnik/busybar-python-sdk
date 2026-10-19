@@ -4,22 +4,22 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**busybar_name_get**](SettingsApi.md#busybar_name_get) | **GET** /busybar/name | Get current device name
-[**busybar_name_post**](SettingsApi.md#busybar_name_post) | **POST** /busybar/name | Set new device name
-[**create_access_token**](SettingsApi.md#create_access_token) | **POST** /busybar/access/tokens | Create a new access token
-[**delete_all_access_tokens**](SettingsApi.md#delete_all_access_tokens) | **DELETE** /busybar/access/tokens | Revoke all access tokens
-[**get_access_tokens**](SettingsApi.md#get_access_tokens) | **GET** /busybar/access/tokens | List all access tokens
-[**get_audio_volume**](SettingsApi.md#get_audio_volume) | **GET** /busybar/audio/volume | Get audio volume
-[**get_display_brightness**](SettingsApi.md#get_display_brightness) | **GET** /busybar/display/brightness | Get display brightness
-[**get_http_access**](SettingsApi.md#get_http_access) | **GET** /busybar/access | Get HTTP API access over Wi-Fi configuration
-[**revoke_access_token**](SettingsApi.md#revoke_access_token) | **DELETE** /busybar/access/tokens/{short_id} | Revoke an access token
-[**set_audio_volume**](SettingsApi.md#set_audio_volume) | **POST** /busybar/audio/volume | Set audio volume
-[**set_display_brightness**](SettingsApi.md#set_display_brightness) | **POST** /busybar/display/brightness | Set display brightness
-[**set_http_access**](SettingsApi.md#set_http_access) | **POST** /busybar/access | Set HTTP API access over Wi-Fi configuration
+[**api_name_get**](SettingsApi.md#api_name_get) | **GET** /api/name | Get current device name
+[**api_name_post**](SettingsApi.md#api_name_post) | **POST** /api/name | Set new device name
+[**create_access_token**](SettingsApi.md#create_access_token) | **POST** /api/access/tokens | Create a new access token
+[**delete_all_access_tokens**](SettingsApi.md#delete_all_access_tokens) | **DELETE** /api/access/tokens | Revoke all access tokens
+[**get_access_tokens**](SettingsApi.md#get_access_tokens) | **GET** /api/access/tokens | List all access tokens
+[**get_audio_volume**](SettingsApi.md#get_audio_volume) | **GET** /api/audio/volume | Get audio volume
+[**get_display_brightness**](SettingsApi.md#get_display_brightness) | **GET** /api/display/brightness | Get display brightness
+[**get_http_access**](SettingsApi.md#get_http_access) | **GET** /api/access | Get HTTP API access over Wi-Fi configuration
+[**revoke_access_token**](SettingsApi.md#revoke_access_token) | **DELETE** /api/access/tokens/{short_id} | Revoke an access token
+[**set_audio_volume**](SettingsApi.md#set_audio_volume) | **POST** /api/audio/volume | Set audio volume
+[**set_display_brightness**](SettingsApi.md#set_display_brightness) | **POST** /api/display/brightness | Set display brightness
+[**set_http_access**](SettingsApi.md#set_http_access) | **POST** /api/access | Set HTTP API access over Wi-Fi configuration
 
 
-# **busybar_name_get**
-> NameInfo busybar_name_get()
+# **api_name_get**
+> NameInfo api_name_get()
 
 Get current device name
 
@@ -58,11 +58,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Get current device name
-        api_response = api_instance.busybar_name_get()
-        print("The response of SettingsApi->busybar_name_get:\n")
+        api_response = api_instance.api_name_get()
+        print("The response of SettingsApi->api_name_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SettingsApi->busybar_name_get: %s\n" % e)
+        print("Exception when calling SettingsApi->api_name_get: %s\n" % e)
 ```
 
 
@@ -92,8 +92,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **busybar_name_post**
-> SuccessResponse busybar_name_post(name_info)
+# **api_name_post**
+> SuccessResponse api_name_post(name_info)
 
 Set new device name
 
@@ -134,11 +134,11 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Set new device name
-        api_response = api_instance.busybar_name_post(name_info)
-        print("The response of SettingsApi->busybar_name_post:\n")
+        api_response = api_instance.api_name_post(name_info)
+        print("The response of SettingsApi->api_name_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SettingsApi->busybar_name_post: %s\n" % e)
+        print("Exception when calling SettingsApi->api_name_post: %s\n" % e)
 ```
 
 

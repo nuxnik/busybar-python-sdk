@@ -37,7 +37,7 @@ class StreamingApi:
 
 
     @validate_call
-    def busybar_screen_get(
+    def api_screen_get(
         self,
         display: Annotated[int, Field(le=1, strict=True, ge=0, description="Type of the display Front = 0, Back = 1")],
         _request_timeout: Union[
@@ -80,7 +80,7 @@ class StreamingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_screen_get_serialize(
+        _param = self._api_screen_get_serialize(
             display=display,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -104,7 +104,7 @@ class StreamingApi:
 
 
     @validate_call
-    def busybar_screen_get_with_http_info(
+    def api_screen_get_with_http_info(
         self,
         display: Annotated[int, Field(le=1, strict=True, ge=0, description="Type of the display Front = 0, Back = 1")],
         _request_timeout: Union[
@@ -147,7 +147,7 @@ class StreamingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_screen_get_serialize(
+        _param = self._api_screen_get_serialize(
             display=display,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -171,7 +171,7 @@ class StreamingApi:
 
 
     @validate_call
-    def busybar_screen_get_without_preload_content(
+    def api_screen_get_without_preload_content(
         self,
         display: Annotated[int, Field(le=1, strict=True, ge=0, description="Type of the display Front = 0, Back = 1")],
         _request_timeout: Union[
@@ -214,7 +214,7 @@ class StreamingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_screen_get_serialize(
+        _param = self._api_screen_get_serialize(
             display=display,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -233,7 +233,7 @@ class StreamingApi:
         return response_data.response
 
 
-    def _busybar_screen_get_serialize(
+    def _api_screen_get_serialize(
         self,
         display,
         _request_auth,
@@ -284,7 +284,7 @@ class StreamingApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/screen',
+            resource_path='/api/screen',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

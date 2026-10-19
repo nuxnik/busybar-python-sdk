@@ -290,7 +290,7 @@ class StorageApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/storage/mkdir',
+            resource_path='/api/storage/mkdir',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -536,7 +536,7 @@ class StorageApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/storage/status',
+            resource_path='/api/storage/status',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -799,7 +799,7 @@ class StorageApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/storage/list',
+            resource_path='/api/storage/list',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1066,7 +1066,7 @@ class StorageApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/storage/read',
+            resource_path='/api/storage/read',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1332,7 +1332,7 @@ class StorageApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/busybar/storage/remove',
+            resource_path='/api/storage/remove',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1615,7 +1615,7 @@ class StorageApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/storage/rename',
+            resource_path='/api/storage/rename',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1940,7 +1940,7 @@ class StorageApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/storage/write',
+            resource_path='/api/storage/write',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

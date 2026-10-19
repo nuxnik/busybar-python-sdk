@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**abort_firmware_download**](UpdaterApi.md#abort_firmware_download) | **POST** /busybar/update/abort_download | Abort ongoing firmware download
-[**check_firmware_update**](UpdaterApi.md#check_firmware_update) | **POST** /busybar/update/check | Start firmware update check
-[**get_autoupdate_settings**](UpdaterApi.md#get_autoupdate_settings) | **GET** /busybar/update/autoupdate | Get autoupdate settings
-[**get_firmware_update_status**](UpdaterApi.md#get_firmware_update_status) | **GET** /busybar/update/status | Get firmware update status
-[**get_update_changelog**](UpdaterApi.md#get_update_changelog) | **GET** /busybar/update/changelog | Get update changelog
-[**install_firmware_update**](UpdaterApi.md#install_firmware_update) | **POST** /busybar/update/install | Install firmware update
-[**set_autoupdate_settings**](UpdaterApi.md#set_autoupdate_settings) | **POST** /busybar/update/autoupdate | Set autoupdate settings
+[**abort_firmware_download**](UpdaterApi.md#abort_firmware_download) | **POST** /api/update/abort_download | Abort ongoing firmware download
+[**check_firmware_update**](UpdaterApi.md#check_firmware_update) | **POST** /api/update/check | Start firmware update check
+[**get_autoupdate_settings**](UpdaterApi.md#get_autoupdate_settings) | **GET** /api/update/autoupdate | Get autoupdate settings
+[**get_firmware_update_status**](UpdaterApi.md#get_firmware_update_status) | **GET** /api/update/status | Get firmware update status
+[**get_update_changelog**](UpdaterApi.md#get_update_changelog) | **GET** /api/update/changelog | Get update changelog
+[**install_firmware_update**](UpdaterApi.md#install_firmware_update) | **POST** /api/update/install | Install firmware update
+[**set_autoupdate_settings**](UpdaterApi.md#set_autoupdate_settings) | **POST** /api/update/autoupdate | Set autoupdate settings
 
 
 # **abort_firmware_download**

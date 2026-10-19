@@ -4,9 +4,9 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_account_backend**](AccountApi.md#get_account_backend) | **GET** /busybar/account/backend | Get MQTT configuration
-[**get_account_info**](AccountApi.md#get_account_info) | **GET** /busybar/account/info | Get linked account info
-[**get_account_status**](AccountApi.md#get_account_status) | **GET** /busybar/account/status | Get MQTT status info
+[**get_account_backend**](AccountApi.md#get_account_backend) | **GET** /api/account/backend | Get MQTT configuration
+[**get_account_info**](AccountApi.md#get_account_info) | **GET** /api/account/info | Get linked account info
+[**get_account_status**](AccountApi.md#get_account_status) | **GET** /api/account/status | Get MQTT status info
 
 
 # **get_account_backend**

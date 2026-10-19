@@ -298,7 +298,7 @@ class SystemApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/busybar/log_dump',
+            resource_path='/api/log_dump',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -547,7 +547,7 @@ class SystemApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/status',
+            resource_path='/api/status',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -796,7 +796,7 @@ class SystemApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/status/device',
+            resource_path='/api/status/device',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1045,7 +1045,7 @@ class SystemApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/status/firmware',
+            resource_path='/api/status/firmware',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1294,7 +1294,7 @@ class SystemApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/status/power',
+            resource_path='/api/status/power',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1543,7 +1543,7 @@ class SystemApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/status/system',
+            resource_path='/api/status/system',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1789,7 +1789,7 @@ class SystemApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/transport',
+            resource_path='/api/transport',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2035,7 +2035,7 @@ class SystemApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/version',
+            resource_path='/api/version',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

@@ -36,7 +36,7 @@ class WiFiApi:
 
 
     @validate_call
-    def busybar_wifi_status_get(
+    def api_wifi_status_get(
         self,
         _request_timeout: Union[
             None,
@@ -51,7 +51,7 @@ class WiFiApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> StatusResponse:
-        """busybar_wifi_status_get
+        """api_wifi_status_get
 
         Returns current Wi-Fi status
 
@@ -77,7 +77,7 @@ class WiFiApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_wifi_status_get_serialize(
+        _param = self._api_wifi_status_get_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -100,7 +100,7 @@ class WiFiApi:
 
 
     @validate_call
-    def busybar_wifi_status_get_with_http_info(
+    def api_wifi_status_get_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -115,7 +115,7 @@ class WiFiApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[StatusResponse]:
-        """busybar_wifi_status_get
+        """api_wifi_status_get
 
         Returns current Wi-Fi status
 
@@ -141,7 +141,7 @@ class WiFiApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_wifi_status_get_serialize(
+        _param = self._api_wifi_status_get_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -164,7 +164,7 @@ class WiFiApi:
 
 
     @validate_call
-    def busybar_wifi_status_get_without_preload_content(
+    def api_wifi_status_get_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -179,7 +179,7 @@ class WiFiApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """busybar_wifi_status_get
+        """api_wifi_status_get
 
         Returns current Wi-Fi status
 
@@ -205,7 +205,7 @@ class WiFiApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._busybar_wifi_status_get_serialize(
+        _param = self._api_wifi_status_get_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -223,7 +223,7 @@ class WiFiApi:
         return response_data.response
 
 
-    def _busybar_wifi_status_get_serialize(
+    def _api_wifi_status_get_serialize(
         self,
         _request_auth,
         _content_type,
@@ -268,7 +268,7 @@ class WiFiApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/busybar/wifi/status',
+            resource_path='/api/wifi/status',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
