@@ -3,10 +3,12 @@ name: Publish to test PyPI
 on:
   push:
     branches: [main]
+    paths:
+      - "openapi.yaml"
   workflow_dispatch:
 
-# Pushing the metadata commit back to main re-triggers this workflow;
-# the guards in "Finalize packaging metadata" make that re-run a no-op.
+# Releases are driven by changes to the OpenAPI spec. Generated metadata commits
+# do not retrigger publishing; use workflow_dispatch for an intentional retry.
 concurrency:
   group: pypi-release
   cancel-in-progress: false
