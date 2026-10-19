@@ -3,11 +3,18 @@
 #
 # Generate the busy bar SDK from the OPENAPI openapi.yaml spec
 #
+# The package version is read from the PACKAGE_VERSION environment
+# variable (default: 0.0.1) and flows into the generated metadata.
+#
+# The generator container runs as the calling user (--user), so that
+# the generated files are owned by that user rather than by root.
+
+VERSION="${PACKAGE_VERSION:-0.0.1}"
+
 docker run --rm \
+    --user "$(id -u):$(id -g)" \
     -v $PWD:/build openapitools/openapi-generator-cli generate \
     -i /build/openapi.yaml \
     -g python \
     -o /build \
-    --additional-properties=packageVersion=0.0.1 \
-    --additional-properties=packageName=busybar_python_sdk,projectName=busybar-python-sdk,packageVersion=0.0.1,packageUrl=https://github.com/nuxnik/busybar-python-sdk
-
+    --additional-properties=packageVersion=${VERSION},packageName=busybar_python_sdk,projectName=busybar-python-sdk,packageUrl=https://github.com/nuxnik/busybar-python-sdk

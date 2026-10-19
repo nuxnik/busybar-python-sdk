@@ -1,0 +1,140 @@
+#!/usr/bin/env python3
+"""
+Finalize release packaging metadata in pyproject.toml.
+
+Usage: bin/release-metadata <version> [file]
+
+With a real TOML parser (no string surgery), sets in the given file
+(default: pyproject.toml in the current directory):
+
+    project.urls.Repository = "https://github.com/nuxnik/busybar-python-sdk"
+    project.version         = <version>
+    [[tool.uv.index]]       name = "testpypi" (url, publish-url, explicit)
+                            inserted if missing, replaced if different
+
+The operation is idempotent: a file that already carries all three
+values is left byte-identical, and every run after the first produces
+no changes.
+"""
+
+import sys
+from typing import Any
+
+import tomlkit
+import tomlkit.items
+
+REPOSITORY_URL = "https://github.com/nuxnik/busybar-python-sdk"
+INDEX_NAME = "testpypi"
+INDEX: dict[str, Any] = {
+    "name": "testpypi",
+    "url": "https://test.pypi.org/simple/",
+    "publish-url": "https://test.pypi.org/legacy/",
+    "explicit": True,
+}
+
+
+class MetadataError(Exception):
+    """Raised when pyproject.toml does not have the expected shape."""
+
+
+def table(parent: Any, key: str) -> tomlkit.items.Table:
+    """Return parent[key], which must be a table."""
+    value = parent.get(key)
+    if value is None:
+        raise MetadataError(f"missing table [{key}]")
+    if not isinstance(value, tomlkit.items.AbstractTable):
+        raise MetadataError(f"[{key}] is not a table")
+    return value
+
+
+def find_index_entry(index: Any, name: str) -> int | None:
+    """Return the position of the [[...]] entry called `name`, if any."""
+    for pos, entry in enumerate(index):
+        if isinstance(entry, tomlkit.items.AbstractTable) and entry.get("name") == name:
+            return pos
+    return None
+
+
+def upsert_index(doc: tomlkit.TOMLDocument) -> None:
+    """Insert or replace the testpypi [[tool.uv.index]] entry."""
+    tool = doc.get("tool")
+    if tool is None:
+        doc["tool"] = tomlkit.table()
+        tool = doc["tool"]
+    if not isinstance(tool, tomlkit.items.AbstractTable):
+        raise MetadataError("tool is not a table")
+    uv = tool.get("uv")
+    if uv is None:
+        tool["uv"] = tomlkit.table()
+        uv = tool["uv"]
+    if not isinstance(uv, tomlkit.items.AbstractTable):
+        raise MetadataError("tool.uv is not a table")
+    index = uv.get("index")
+    if index is None:
+        try:
+            aot = tomlkit.aot  # tomlkit >= 0.13
+        except AttributeError:  # pragma: no cover - older tomlkit
+            aot = tomlkit.items.TableArray  # type: ignore[attr-defined]
+        uv["index"] = aot()
+        index = uv["index"]
+    if not (
+        hasattr(index, "append")
+        and hasattr(index, "remove")
+        and not hasattr(index, "keys")
+    ):
+        raise MetadataError("tool.uv.index is not an array of tables")
+
+    pos = find_index_entry(index, INDEX_NAME)
+    if pos is not None and dict(index[pos]) == dict(INDEX):
+        return  # already conformant: leave byte-identical
+    if pos is not None:
+        index.remove(index[pos])
+    entry = tomlkit.table()
+    for key, value in INDEX.items():
+        entry[key] = value
+    index.append(entry)
+
+
+def main(argv: list[str]) -> int:
+    if len(argv) not in (2, 3):
+        print(f"usage: {argv[0]} <version> [file]", file=sys.stderr)
+        return 2
+    version = argv[1]
+    path = argv[2] if len(argv) == 3 else "pyproject.toml"
+    if not version:
+        print("error: version may not be empty", file=sys.stderr)
+        return 2
+
+    try:
+        with open(path, encoding="utf-8") as handle:
+            text = handle.read()
+    except OSError as exc:
+        print(f"error: cannot read {path}: {exc}", file=sys.stderr)
+        return 1
+    try:
+        doc = tomlkit.parse(text)
+    except tomlkit.exceptions.TOMLKitError as exc:
+        print(f"error: {path} is not valid TOML: {exc}", file=sys.stderr)
+        return 1
+
+    try:
+        project = table(doc, "project")
+        if project.get("version", "") != version:
+            project["version"] = version
+        urls = table(project, "urls")
+        if urls.get("Repository", "") != REPOSITORY_URL:
+            urls["Repository"] = REPOSITORY_URL
+        upsert_index(doc)
+    except (MetadataError, tomlkit.exceptions.TOMLKitError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
+
+    output = tomlkit.dumps(doc)
+    if output != text:
+        with open(path, "w", encoding="utf-8") as handle:
+            handle.write(output)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))
