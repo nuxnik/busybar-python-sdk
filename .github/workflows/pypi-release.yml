@@ -137,10 +137,11 @@ jobs:
               exit 1
           fi
           uv build
-          # testpypi credentials: PyPI accepts a token as Basic auth with
-          # the fixed username __token__; uv reads them per index name.
-          UV_INDEX_TESTPYPI_USERNAME="__token__" \
-          UV_INDEX_TESTPYPI_PASSWORD="${TEST_PYPI_TOKEN}" \
+          # uv publish uses UV_PUBLISH_USERNAME/PASSWORD for upload
+          # credentials. UV_INDEX_* variables configure index access and are
+          # not the publish credentials.
+          UV_PUBLISH_USERNAME="__token__" \
+          UV_PUBLISH_PASSWORD="${TEST_PYPI_TOKEN}" \
           uv publish --index testpypi
 
       - name: Upload dist artifacts
