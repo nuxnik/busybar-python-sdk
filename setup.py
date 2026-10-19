@@ -19,8 +19,8 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "busybar-python-sdk"
-VERSION = "0.0.1"
-PYTHON_REQUIRES = ">= 3.10"
+VERSION = "27.5.0"
+PYTHON_REQUIRES = ">= 3.11"
 REQUIRES = [
     "urllib3 >= 2.7.0, < 3.0.0",
     "python-dateutil >= 2.8.2",
