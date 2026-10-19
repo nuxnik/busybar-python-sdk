@@ -1,5 +1,5 @@
 openapi: 3.1.0
-# Rebuild v27.5.0 after deleting the stale release tag.
+# Rebuild v27.5.0 after deleting the stale release tag; workflow paths are now protected.
 info:
   title: BUSY Bar HTTP API
   description: HTTP API for BUSY Bar web server
