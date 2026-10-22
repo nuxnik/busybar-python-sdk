@@ -71,10 +71,11 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: barApiToken
-configuration = busybar_python_sdk.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 
 # Enter a context with an instance of the API client
@@ -101,6 +102,9 @@ Class | Method | HTTP request | Description
 *AccountApi* | [**get_account_backend**](docs/AccountApi.md#get_account_backend) | **GET** /api/account/backend | Get MQTT configuration
 *AccountApi* | [**get_account_info**](docs/AccountApi.md#get_account_info) | **GET** /api/account/info | Get linked account info
 *AccountApi* | [**get_account_status**](docs/AccountApi.md#get_account_status) | **GET** /api/account/status | Get MQTT status info
+*AccountApi* | [**link_account**](docs/AccountApi.md#link_account) | **POST** /api/account/link | Link device to account
+*AccountApi* | [**set_account_backend**](docs/AccountApi.md#set_account_backend) | **PUT** /api/account/backend | Set MQTT configuration
+*AccountApi* | [**unlink_account**](docs/AccountApi.md#unlink_account) | **DELETE** /api/account | Unlink device from account
 *AssetsApi* | [**clear_display**](docs/AssetsApi.md#clear_display) | **DELETE** /api/display/draw | Clear display
 *AssetsApi* | [**delete_app_assets**](docs/AssetsApi.md#delete_app_assets) | **DELETE** /api/assets/upload | Delete app assets
 *AssetsApi* | [**draw_on_display**](docs/AssetsApi.md#draw_on_display) | **POST** /api/display/draw | Draw on display
@@ -141,6 +145,7 @@ Class | Method | HTTP request | Description
 *StorageApi* | [**rename_storage_file**](docs/StorageApi.md#rename_storage_file) | **POST** /api/storage/rename | Rename/move a file
 *StorageApi* | [**write_storage_file**](docs/StorageApi.md#write_storage_file) | **POST** /api/storage/write | Upload file to internal storage
 *StreamingApi* | [**api_screen_get**](docs/StreamingApi.md#api_screen_get) | **GET** /api/screen | Get single frame for requested screen
+*StreamingApi* | [**connect_web_socket**](docs/StreamingApi.md#connect_web_socket) | **GET** /api/status/ws | Device status streaming WebSocket endpoint
 *SystemApi* | [**dump_log**](docs/SystemApi.md#dump_log) | **POST** /api/log_dump | Dump captured log
 *SystemApi* | [**get_status**](docs/SystemApi.md#get_status) | **GET** /api/status | Get device status
 *SystemApi* | [**get_status_device**](docs/SystemApi.md#get_status_device) | **GET** /api/status/device | Get device info
@@ -161,7 +166,11 @@ Class | Method | HTTP request | Description
 *UpdaterApi* | [**get_update_changelog**](docs/UpdaterApi.md#get_update_changelog) | **GET** /api/update/changelog | Get update changelog
 *UpdaterApi* | [**install_firmware_update**](docs/UpdaterApi.md#install_firmware_update) | **POST** /api/update/install | Install firmware update
 *UpdaterApi* | [**set_autoupdate_settings**](docs/UpdaterApi.md#set_autoupdate_settings) | **POST** /api/update/autoupdate | Set autoupdate settings
+*UpdaterApi* | [**update_firmware**](docs/UpdaterApi.md#update_firmware) | **POST** /api/update | Update firmware
+*WiFiApi* | [**api_wifi_connect_post**](docs/WiFiApi.md#api_wifi_connect_post) | **POST** /api/wifi/connect | 
+*WiFiApi* | [**api_wifi_disconnect_post**](docs/WiFiApi.md#api_wifi_disconnect_post) | **POST** /api/wifi/disconnect | 
 *WiFiApi* | [**api_wifi_status_get**](docs/WiFiApi.md#api_wifi_status_get) | **GET** /api/wifi/status | 
+*WiFiApi* | [**get_wifi_networks**](docs/WiFiApi.md#get_wifi_networks) | **GET** /api/wifi/networks | 
 
 
 ## Documentation For Models
@@ -250,10 +259,12 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-<a id="barApiToken"></a>
-### barApiToken
+<a id="ApiKeyAuth"></a>
+### ApiKeyAuth
 
-- **Type**: Bearer authentication
+- **Type**: API key
+- **API key parameter name**: X-API-Token
+- **Location**: HTTP header
 
 
 ## Author

@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**get_update_changelog**](UpdaterApi.md#get_update_changelog) | **GET** /api/update/changelog | Get update changelog
 [**install_firmware_update**](UpdaterApi.md#install_firmware_update) | **POST** /api/update/install | Install firmware update
 [**set_autoupdate_settings**](UpdaterApi.md#set_autoupdate_settings) | **POST** /api/update/autoupdate | Set autoupdate settings
+[**update_firmware**](UpdaterApi.md#update_firmware) | **POST** /api/update | Update firmware
 
 
 # **abort_firmware_download**
@@ -22,7 +23,7 @@ Signals the updater to abort an ongoing download operation.
 
 ### Example
 
-* Bearer Authentication (barApiToken):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import busybar_python_sdk
@@ -41,10 +42,11 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: barApiToken
-configuration = busybar_python_sdk.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -72,7 +74,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[barApiToken](../README.md#barApiToken)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -96,7 +98,7 @@ Initiates an asynchronous check for available firmware updates.
 
 ### Example
 
-* Bearer Authentication (barApiToken):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import busybar_python_sdk
@@ -115,10 +117,11 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: barApiToken
-configuration = busybar_python_sdk.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -146,7 +149,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[barApiToken](../README.md#barApiToken)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -172,7 +175,7 @@ Returns current autoupdate configuration
 
 ### Example
 
-* Bearer Authentication (barApiToken):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import busybar_python_sdk
@@ -191,10 +194,11 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: barApiToken
-configuration = busybar_python_sdk.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -222,7 +226,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[barApiToken](../README.md#barApiToken)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -246,7 +250,7 @@ Returns current update and check status including progress information.
 
 ### Example
 
-* Bearer Authentication (barApiToken):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import busybar_python_sdk
@@ -265,10 +269,11 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: barApiToken
-configuration = busybar_python_sdk.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -296,7 +301,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[barApiToken](../README.md#barApiToken)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -320,7 +325,7 @@ Returns the changelog for a specific firmware version.
 
 ### Example
 
-* Bearer Authentication (barApiToken):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import busybar_python_sdk
@@ -339,10 +344,11 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: barApiToken
-configuration = busybar_python_sdk.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -374,7 +380,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[barApiToken](../README.md#barApiToken)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -402,7 +408,7 @@ Use /api/update/status to monitor progress.
 
 ### Example
 
-* Bearer Authentication (barApiToken):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import busybar_python_sdk
@@ -421,10 +427,11 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: barApiToken
-configuration = busybar_python_sdk.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -456,7 +463,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[barApiToken](../README.md#barApiToken)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -483,7 +490,7 @@ Updates autoupdate configuration. All fields are optional - only provided fields
 
 ### Example
 
-* Bearer Authentication (barApiToken):
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import busybar_python_sdk
@@ -503,10 +510,11 @@ configuration = busybar_python_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: barApiToken
-configuration = busybar_python_sdk.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with busybar_python_sdk.ApiClient(configuration) as api_client:
@@ -538,7 +546,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[barApiToken](../README.md#barApiToken)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -552,6 +560,89 @@ Name | Type | Description  | Notes
 **200** | Settings updated successfully |  -  |
 **400** | Invalid time format (expected HH:MM) |  -  |
 **503** | Failed to apply settings |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_firmware**
+> SuccessResponse update_firmware(body)
+
+Update firmware
+
+Uploads a firmware update package (TAR file) and initiates the update process.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import busybar_python_sdk
+from busybar_python_sdk.models.success_response import SuccessResponse
+from busybar_python_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = busybar_python_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with busybar_python_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = busybar_python_sdk.UpdaterApi(api_client)
+    body = None # bytes | 
+
+    try:
+        # Update firmware
+        api_response = api_instance.update_firmware(body)
+        print("The response of UpdaterApi->update_firmware:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UpdaterApi->update_firmware: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **bytes**|  | 
+
+### Return type
+
+[**SuccessResponse**](SuccessResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/octet-stream
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Update initiated successfully. The device will reboot. |  -  |
+**400** | Invalid parameters, invalid TAR file, or update preparation failed. |  -  |
+**409** | Upload received on a closed or invalid update context. |  -  |
+**413** | Update package too large. |  -  |
+**508** | Failed to save the update package. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

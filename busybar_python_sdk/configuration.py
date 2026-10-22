@@ -114,7 +114,7 @@ HTTPSignatureAuthSetting = TypedDict(
 AuthSettings = TypedDict(
     "AuthSettings",
     {
-        "barApiToken": BearerAuthSetting,
+        "ApiKeyAuth": APIKeyAuthSetting,
     },
     total=False,
 )
@@ -182,6 +182,25 @@ class Configuration:
     :param date_format: Date format string for serialization.
 
     :Example:
+
+    API Key Authentication Example.
+    Given the following security scheme in the OpenAPI specification:
+      components:
+        securitySchemes:
+          cookieAuth:         # name for the security scheme
+            type: apiKey
+            in: cookie
+            name: JSESSIONID  # cookie name
+
+    You can programmatically set the cookie:
+
+conf = busybar_python_sdk.Configuration(
+    api_key={'cookieAuth': 'abc123'}
+    api_key_prefix={'cookieAuth': 'JSESSIONID'}
+)
+
+    The following cookie will be added to the HTTP request:
+       Cookie: JSESSIONID abc123
     """
 
     _default: ClassVar[Optional[Self]] = None
@@ -544,12 +563,14 @@ class Configuration:
         :return: The Auth Settings information dict.
         """
         auth: AuthSettings = {}
-        if self.access_token is not None:
-            auth['barApiToken'] = {
-                'type': 'bearer',
+        if 'ApiKeyAuth' in self.api_key:
+            auth['ApiKeyAuth'] = {
+                'type': 'api_key',
                 'in': 'header',
-                'key': 'Authorization',
-                'value': 'Bearer ' + self.access_token
+                'key': 'X-API-Token',
+                'value': self.get_api_key_with_prefix(
+                    'ApiKeyAuth',
+                ),
             }
         return auth
 

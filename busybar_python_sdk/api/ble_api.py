@@ -264,7 +264,7 @@ class BLEApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'barApiToken'
+            'ApiKeyAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -513,7 +513,7 @@ class BLEApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'barApiToken'
+            'ApiKeyAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -762,7 +762,7 @@ class BLEApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'barApiToken'
+            'ApiKeyAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1011,7 +1011,7 @@ class BLEApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'barApiToken'
+            'ApiKeyAuth'
         ]
 
         return self.api_client.param_serialize(
