@@ -1,6 +1,6 @@
 [project]
 name = "busybar_python_sdk"
-version = "27.5.0"
+version = "27.5.1"
 description = "BUSY Bar HTTP API"
 authors = [
   {name = "tbd",email = "team@openapitools.org"},
