@@ -2,6 +2,7 @@
 
 # import apis into api package
 from busybar_python_sdk.api.account_api import AccountApi
+from busybar_python_sdk.api.apps_api import AppsApi
 from busybar_python_sdk.api.assets_api import AssetsApi
 from busybar_python_sdk.api.ble_api import BLEApi
 from busybar_python_sdk.api.busy_api import BusyApi

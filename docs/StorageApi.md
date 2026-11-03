@@ -98,6 +98,8 @@ Name | Type | Description  | Notes
 
 Show storage usage
 
+Retrieves information about storage partition capacity, including total, used, and free space in bytes
+
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
@@ -171,6 +173,8 @@ This endpoint does not need any parameter.
 > StorageList list_storage_files(path)
 
 List files on internal storage
+
+Returns a list of all files and directories located inside the specified storage path
 
 ### Example
 

@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**api_ble_disable_post**](BLEApi.md#api_ble_disable_post) | **POST** /api/ble/disable | Disable BLE
 [**api_ble_enable_post**](BLEApi.md#api_ble_enable_post) | **POST** /api/ble/enable | Enable BLE
 [**api_ble_pairing_delete**](BLEApi.md#api_ble_pairing_delete) | **DELETE** /api/ble/pairing | Remove pairing
-[**api_ble_status_get**](BLEApi.md#api_ble_status_get) | **GET** /api/ble/status | 
+[**api_ble_status_get**](BLEApi.md#api_ble_status_get) | **GET** /api/ble/status | Get BLE status
 
 
 # **api_ble_disable_post**
@@ -241,6 +241,8 @@ This endpoint does not need any parameter.
 # **api_ble_status_get**
 > BleStatusResponse api_ble_status_get()
 
+Get BLE status
+
 Returns current BLE status
 
 ### Example
@@ -276,6 +278,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
     api_instance = busybar_python_sdk.BLEApi(api_client)
 
     try:
+        # Get BLE status
         api_response = api_instance.api_ble_status_get()
         print("The response of BLEApi->api_ble_status_get:\n")
         pprint(api_response)

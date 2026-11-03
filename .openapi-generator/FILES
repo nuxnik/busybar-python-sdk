@@ -5,6 +5,7 @@ README.md
 busybar_python_sdk/__init__.py
 busybar_python_sdk/api/__init__.py
 busybar_python_sdk/api/account_api.py
+busybar_python_sdk/api/apps_api.py
 busybar_python_sdk/api/assets_api.py
 busybar_python_sdk/api/ble_api.py
 busybar_python_sdk/api/busy_api.py
@@ -30,6 +31,10 @@ busybar_python_sdk/models/account_info.py
 busybar_python_sdk/models/account_link.py
 busybar_python_sdk/models/account_status.py
 busybar_python_sdk/models/animation_element.py
+busybar_python_sdk/models/app_info.py
+busybar_python_sdk/models/app_list_result.py
+busybar_python_sdk/models/app_settings_document.py
+busybar_python_sdk/models/app_stage_result.py
 busybar_python_sdk/models/audio_volume_info.py
 busybar_python_sdk/models/autoupdate_settings.py
 busybar_python_sdk/models/ble_status_response.py
@@ -110,6 +115,11 @@ docs/AccountInfo.md
 docs/AccountLink.md
 docs/AccountStatus.md
 docs/AnimationElement.md
+docs/AppInfo.md
+docs/AppListResult.md
+docs/AppSettingsDocument.md
+docs/AppStageResult.md
+docs/AppsApi.md
 docs/AssetsApi.md
 docs/AudioVolumeInfo.md
 docs/AutoupdateSettings.md
@@ -198,4 +208,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_app_info.py
+test/test_app_list_result.py
+test/test_app_settings_document.py
+test/test_app_stage_result.py
+test/test_apps_api.py
 tox.ini

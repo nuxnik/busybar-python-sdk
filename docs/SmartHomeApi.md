@@ -16,6 +16,8 @@ Method | HTTP request | Description
 
 Erase all smart home links
 
+Removes all existing smart home pairings (fabrics) and automatically reboots the device to apply the reset
+
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
@@ -90,6 +92,8 @@ This endpoint does not need any parameter.
 
 Get state of emulated smart home switch
 
+Returns the current state of the virtual switch emulated by the device
+
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
@@ -163,6 +167,8 @@ This endpoint does not need any parameter.
 > SuccessResponse api_smart_home_switch_post(smart_home_switch_state)
 
 Set state of emulated smart home switch
+
+Updates the current state and/or startup mode of the emulated smart home switch
 
 ### Example
 
@@ -243,6 +249,8 @@ Name | Type | Description  | Notes
 
 Smart home commissioning status
 
+Retrieves the number of commissioned fabrics and the latest smart home pairing status
+
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
@@ -315,6 +323,8 @@ This endpoint does not need any parameter.
 > SmartHomePairingPayload start_smart_home_pairing()
 
 Link device to a smart home
+
+Starts the commissioning process and returns onboarding data like QR code and manual pairing code to link the device with a smart home system
 
 ### Example
 

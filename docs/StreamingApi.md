@@ -13,6 +13,8 @@ Method | HTTP request | Description
 
 Get single frame for requested screen
 
+Captures and returns a single static image frame of the specified display (Front or Back)
+
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):

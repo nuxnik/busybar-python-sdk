@@ -6,8 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**api_wifi_connect_post**](WiFiApi.md#api_wifi_connect_post) | **POST** /api/wifi/connect | 
 [**api_wifi_disconnect_post**](WiFiApi.md#api_wifi_disconnect_post) | **POST** /api/wifi/disconnect | 
-[**api_wifi_status_get**](WiFiApi.md#api_wifi_status_get) | **GET** /api/wifi/status | 
-[**get_wifi_networks**](WiFiApi.md#get_wifi_networks) | **GET** /api/wifi/networks | 
+[**api_wifi_status_get**](WiFiApi.md#api_wifi_status_get) | **GET** /api/wifi/status | Get Wi-Fi connection status
+[**get_wifi_networks**](WiFiApi.md#get_wifi_networks) | **GET** /api/wifi/networks | Scan for available Wi-Fi networks
 
 
 # **api_wifi_connect_post**
@@ -166,7 +166,9 @@ This endpoint does not need any parameter.
 # **api_wifi_status_get**
 > StatusResponse api_wifi_status_get()
 
-Returns current Wi-Fi status
+Get Wi-Fi connection status
+
+Returns the current connection state of the Wi-Fi module, along with network details like SSID, RSSI, and IP address if connected
 
 ### Example
 
@@ -201,6 +203,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
     api_instance = busybar_python_sdk.WiFiApi(api_client)
 
     try:
+        # Get Wi-Fi connection status
         api_response = api_instance.api_wifi_status_get()
         print("The response of WiFiApi->api_wifi_status_get:\n")
         pprint(api_response)
@@ -239,7 +242,9 @@ This endpoint does not need any parameter.
 # **get_wifi_networks**
 > NetworkResponse get_wifi_networks()
 
-Scans environment for available Wi-Fi networks
+Scan for available Wi-Fi networks
+
+Scans to discover nearby available Wi-Fi networks and returns their SSIDs, security styles, and signal strengths
 
 ### Example
 
@@ -274,6 +279,7 @@ with busybar_python_sdk.ApiClient(configuration) as api_client:
     api_instance = busybar_python_sdk.WiFiApi(api_client)
 
     try:
+        # Scan for available Wi-Fi networks
         api_response = api_instance.get_wifi_networks()
         print("The response of WiFiApi->get_wifi_networks:\n")
         pprint(api_response)
