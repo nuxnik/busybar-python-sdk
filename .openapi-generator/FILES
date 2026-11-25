@@ -208,9 +208,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_app_info.py
-test/test_app_list_result.py
-test/test_app_settings_document.py
-test/test_app_stage_result.py
-test/test_apps_api.py
 tox.ini

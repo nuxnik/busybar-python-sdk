@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 **200** | Application launched successfully |  -  |
 **404** | App with given ID was not found |  -  |
 **400** | Missing or invalid application id |  -  |
-**409** | A higher-priority application is already running |  -  |
+**409** | Application conflict. Possible causes: - API version required by the application is not compatible with the firmware. - A higher-priority application is already running.  |  -  |
 **503** | Failed to launch the application |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
