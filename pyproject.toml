@@ -1,9 +1,9 @@
 [project]
 name = "busybar_python_sdk"
-version = "27.15.0"
+version = "27.16.0"
 description = "BUSY Bar HTTP API"
 authors = [
-  {name = "nuxnik",email = "17590223+nuxnik@users.noreply.github.com"},
+  {name = "tbd",email = "team@openapitools.org"},
 ]
 readme = "README.md"
 keywords = ["OpenAPI", "OpenAPI-Generator", "BUSY Bar HTTP API"]

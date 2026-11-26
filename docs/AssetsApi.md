@@ -92,6 +92,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Display or some elements cleared successfully |  -  |
 **400** | Invalid deletion data |  -  |
+**409** | Display is held by a higher-priority application; nothing was cleared |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
